@@ -1,5 +1,5 @@
 # Web Development Spring 2024 Final Project
-Team: Kiersten Griego, Victoria Klimkowski, Sarah Witzig
+Team: Kiersten Grieco, Victoria Klimkowski, Sarah Witzig
 
 # Netlify location
 https://temp-final-project-neu.netlify.app/
