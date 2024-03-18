@@ -1,3 +1,17 @@
+# Web Development Spring 2024 Final Project
+Team: Kiersten Griego, Victoria Klimkowski, Sarah Witzig
+
+# Netlify location
+https://temp-final-project-neu.netlify.app/
+
+# Other Shared Resources (TBD)
+
+# To-do List: 
+* Sarah -
+* Kiersten -
+* Victoria - 
+
+_____________________________________________________
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
