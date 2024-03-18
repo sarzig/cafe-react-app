@@ -7,10 +7,25 @@ https://temp-final-project-neu.netlify.app/
 # Other Shared Resources (TBD)
 
 # To-do List: 
+* All - meet and go over project ideas 
 * Sarah -
 * Kiersten -
 * Victoria - 
 
+# Instructions
+* [Social Network Project Requirements](https://docs.google.com/document/d/1De-UdZ8LpJt6tftlCsYcZz-BCyh8Nljz7KYO5DY00_8/edit#heading=h.f5hzqoikee0r)
+* [Kanbas Quizzes Project Requirements](https://docs.google.com/document/d/1MkJ5lwl0fbKh05UlyC8459HnIIv5yeAx-YL6d4E0bxo/edit#heading=h.elgh8znwlcf5)
+* [Online form to turn in project](https://docs.google.com/forms/d/e/1FAIpQLSfckmSdMMGHiDwykMFLMEsXo4JLCZk4RSA6B8J7OGz3Uqn99Q/viewform)
+
+# Deliverables
+
+Please submit the following one per team:
+
+* Link to GitHub repository to React.js project
+* Link to GitHub repository to Node.js project
+* Link to React.js project running on Netlify or some other remote hosting server
+* Link to Node.js project running on Render.com, Heroku.com, AWS, Kinsta
+* Links to an external site., or any Node.js hosting service of your choice
 _____________________________________________________
 # Getting Started with Create React App
 
