@@ -5,6 +5,7 @@ Team: Kiersten Griego, Victoria Klimkowski, Sarah Witzig
 https://temp-final-project-neu.netlify.app/
 
 # Other Shared Resources (TBD)
+* https://www.siteinspire.com/
 
 # To-do List: 
 * All - meet and go over project ideas 
