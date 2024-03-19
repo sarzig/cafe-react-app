@@ -19,7 +19,7 @@ https://temp-final-project-neu.netlify.app/
 * **Best days:** Monday, Weekends. Sarah/Kiersten could catch up between Algo and WebDev on Thursdays
 
 # To-do List: 
-* **All** - Assess cafe site. Review project requirements and brainstorm how to fulfill them. Build out document with "it should have x, y, z". Can include wishlist or "nice to haves". Then meet to discuss.
+* **All** - Assess cafe site. Review project requirements and brainstorm how to fulfill them. Build out [document](https://1drv.ms/w/s!An0_86bbJ6SNkpFsRpH2Hj46uGvMuw?e=dc3gcv) with "it should have x, y, z". Can include wishlist or "nice to haves". Then meet to discuss.
 * **Victoria** - get any info from cafe owner that could guide us (fine for later too)
 
 # Finished to-dos
