@@ -5,13 +5,26 @@ Team: Kiersten Grieco, Victoria Klimkowski, Sarah Witzig
 https://temp-final-project-neu.netlify.app/
 
 # Other Shared Resources (TBD)
-* https://www.siteinspire.com/
+* [OneDrive Shared Folder](https://1drv.ms/f/s!An0_86bbJ6SNkpFrybqt8PVql-GLAQ?e=poDV7L)
+* [Site Inspire](https://www.siteinspire.com/)
+
+# Upcoming Meetings
+* Friday 3-22: 11AM-12 or 12:30 (Kiersten works at 1PM)
+* Sunday 3-24: hack @ Sarah's house (28 Bayard St. Allston MA 02134) time tbd, earliest that works for me is 9AM ~SW
+
+# Team time constraints
+* **Victoria:** April 13-14 - totally offline. Thursdays has class continuously from morning to evening.
+* **Sarah:** Tuesdays 9AM-5PM offline. Can do evening meetings but usually climb Tuesday evenings. Would LOVE to have April 20-21 free but realize that is highly unlikely!
+* **Kiersten:** works at admissions office T/W 9-5PM and Friday 1-5PM
+* **Best days:** Monday, Weekends. Sarah/Kiersten could catch up between Algo and WebDev on Thursdays
 
 # To-do List: 
-* All - meet and go over project ideas 
-* Sarah -
-* Kiersten -
-* Victoria - 
+* **All** - Assess cafe site. Review project requirements and brainstorm how to fulfill them. Build out document with "it should have x, y, z". Can include wishlist or "nice to haves". Then meet to discuss.
+* **Victoria** - get any info from cafe owner that could guide us (fine for later too)
+
+# Finished to-dos
+* **All** - meet and go over project ideas 3-18
+* Pick project - CAFE SITE!!
 
 # Instructions
 * [Social Network Project Requirements](https://docs.google.com/document/d/1De-UdZ8LpJt6tftlCsYcZz-BCyh8Nljz7KYO5DY00_8/edit#heading=h.f5hzqoikee0r)
@@ -19,9 +32,7 @@ https://temp-final-project-neu.netlify.app/
 * [Online form to turn in project](https://docs.google.com/forms/d/e/1FAIpQLSfckmSdMMGHiDwykMFLMEsXo4JLCZk4RSA6B8J7OGz3Uqn99Q/viewform)
 
 # Deliverables
-
 Please submit the following one per team:
-
 * Link to GitHub repository to React.js project
 * Link to GitHub repository to Node.js project
 * Link to React.js project running on Netlify or some other remote hosting server
