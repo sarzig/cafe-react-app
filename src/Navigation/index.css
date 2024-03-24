@@ -1,0 +1,63 @@
+/* Navigation.css */
+.cafe-name {
+    font-size: 1.5em;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+}
+
+.fixed-top-row {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000; /* Adjust the z-index as needed to ensure it's above other content */
+}
+
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    overflow: hidden;
+    background-color: white;
+    display: flex; /* Use flexbox */
+    width: 100vw; /* Set width to viewport width */
+    margin-left: 0; /* Remove default margin */
+    border-top: 1px solid black; /* Add top border */
+    border-bottom: 1px solid black; /* Add bottom border */
+}
+
+.menu-list {
+    padding-left: 0;
+}
+
+/* note- change this to add borders in between elements. Have to figure out IF we want borders
+    and how to make them not extend all the way in the box */
+ul li:not(:last-child) {
+    border-right: 1px solid white;
+  }
+
+li {
+    flex: 1; /* Make all list items take equal space */
+    display: block;
+    color: black;
+    text-align: center;
+}
+
+li a {
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 14px 0; /* Adjust padding to center links vertically */
+    text-decoration: none;
+    text-transform:capitalize; /* Convert text to uppercase */
+    font-family:Georgia, 'Times New Roman', Times, serif
+}
+
+/* Change the link color to #111 (black) on hover */
+li a:hover {
+    background-color: #1111110e;
+}
+
+/* Change the link color to #111 (black) on hover */
+.menu-active {
+    background-color: #1111110e;
+}
