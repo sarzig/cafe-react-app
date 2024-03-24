@@ -8,6 +8,10 @@ https://temp-final-project-neu.netlify.app/
 * [OneDrive Shared Folder](https://1drv.ms/f/s!An0_86bbJ6SNkpFrybqt8PVql-GLAQ?e=poDV7L)
 * [Site Inspire](https://www.siteinspire.com/)
 
+# Shopify
+* login email: sarahwitzigg@gmail.com
+* password: webdevelopment24
+
 # Upcoming Meetings
 * Sunday 3-24: hack @ Sarah's house (28 Bayard St. Allston MA 02134) time tbd, earliest that works for me is 9AM ~SW
 
