@@ -43,7 +43,7 @@ function Login() {
         navigate(`/Home`);
     }
     return (
-        <div>
+        <div className="mt-5 pt-5">
             <div className="form-control">
             <h3>Login</h3>
             <div className="mb-2">

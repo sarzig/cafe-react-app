@@ -58,7 +58,7 @@ function Register() {
         navigate(`/Home`);
     }
     return (
-        <div className="form-control">
+        <div className="form-control mt-5 pt-5">
             <h3>Register</h3>
             <div className="mb-2">
                 Have an account? Login <Link to={`/Login`}>here</Link>
