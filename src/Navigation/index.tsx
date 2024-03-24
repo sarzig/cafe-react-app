@@ -11,13 +11,13 @@ import { is } from "@babel/types";
 
 export default function Navigation() {
 
-    const userType = "Admin"; // other options: Customer, Owner, Guest
+    const userType = "Guest"; // other options: Customer, Owner, Guest
 
     const links = [
         { label: "Menu", userTypes: ["Admin", "Customer", "Owner", "Guest"] },
         { label: "My-Profile", userTypes: ["Admin", "Customer", "Owner"] },
         { label: "Admin-Tools", userTypes: ["Admin"] },
-        { label: "Login ~ Signup", userTypes: ["Guest"] },
+        { label: "Login", userTypes: ["Guest"] },
     ];
 
     const linksXS = [
