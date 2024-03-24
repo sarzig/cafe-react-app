@@ -10,8 +10,6 @@ function App() {
       <div>
         <Routes>
           <Route path="/" element={<Navigate to="/Home" />} />
-          <Route path="/Login" element={<Login />} />
-          <Route path="/Login/Register" element={<Register />}/>
         </Routes>
         <Navigation />
         <Home />
