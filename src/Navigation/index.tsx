@@ -1,4 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
+import store from "../store";
+import { Provider } from "react-redux";
 import { useState } from "react";
 import { FaBars } from 'react-icons/fa'; // Import the hamburger icon component
 import "./index.css";
@@ -34,6 +36,7 @@ export default function Navigation() {
 
     const { pathname } = useLocation();
     return (
+      <Provider store={store}>
         <div className="row fixed-top-row">
             <div className="col text-center cafe-name">
                 Sakivi Bakery & Cafe
@@ -73,5 +76,6 @@ export default function Navigation() {
                 </div>
             </div>
         </div>
+       </Provider>
     );
 };
