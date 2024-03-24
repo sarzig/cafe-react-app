@@ -2,13 +2,15 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { accounts } from "../Database";
 
-function Login() {
+function Register() {
     const [thisUser, setThisUser] = useState('');
     const [thisPassword, setThisPassword] = useState('');
     const [passwordCheck, setPasswordCheck] = useState('');
     const [thisFirstName, setThisFirstName] = useState('');
     const [thisLastName, setThisLastName] = useState('');
-    
+    function createAccount() {
+
+    }
     return (
         <div>
             <hr />
@@ -31,8 +33,9 @@ function Login() {
             <hr />
             <div className="float-end">
                 <button className="btn">Cancel</button>
-                <button className="btn btn-primary" >Login</button>
+                <button className="btn btn-primary" >Register</button>
             </div>
         </div>
     );
-};
+}
+export default Register;

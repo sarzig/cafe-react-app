@@ -9,14 +9,20 @@ function Login() {
     return (
         <div>
             <hr />
-            Login
+            <div className="form-group">
+            <h3>Login</h3>
             <span>
                 Don't have an account? Register <Link to={`/Login/Register`}>here</Link>
             </span>
-            Email
-            <input type="text" className="form-control" onChange={(e) => setThisUser(e.target.value)} />
-            Password
-            <input type="text" className="form-control" onChange={(e) => setThisPassword(e.target.value)}/>
+            </div>
+            <div className="form-control">
+                <h6>Email address</h6>
+                <input type="text" className="" onChange={(e) => setThisUser(e.target.value)} />
+            </div>
+            <div>
+                <h6>Password</h6>
+                <input type="text" className="form-control" onChange={(e) => setThisPassword(e.target.value)}/>
+            </div>
             <hr />
             <div className="float-end">
                 <button className="btn">Cancel</button>
@@ -24,4 +30,5 @@ function Login() {
             </div>
         </div>
     );
-};
+}
+export default Login;
