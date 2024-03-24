@@ -15,7 +15,9 @@ https://victoria--sakivi.netlify.app/
 * See shared doc for credentials
 
 # Upcoming Meetings
-
+* **April 6** - Post learning Mongo-DB hack
+* **April 19** - pre-submission meet-up
+* **PRESENTATION DATE TBD** - As early in the week of 4/22 as possible (look at Kiersten and Sarah's work hours)
 
 # Team time constraints
 * **Victoria:** April 13-14 - totally offline. Thursdays has class continuously from morning to evening.
