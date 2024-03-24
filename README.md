@@ -2,7 +2,10 @@
 Team: Kiersten Grieco, Victoria Klimkowski, Sarah Witzig, someone else
 
 # Netlify location
-https://temp-final-project-neu.netlify.app/
+https://main--sakivi.netlify.app/
+https://sarah--sakivi.netlify.app/
+https://kiersten--sakivi.netlify.app/
+https://victoria--sakivi.netlify.app/
 
 # Other Shared Resources (TBD)
 * [OneDrive Shared Folder](https://1drv.ms/f/s!An0_86bbJ6SNkpFrybqt8PVql-GLAQ?e=poDV7L)
