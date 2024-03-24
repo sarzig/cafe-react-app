@@ -1,4 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
+import store from "../store";
+import { Provider } from "react-redux";
 
 export default function Navigation() {
     const location = useLocation();
@@ -9,6 +11,7 @@ export default function Navigation() {
         ].filter(link => link.label !== "Labs");
     const { pathname } = useLocation();
     return (
+        <Provider store={store}>
         <div>
             Navigation
             <ul className="wd-kanbas-navigation">
@@ -19,5 +22,6 @@ export default function Navigation() {
             ))}
             </ul>
         </div>
+        </Provider>
     );
 };
