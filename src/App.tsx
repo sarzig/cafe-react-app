@@ -1,4 +1,3 @@
-
 import './App.css';
 import { HashRouter, Routes, Route, Navigate } from "react-router-dom";
 import Home from "./Home";
