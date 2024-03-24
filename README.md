@@ -13,7 +13,7 @@ https://temp-final-project-neu.netlify.app/
 * password: webdevelopment24
 
 # Upcoming Meetings
-* Sunday 3-24: hack @ Sarah's house (28 Bayard St. Allston MA 02134) time tbd, earliest that works for me is 9AM ~SW
+* Saturday 4/6
 
 # Team time constraints
 * **Victoria:** April 13-14 - totally offline. Thursdays has class continuously from morning to evening.
