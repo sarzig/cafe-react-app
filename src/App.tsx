@@ -7,7 +7,6 @@ import { Provider } from "react-redux";
 import store from "./store";
 import Navigation from './Navigation';
 import Profile from './Profile';
-import Login from './Login';
 import Menu from './Menu';
 import Admin from './Admin';
 
