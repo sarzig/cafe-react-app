@@ -1,12 +1,7 @@
 /* Navigation.css */
 .cafe-name {
     font-size: 1.5em;
-    font-family: Georgia, 'Times New Roman', Times, serif;
-}
-
-.cafe-name-text {
-    text-decoration: none;
-    color: black;
+    font-family:Georgia, 'Times New Roman', Times, serif;
 }
 
 .cafe-name-text {
@@ -24,90 +19,51 @@
 }
 
 
-.mobile-popup-container {
-    top: 50px;
-    /* Adjust top position as needed */
-    left: 0;
-    width: 100%;
-    background-color: #fff;
-    /* Background color */
-    box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.1);
-    /* Box shadow */
-    z-index: 1;
-    /* Ensure it's above other content */
-}
-
-.mobile-pop-up-menu {
+ul {
     list-style-type: none;
-    padding: 0;
     margin: 0;
+    overflow: hidden;
+    background-color: white;
+    display: flex; /* Use flexbox */
+    width: 100vw; /* Set width to viewport width */
+    margin-left: 0; /* Remove default margin */
+    border-top: 1px solid black; /* Add top border */
+    border-bottom: 1px solid black; /* Add bottom border */
 }
 
-.mobile-pop-up-menu li {
-    display: block;
-    /* Display list items as block */
+.menu-list {
+    padding-left: 0;
 }
-
-.mobile-pop-up-menu li a {
-    text-decoration: none;
-    color: #333;
-    /* Link color */
-}
-
-.mobile-pop-up-menu li a:hover {
-    background-color: #f2f2f2;
-    /* Hover background color */
-}
-
 
 /* note- change this to add borders in between elements. Have to figure out IF we want borders
     and how to make them not extend all the way in the box */
 ul li:not(:last-child) {
     border-right: 1px solid white;
-}
+  }
 
-.menu-list {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    /* Remove default padding */
-    overflow: hidden;
-    background-color: white;
-    display: flex;
-    /* Display items horizontally */
-    border-top: 1px solid black;
-    /* Add top border */
-    border-bottom: 1px solid black;
-    /* Add bottom border */
-}
-
-.menu-list li {
-    flex: 1;
-    /* Make all list items take equal space */
+li {
+    flex: 1; /* Make all list items take equal space */
     display: block;
     color: black;
     text-align: center;
 }
 
-.menu-list li a {
+li a {
     display: block;
     color: black;
     text-align: center;
-    padding: 14px 0;
-    /* Adjust padding to center links vertically */
+    padding: 14px 0; /* Adjust padding to center links vertically */
     text-decoration: none;
-    text-transform: capitalize;
-    /* Convert text to uppercase */
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    text-transform:capitalize; /* Convert text to uppercase */
+    font-family:Georgia, 'Times New Roman', Times, serif
 }
 
-/* Change the link color to gray when active */
-.menu-list li.menu-active a {
-    background-color: gainsboro;
+/* Change the link color to #111 (black) on hover */
+li a:hover {
+    background-color: #1111110e;
 }
 
-/* Change the link color to gray on hover */
-.menu-list li a:hover {
-    background-color: gainsboro;
-    /* Hover background color */
+/* Change the link color to #111 (black) on hover */
+.menu-active {
+    background-color: #1111110e;
 }
