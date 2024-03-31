@@ -7,7 +7,7 @@ function Login() {
     const [thisPassword, setThisPassword] = useState('');
     
     return (
-        <div>
+        <div className="container">
             <hr />
             <div className="form-group">
             <h3>Login</h3>

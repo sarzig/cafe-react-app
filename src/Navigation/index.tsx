@@ -36,7 +36,7 @@ export default function Navigation() {
     return (
         <div className="row fixed-top-row">
             <div className="col text-center cafe-name">
-                Sakivi Bakery & Cafe
+            <Link to={`/Home`} className="cafe-name-text">Sakivi Bakery & Cafe</Link>
             </div>
             <div className="row">
                 <div className="col d-none d-sm-block">
