@@ -13,7 +13,7 @@ export default function Home() {
                 <div className="col-md-5 p-lg-5 mx-auto my-5">
                     <h1 className="display-4 font-weight-normal">Cafe Sakivi</h1>
                     <p className="lead font-weight-normal">The community cafe that serves drinks and vibes.</p>
-                    <a className="btn btn-outline-secondary" href="#">Menu</a>
+                    <a className="btn btn-outline-secondary" href="/Menu">Menu</a>
                 </div>
                 <div className="product-device box-shadow d-none d-md-block"></div>
                 <div className="product-device product-device-2 box-shadow d-none d-md-block"></div>
