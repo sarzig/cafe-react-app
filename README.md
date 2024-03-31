@@ -2,18 +2,22 @@
 Team: Kiersten Grieco, Victoria Klimkowski, Sarah Witzig, someone else
 
 # Netlify location
-https://temp-final-project-neu.netlify.app/
+https://main--sakivi.netlify.app/
+https://sarah--sakivi.netlify.app/
+https://kiersten--sakivi.netlify.app/
+https://victoria--sakivi.netlify.app/
 
 # Other Shared Resources (TBD)
 * [OneDrive Shared Folder](https://1drv.ms/f/s!An0_86bbJ6SNkpFrybqt8PVql-GLAQ?e=poDV7L)
 * [Site Inspire](https://www.siteinspire.com/)
 
-# Shopify
-* login email: sarahwitzigg@gmail.com
-* password: webdevelopment24
+# Shopify / Netlify
+* See shared doc for credentials
 
 # Upcoming Meetings
-* Sunday 3-24: hack @ Sarah's house (28 Bayard St. Allston MA 02134) time tbd, earliest that works for me is 9AM ~SW
+* **April 6** - Post learning Mongo-DB hack
+* **April 19** - pre-submission meet-up
+* **PRESENTATION DATE TBD** - As early in the week of 4/22 as possible (look at Kiersten and Sarah's work hours)
 
 # Team time constraints
 * **Victoria:** April 13-14 - totally offline. Thursdays has class continuously from morning to evening.
@@ -21,17 +25,22 @@ https://temp-final-project-neu.netlify.app/
 * **Kiersten:** works at admissions office T/W 9-5PM and Friday 1-5PM
 * **Best days:** Monday, Weekends. Sarah/Kiersten could catch up between Algo and WebDev on Thursdays
 
-# To-do List: 
-* **Sarah/Victoria** - look into shopify
-* **Sarah** - make uml (or at least entities for people, food item, transaction, 
-* **Victoria** - get any info from cafe owner that could guide us (fine for later too)
-* **SOMEONE** - add section to README with naming convention (mostly case but also should cover if we're using kebab or camel. I believe there is 0 reason for underscores in these projects but am happy to be proven wrong!) ~S
-* 
+# To-do List:
+By approximately 3/31:
+* **Victoria** - details page - UI ONLY
+* **Victoria** - assess shopify competitor viability
+* **Sarah** - assess shopify or competitor viability
+* **Sarah** - menu page (bare bones b/c depending on )
+* **Kiersten** - build profile page UI (there's accounts.json with one of each type) 
+* **Sarah** - build admin dashboard - default "on"
+* **Sarah** - make uml (or at least entities for people, food item, transaction)
+* **Victoria** - get any info from cafe owner that could guide us (fine for later too) 
 
 # Finished to-dos
 * **All** - Assess cafe site. Review project requirements and brainstorm how to fulfill them. Build out [document](https://1drv.ms/w/s!An0_86bbJ6SNkpFsRpH2Hj46uGvMuw?e=dc3gcv) with "it should have x, y, z". Can include wishlist or "nice to haves". Then meet to discuss.
 * **All** - meet and go over project ideas 3-18
 * Pick project - CAFE SITE!!
+* Sunday 3-24: hack @ Sarah's house (28 Bayard St. Allston MA 02134) time tbd, earliest that works for me is 9AM ~SW
 
 # Instructions
 * [Social Network Project Requirements](https://docs.google.com/document/d/1De-UdZ8LpJt6tftlCsYcZz-BCyh8Nljz7KYO5DY00_8/edit#heading=h.f5hzqoikee0r)

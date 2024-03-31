@@ -8,7 +8,7 @@ const initialState = {
         firstName: "First Name", 
         lastName: "Last Name",
         password: "Password",
-        userRole: "customer",
+        userRole: "guest",
         history: []
     }
 };
@@ -18,16 +18,16 @@ const accountSlice = createSlice({
     initialState,
     reducers: {
         addAccount: (state, action) => { //may need addtl refactoring with id ... check for errors when functionality is more present
-            state.accounts = [
+          state.accounts = [
               { ...action.payload },
                 ...state.accounts,
             ];
-          },
-          deleteAssignment: (state, action) => {
-            state.accounts = state.accounts.filter(
+        },
+        deleteAccount: (state, action) => {
+          state.accounts = state.accounts.filter(
               (account) => account._id !== action.payload
-            );
-          },
+          );
+        },
         updateAccount: (state, action) => {
             state.accounts = state.accounts.map((account) => {
                 if (account._id === action.payload._id) {
@@ -39,6 +39,9 @@ const accountSlice = createSlice({
         },
         setAccount: (state, action) => {
             state.account = action.payload;
-        }
+        },
     }
 });
+
+export const { addAccount, deleteAccount, updateAccount, setAccount } = accountSlice.actions;
+export default accountSlice.reducer;
