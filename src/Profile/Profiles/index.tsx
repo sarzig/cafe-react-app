@@ -25,7 +25,8 @@ function Profiles() {
     // todo - replace currentUserId and userRole with state management
     const currentUserId = "a32988bc-873c-4f5a-94a7-91db454c624b";
     type UserRole = "admin" | "user" | "guest";
-    const userRole: UserRole = "admin";
+    const userRole: UserRole = "guest";
+    // end todo
 
     function handleDeleteProfile(): void {
         throw new Error("Function not implemented.");
@@ -160,7 +161,6 @@ function Profiles() {
                                                 </div>
                                             </div>
                                         </div>
-
                                     </div>
                                 </div>
                             </div>
