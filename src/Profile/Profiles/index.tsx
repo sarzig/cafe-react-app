@@ -13,6 +13,10 @@ A guest cannot see real names or pictures.
 A user can see this page, and can navigate to profiles. A user cannot see her own profile.
 
 An admin/owner can see this page, and can also see edit/delete buttons.
+
+To-do / Wishlist:
+If userRole is guest, don't do the hover shadow or any linking. 
+I feel that linkGenerator is weak/bad implementation and it's better to not link at ALL if user is guest.
 */
 
 function Profiles() {
@@ -20,7 +24,8 @@ function Profiles() {
 
     // todo - replace currentUserId and userRole with state management
     const currentUserId = "a32988bc-873c-4f5a-94a7-91db454c624b";
-    const userRole = "guest";
+    type UserRole = "admin" | "user" | "guest";
+    const userRole: UserRole = "admin";
 
     function handleDeleteProfile(): void {
         throw new Error("Function not implemented.");
@@ -28,13 +33,18 @@ function Profiles() {
 
     function nameGenerator(profile: any) {
 
+        if (userRole !== "guest") {
+            // If user isn't guest, then just show real names
+            return profile.full_name;
+        }
 
-        // Check if profile.favorite_drink exists and is not empty
-        if (profile.favorite_drinks && profile.favorite_drinks.length > 0) {
-            // Return the first element of the favorite_drink array
+        else if (profile.favorite_drinks && profile.favorite_drinks.length > 0) {
+            // If user is guest, then show anonymous name based on favorite drink
             return "Anonymous " + profile.favorite_drinks[0] + " Drinker";
 
+
         } else {
+            // If there are no favorite drinks, generate a silly noun
             const sillyNouns = ["Cafe Goer", "Awesome Friend", "Serious Goofball", "Hipster Wannabe", "Introvert", "Extrovert", "Public Universal Friend"]
             // Generate a random index to select a silly noun
             const randomIndex = Math.floor(Math.random() * sillyNouns.length);
@@ -61,9 +71,13 @@ function Profiles() {
         }
     }
 
+    function linkGenerator(profile: any) {
+
+    }
+
     return (
         <div>
-            <h1>Profiles</h1>
+            <h1>Boston Profiles</h1>
             <hr />
 
             <div className="row">
@@ -129,22 +143,26 @@ function Profiles() {
                                 <div className="card-buttons">
 
                                     <div className="card-button-group">
-                                        <div className="btn edit-button classy-button">
-                                            Edit
-                                        </div>
+                                        <div className="row">
+                                            <div className="col-6">
+                                                <div className="btn edit-button classy-button">
+                                                    Edit
+                                                </div>
+                                            </div>
 
-                                        <div
-                                            className="btn delete-button classy-button"
-                                            onClick={handleDeleteProfile}>
+                                            <div className="col-6">
 
-                                            Delete
+                                                <div
+                                                    className="btn delete-button classy-button"
+                                                    onClick={handleDeleteProfile}>
+
+                                                    Delete
+                                                </div>
+                                            </div>
                                         </div>
 
                                     </div>
                                 </div>
-
-
-
                             </div>
                         </div>
                     ))}
