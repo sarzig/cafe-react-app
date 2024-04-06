@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { accounts } from "../Database";
+import { users } from "../../Database";
 import {
     addAccount,
     deleteAccount,
     updateAccount,
     setAccount,
 } from "./reducer";
-import { WebsiteState } from "../store";
+import { WebsiteState } from "../../store";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
@@ -15,16 +15,16 @@ import { useNavigate } from "react-router-dom";
 function Login() {
     const [thisUser, setThisUser] = useState('');
     const [thisPassword, setThisPassword] = useState('');
-    const accountList = useSelector((state: WebsiteState) => 
-        state.accountsReducer.accounts);
-    const account = useSelector((state: WebsiteState) => 
-        state.accountsReducer.account);
+    const userList = useSelector((state: WebsiteState) => 
+        state.usersReducer.users);
+    const user = useSelector((state: WebsiteState) => 
+        state.usersReducer.user);
     const dispatch = useDispatch();
     const navigate = useNavigate();
     function login() { 
-        for (var account of accounts) {
-         if (thisUser == account._id) {
-           if (thisPassword == account.password) {
+        for (var user of users) {
+         if (thisUser == user._id) {
+           if (thisPassword == user.password) {
              //set account of current session to be the user
              navigate(`/Home`);
              return;
@@ -52,11 +52,11 @@ function Login() {
             
             <div className="form-group mb-1">
                 <h6>Email address</h6>
-                <input type="text" className="form-control" placeholder={account._id} onChange={(e) => setThisUser(e.target.value)} />
+                <input type="text" className="form-control" placeholder={user._id} onChange={(e) => setThisUser(e.target.value)} />
             </div>
             <div className="mb-5">
                 <h6>Password</h6>
-                <input type="text" className="form-control mb-2" placeholder={account.password} onChange={(e) => setThisPassword(e.target.value)}/>
+                <input type="text" className="form-control mb-2" placeholder={user.password} onChange={(e) => setThisPassword(e.target.value)}/>
                 <div className="float-end">
                 <button className="btn" onClick={() => goHome()}>Cancel</button>
                 <button className="btn btn-primary" onClick={() => login()}>Login</button>

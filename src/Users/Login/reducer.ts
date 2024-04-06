@@ -1,9 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { accounts } from "../Database";
+import { users } from "../../Database";
 
 const initialState = {
-    accounts: accounts,
-    account: { 
+    users: users,
+    user: { 
         _id: "email@domain.com", 
         firstName: "First Name", 
         lastName: "Last Name",
@@ -18,27 +18,27 @@ const accountSlice = createSlice({
     initialState,
     reducers: {
         addAccount: (state, action) => { //may need addtl refactoring with id ... check for errors when functionality is more present
-          state.accounts = [
+          state.users = [
               { ...action.payload },
-                ...state.accounts,
+                ...state.users,
             ];
         },
         deleteAccount: (state, action) => {
-          state.accounts = state.accounts.filter(
-              (account) => account._id !== action.payload
+          state.users = state.users.filter(
+              (user) => user._id !== action.payload
           );
         },
         updateAccount: (state, action) => {
-            state.accounts = state.accounts.map((account) => {
-                if (account._id === action.payload._id) {
+            state.users = state.users.map((user) => {
+                if (user._id === action.payload._id) {
                   return action.payload;
                 } else {
-                  return account;
+                  return user;
                 }
               });
         },
         setAccount: (state, action) => {
-            state.account = action.payload;
+            state.user = action.payload;
         },
     }
 });

@@ -1,17 +1,25 @@
 // Navigation.js
 import { Link, useLocation } from "react-router-dom";
-import store from "../store";
-import { Provider } from "react-redux";
-import { useState } from "react";
+import store, { WebsiteState } from "../store";
+import { Provider, useSelector } from "react-redux";
+import { useState, useEffect } from "react";
 import { FaBars } from 'react-icons/fa';
 import "./index.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import MobilePopupMenu from "./MobilePopupMenu";
+import axios from "axios";
+import children from "../Users/CurrentUser";
+import * as db from "../Database"
 
 export default function Navigation() {
+    const userId = "admin@coffeehouse.org";
+    const [users, setUsers] = useState(db.users);
+    const user = users.find(user => user._id === userId)
 
     // todo - get userType from Kiersten's work
     const userType = "admin";
+  
+    
 
     const links = [
         { label: "Menu", userTypes: ["admin", "customer", "owner", "guest"] },
