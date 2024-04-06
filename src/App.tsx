@@ -21,8 +21,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Navigate to="/Home" />} />
           <Route path="/Home" element={<Home />} />
-          <Route path="/Profile" element={<Profile/>} />
-          <Route path="/Profile/Edit" element={<EditProfile/>} />
+          <Route path="/My-Profile" element={<Profile/>} />
+          <Route path="/My-Profile/Edit" element={<EditProfile/>} />
           <Route path="/Login/*" element={<Login/>} />
           <Route path="/Login/Register" element={<Register/>} />
           <Route path="/Menu/*" element={<Menu/>} />

@@ -18,7 +18,7 @@ export default function Profile() {
                      {user.firstName} {user.lastName}
                 </span>
                 <span>
-                <a className="btn btn-light" href="#/Profile/Edit">Edit Profile</a>
+                <a className="btn btn-light" href="#/My-Profile/Edit">Edit Profile</a>
                 </span>
                 <hr />
             </div>

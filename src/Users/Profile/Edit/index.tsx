@@ -54,7 +54,7 @@ export default function EditProfile() {
                 </div> 
                 <span className="">
                     <button className="btn btn-primary float-end" onClick={handleSave}>Save</button> &nbsp;
-                    <a href="#/Profile" className="btn btn-light float-end">Cancel</a>
+                    <a href="#/My-Profile" className="btn btn-light float-end">Cancel</a>
                 </span>
                 <br /><br />
             </div>
