@@ -1,35 +1,66 @@
-import { JSXElementConstructor, Key, ReactElement, ReactNode, useEffect, useState } from 'react';
+import { JSXElementConstructor, Key, ReactElement, ReactNode, SetStateAction, useEffect, useState } from 'react';
 import axios from 'axios';
 import "./index.css"
+import e from 'express';
 
 // REF for initial code format/idea: https://www.youtube.com/watch?v=y68g_vYskGs but modified to fit our project
 
 export default function Search() {
 
     // const [recipe, setRecipe] = useState<Recipe | undefined>();
+    // const [recipes, setRecipes] = useState<Recipe[] | undefined>([]);
+    const [searchTerm, setSearchTerm] = useState<string>("");
     const [recipes, setRecipes] = useState<Recipe[] | undefined>([]);
+
+        // const handleChange = (e: Recipe[]) => {
+        //     setRecipes(e);
+        // }
 
         // Link to Spoonacular Search API Documentation: https://spoonacular.com/food-api/docs#Get-Random-Recipes
         async function getRecipes() {
             try {
-            // Victoria's temp free key
-            const apiKey = 'dcc4423567f24887b8e3d245061312f5';
-            // const apiKey = '';
-            const numberOfRecipes = 6;
+                // Victoria's temp free key
+                const apiKey = 'dcc4423567f24887b8e3d245061312f5';
+                // const apiKey = '';
+                const numberOfRecipes = 6;
 
-            //making spoonacular api call to get a random recipe
-            // TODO: can we make this a random coffee recipe specifically?
-            let resp = await axios.get(`https://api.spoonacular.com/recipes/random?apiKey=${apiKey}&number=${numberOfRecipes}`);
-            console.log(21, resp.data);
+                if (!searchTerm.trim()) return; // Check if search term is empty then do nothing if so
 
-            //store the random recipe into the recipe variable
-            setRecipes(resp.data.recipes);
-            } catch (e) {
-            console.log(e);
-            }
+                //making spoonacular api call to get a random recipe
+                // TODO: can we make this a random coffee recipe specifically?
+                // let resp = await axios.get(`https://api.spoonacular.com/recipes/search?apiKey=${apiKey}&number=${numberOfRecipes}&query=${searchTerm}`);
+                // console.log(resp.data);
+
+                // //store the random recipe into the recipe variable
+                // // setRecipes([]);
+                // console.log(resp.data.results)
+                // handleChange(resp.data.results); // TODO:This is where the problem is
+                // // setRecipes(resp.data.results); // TODO:This is where the problem is
+                // console.log(recipes); 
+
+
+                // axios.get(`https://api.spoonacular.com/recipes/search?apiKey=${apiKey}&number=${numberOfRecipes}&query=${searchTerm}`)
+                // .then(resp=> {
+                //     console.log(resp.data);
+                //     console.log(resp.data.results)
+                //     // handleChange(resp.data.results); // TODO:This is where the problem is
+                //     setRecipes(resp.data.results); // TODO:This is where the problem is
+                //     console.log(recipes); 
+                // })
+
+                let resp = await axios.get(`https://api.spoonacular.com/recipes/search?apiKey=${apiKey}&number=${numberOfRecipes}&query=${searchTerm}`);
+                console.log("resp.data:", resp.data);
+                console.log("resp.data.results:", resp.data.results);
+    
+                //store the random recipe into the recipe variable
+                setRecipes(resp.data.results);
+                } catch (e) {
+                    console.log(e);
+                }
+                console.log("recipes:", recipes);
 
         }
-
+        
         useEffect(() => {
             getRecipes();
         }, []);
@@ -54,22 +85,30 @@ export default function Search() {
 
         {/* Search bar and stuff  */}
         <div className="d-flex flex-row">
-            <h3>Search Recipies</h3>
+            <h3>Search Recipes</h3>
         </div>
         <div className="d-flex flex-row" id="search-bar">
             <form className="form-outline my-2 my-lg-6">
-                <input className="form-control my-2 my-sm-0 custom-search-input" type="search" placeholder="Latte Art" aria-label="Search"/>
+                <input 
+                    className="form-control my-2 my-sm-0 custom-search-input" 
+                    type="search" 
+                    placeholder="Latte Art" 
+                    aria-label="Search"
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                />
                 {/* <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> */}
             </form>
             <button className="btn btn-light" onClick={getRecipes}> Search </button>
         </div>
         {/* TODO: Make same width as search bar(?) */}
         <div className="d-flex flex-row" id="search-bar">
-            <button className="btn btn-light p" onClick={getRecipes}> Generate New Random Recipe </button>
+            {/* <button className="btn btn-light p" onClick={getRecipes}> Generate New Random Recipe </button> */}
         </div>
 
         {/* Cards  */}
-        {recipes?.map((recipe, index) => (
+        {/* First confirm recipies exists, then map  */}
+        {recipes?.map((recipe, index) => ( 
             <div className="card mb-3">
                 <img src={recipe?.image} className="card-img-top" alt="current recipe image"/>
                 <div className="card-body">
