@@ -1,8 +1,92 @@
 [
     {
+        "id": "4d5e6f7g-4567-89ab-cdef-1234567890ab",
+        "full_name": "Victoria K.",
+        "image": "victoria.jpg",
+        "email": "victoria.k@example.com",
+        "birthdate": "1992-03-25",
+        "hometown": "Chicago, Illinois",
+        "bio": "Musician and nature lover.",
+        "interests": [
+            "Music",
+            "Hiking"
+        ],
+        "favorite_cafe_days": [
+            "Thursday",
+            "Sunday"
+        ],
+        "favorite_drinks": [
+            "Iced Tea",
+            "Smoothies"
+        ]
+    },
+    {
+        "id": "3c4d5e6f-3456-789a-bcde-f1234567890a",
+        "full_name": "Kiersten G.",
+        "image": "kiersten.jpg",
+        "email": "kiersten.g@example.com",
+        "birthdate": "1988-07-01",
+        "hometown": "Los Angeles, California",
+        "bio": "Fitness enthusiast and health coach.",
+        "interests": [
+            "Fitness",
+            "Nutrition"
+        ],
+        "favorite_cafe_days": [
+            "Tuesday",
+            "Friday"
+        ],
+        "favorite_drinks": [
+            "Green Tea",
+            "Protein Shake"
+        ]
+    },
+    {
+        "id": "2b3c4d5e-2345-6789-abcd-ef1234567890",
+        "full_name": "Sarah Witzig",
+        "image": "sarah.jpg",
+        "email": "sarah.witzig@example.com",
+        "birthdate": "1995-12-20",
+        "hometown": "New York City, New York",
+        "bio": "Creative designer and coffee enthusiast.",
+        "interests": [
+            "Design",
+            "Photography"
+        ],
+        "favorite_cafe_days": [
+            "Wednesday",
+            "Saturday"
+        ],
+        "favorite_drinks": [
+            "Espresso",
+            "Cappuccino"
+        ]
+    },
+    {
+        "id": "1a2b3c4d-1234-5678-90ab-cdef12345678",
+        "full_name": "Jose Annunziato",
+        "image": "jose.jpg",
+        "email": "jose.annunziato@example.com",
+        "birthdate": "1990-05-15",
+        "hometown": "Miami, Florida",
+        "bio": "Passionate programmer and tech enthusiast.",
+        "interests": [
+            "Programming",
+            "Gaming"
+        ],
+        "favorite_cafe_days": [
+            "Monday",
+            "Thursday"
+        ],
+        "favorite_drinks": [
+            "Coffee",
+            "Matcha Latte"
+        ]
+    },
+    {
         "id": "a32988bc-873c-4f5a-94a7-91db454c624b",
         "full_name": "Ron Weasley",
-        "image": "example.jpg",
+        "image": "ron.jpg",
         "email": "ron.weasley@example.com",
         "birthdate": "1980-03-01",
         "hometown": "The Burrow, England",
@@ -19,7 +103,7 @@
     {
         "id": "c80ff8d4-e4e8-4d9a-9d6d-14282e27c768",
         "full_name": "Ginny Weasley",
-        "image": "example.jpg",
+        "image": "ginny.jpg",
         "email": "ginny.weasley@example.com",
         "birthdate": "1981-08-11",
         "hometown": "Ottery St. Catchpole, England",
@@ -31,12 +115,16 @@
         "favorite_cafe_days": [
             "Tuesday",
             "Friday"
+        ],
+        "favorite_drinks": [
+            "Butterbeer",
+            "Pumpkin Juice"
         ]
     },
     {
         "id": "14cbf2e4-f75b-4b94-81fc-7bb5d97ee3c6",
         "full_name": "Darth Vader",
-        "image": "example.jpg",
+        "image": "darth.jpg",
         "email": "darth.vader@example.com",
         "birthdate": "41.9 BBY",
         "hometown": "Tatooine",
@@ -48,15 +136,18 @@
         "favorite_cafe_days": [
             "Monday",
             "Wednesday"
+        ],
+        "favorite_drinks": [
+            "Butterbeer",
+            "Pumpkin Juice"
         ]
     },
     {
         "id": "bda83382-4c0f-4f12-ba83-c06d073ff086",
         "full_name": "Obi-Wan Kenobi",
-        "image": "example.jpg",
+        "image": "obiwan.jpg",
         "email": "obiwan.kenobi@example.com",
         "birthdate": "57 BBY",
-        "hometown": "Stewjon",
         "bio": "Jedi Master. Mentor to Anakin Skywalker and Luke Skywalker. Defender of peace and justice.",
         "interests": [
             "Lightsaber combat",
@@ -65,12 +156,16 @@
         "favorite_cafe_days": [
             "Thursday",
             "Sunday"
+        ],
+        "favorite_drinks": [
+            "Butterbeer",
+            "Pumpkin Juice"
         ]
     },
     {
         "id": "acbb4f33-5e5d-48ad-839d-bf8c85be0c6f",
         "full_name": "Hagrid",
-        "image": "example.jpg",
+        "image": "hagrid.jpg",
         "email": "rubeus.hagrid@example.com",
         "birthdate": "6 December",
         "hometown": "The Forbidden Forest, England",
@@ -82,12 +177,16 @@
         "favorite_cafe_days": [
             "Monday",
             "Wednesday"
+        ],
+        "favorite_drinks": [
+            "Butterbeer",
+            "Pumpkin Juice"
         ]
     },
     {
         "id": "e01171bb-9304-4530-a20b-4f1c4010d65d",
         "full_name": "Chewbacca",
-        "image": "example.jpg",
+        "image": "chewbacca.jpg",
         "email": "chewbacca@example.com",
         "birthdate": "200 BBY",
         "hometown": "Kashyyyk",
@@ -99,12 +198,16 @@
         "favorite_cafe_days": [
             "Tuesday",
             "Friday"
+        ],
+        "favorite_drinks": [
+            "Butterbeer",
+            "Pumpkin Juice"
         ]
     },
     {
         "id": "bde786c5-d539-4b20-8602-6d28a36c9999",
-        "full_name": "Padmé Amidala",
-        "image": "example.jpg",
+        "full_name": "Padmé Naberrie of Naboo, Her Royal Highness, Queen Amidala, Her Excellency, Senator Padmé Amidala, Padme Amidala Skywalker",
+        "image": "padme.jpg",
         "email": "padme.amidala@example.com",
         "birthdate": "46 BBY",
         "hometown": "Naboo",
@@ -116,12 +219,16 @@
         "favorite_cafe_days": [
             "Saturday",
             "Sunday"
+        ],
+        "favorite_drinks": [
+            "Butterbeer",
+            "Pumpkin Juice"
         ]
     },
     {
         "id": "8bf4dc1b-522e-4be6-9c2e-d953a5e179c7",
         "full_name": "Yoda",
-        "image": "example.jpg",
+        "image": "yoda.jpg",
         "email": "yoda@example.com",
         "birthdate": "896 BBY",
         "hometown": "Unknown",
@@ -133,12 +240,17 @@
         "favorite_cafe_days": [
             "Monday",
             "Wednesday"
+        ],
+        "favorite_drinks": [
+            "Pistachio Latte",
+            "Matcha",
+            "Green Tea",
+            "St. Patrick's Day Guinness"
         ]
     },
     {
         "id": "1f6f93b9-b8d1-4415-8010-3f27e73e0b2e",
         "full_name": "Rubeus Hagrid",
-        "image": "example.jpg",
         "email": "rubeus.hagrid@example.com",
         "birthdate": "6 December",
         "hometown": "The Forbidden Forest, England",
@@ -150,12 +262,15 @@
         "favorite_cafe_days": [
             "Thursday",
             "Sunday"
+        ],
+        "favorite_drinks": [
+            "Butterbeer",
+            "Pumpkin Juice"
         ]
     },
     {
         "id": "3bd7b457-59b4-4a30-a5b8-4091c68f44de",
         "full_name": "Han Solo",
-        "image": "example.jpg",
         "email": "han.solo@example.com",
         "birthdate": "29 BBY",
         "hometown": "Corellia",
@@ -167,12 +282,15 @@
         "favorite_cafe_days": [
             "Tuesday",
             "Friday"
+        ],
+        "favorite_drinks": [
+            "Butterbeer",
+            "Pumpkin Juice"
         ]
     },
     {
         "id": "249b67b6-c42d-4812-8b6b-439ac4494a7f",
         "full_name": "Harry Potter",
-        "image": "example.jpg",
         "email": "harry.potter@example.com",
         "birthdate": "1980-07-31",
         "hometown": "Godric's Hollow, England",
@@ -184,12 +302,15 @@
         "favorite_cafe_days": [
             "Saturday",
             "Sunday"
+        ],
+        "favorite_drinks": [
+            "Butterbeer",
+            "Pumpkin Juice"
         ]
     },
     {
         "id": "7a325fc4-12d3-45b8-9f8b-c21a6f8b7b48",
         "full_name": "Hermione Granger",
-        "image": "example.jpg",
         "email": "hermione.granger@example.com",
         "birthdate": "1979-09-19",
         "hometown": "London, England",
@@ -202,12 +323,15 @@
             "Monday",
             "Wednesday",
             "Friday"
+        ],
+        "favorite_drinks": [
+            "Butterbeer",
+            "Pumpkin Juice"
         ]
     },
     {
         "id": "9d9fc5a9-e7e4-4df8-99a1-d8d148f5b69d",
         "full_name": "Luke Skywalker",
-        "image": "example.jpg",
         "email": "luke.skywalker@example.com",
         "birthdate": "19 BBY",
         "hometown": "Tatooine",
@@ -219,12 +343,15 @@
         "favorite_cafe_days": [
             "Tuesday",
             "Thursday"
+        ],
+        "favorite_drinks": [
+            "Butterbeer",
+            "Pumpkin Juice"
         ]
     },
     {
         "id": "3f3bc6a8-50c5-45c3-8e5e-1a7c5fb6127e",
         "full_name": "Leia Organa",
-        "image": "example.jpg",
         "email": "leia.organa@example.com",
         "birthdate": "19 BBY",
         "hometown": "Alderaan",

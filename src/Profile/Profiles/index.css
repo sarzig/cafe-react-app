@@ -1,0 +1,74 @@
+.card {
+    position: relative; /* Ensure child elements are positioned relative to the .card */
+    border-radius: 0;
+    border: 1px solid #00000034;
+    margin: 15px;
+    height: 500px;
+    overflow: hidden; /* Hide any overflowing content */
+}
+
+.card:hover {
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.403);
+    border: 1px solid black;
+
+}
+
+.card-title {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.category {
+    font-weight: bold;
+}
+
+.card img {
+    display: block;
+    max-width: 100%; /* Ensure the image does not exceed the card width */
+    height: 280px; /* Ensure the image does not exceed the card height */
+    object-fit: cover; /* Crop the image to cover the specified height and width */
+}
+
+.card-body {
+    padding: 10px;
+    padding-top: 0px;
+    margin-top: 0;
+    overflow: hidden;
+    text-overflow: ellipsis; /* Show ellipsis (...) if text overflows horizontally */
+    max-height: calc(1.2em * 8); /* Maximum height for six lines of text */
+    line-height: 1.2em; /* Line height for the text */
+}
+
+.card-buttons {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 5px;
+    background-color: #f9f9f9;
+    overflow: hidden;
+}
+
+.classy-button {
+    border: 1px solid #000;
+    width: 120px;
+    border-radius: 0;
+}
+
+.classy-button:hover {
+    background-color: #1111110e;
+    border: 1px solid #000;
+}
+
+.edit-button {
+    float: left;    
+}
+
+.delete-button {
+    float: right;
+    background-color: rgb(240, 156, 156);
+}
+
+.delete-button:hover {
+    background-color: rgb(240, 156, 156);
+}

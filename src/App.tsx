@@ -7,6 +7,7 @@ import { Provider } from "react-redux";
 import store from "./store";
 import Navigation from './Navigation';
 import Profile from './Profile';
+import Profiles from './Profile/Profiles';
 import Menu from './Menu';
 import Admin from './Admin';
 
@@ -23,6 +24,7 @@ function App() {
           <Route path="/Login/*" element={<Login/>} />
           <Route path="/Menu/*" element={<Menu/>} />
           <Route path="/Admin-Tools/*" element={<Admin/>} />
+          <Route path="/Profiles" element={<Profiles/>} />"
         </Routes>
       </div>
     </HashRouter>
