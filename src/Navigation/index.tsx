@@ -16,7 +16,8 @@ export default function Navigation() {
         { label: "Menu", userTypes: ["admin", "customer", "owner", "guest"] },
         { label: "Admin-Tools", userTypes: ["admin"] },
         { label: "My-Profile", userTypes: ["admin", "customer", "owner"] },
-        { label: "Login ~ Signup", userTypes: ["guest"] },
+        { label: "All-Profiles", userTypes: ["admin", "customer", "owner", "guest"] },
+        { label: "Login-~-Signup", userTypes: ["guest"] },
     ];
 
     const linksXS = [
@@ -35,48 +36,48 @@ export default function Navigation() {
     const { pathname } = useLocation();
 
     return (
-      <Provider store={store}>
-        <div className="row fixed-top-row">
-            <div className="col text-center cafe-name">
-            <Link to={`/Home`} className="cafe-name-text">Sakivi Bakery & Cafe</Link>
-            </div>
-            <div className="row">
-                <div className="col d-none d-sm-block">
-                    <ul className="menu-list">
-                        {links.map((link, index) => (
-                            link.userTypes.includes(userType) && (
-                                <li key={index} className={pathname.includes(link.label) ? "menu-active" : ""}>
-                                    <Link to={`/${link.label}`}>{link.label.replace(/-/g, ' ')}</Link>
-                                </li>
-                            )
-                        ))}
-                    </ul>
+        <Provider store={store}>
+            <div className="row fixed-top-row">
+                <div className="col text-center cafe-name">
+                    <Link to={`/Home`} className="cafe-name-text">Sakivi Bakery & Cafe</Link>
                 </div>
-
-                <div className="col d-block d-sm-none">
-                    <ul className="menu-list">
-                        {linksXS
-                            .filter(link => link.userTypes.includes(userType))
-                            .map((link, index) => (
-                                <li key={index} className={pathname.includes(link.label) ? "wd-active" : ""}>
-                                    {link.label === "drop-down" ?
-                                        (
-                                            <Link to={`/${link.label}`} onClick={toggleDropdown}>
-                                                <FaBars />
-                                            </Link>
-                                        ) : (
-                                            <Link to={`/${link.label}`}>{link.label}</Link>
-                                        )
-                                    }
-                                </li>
+                <div className="row">
+                    <div className="col d-none d-sm-block">
+                        <ul className="menu-list">
+                            {links.map((link, index) => (
+                                link.userTypes.includes(userType) && (
+                                    <li key={index} className={pathname.includes(link.label) ? "menu-active" : ""}>
+                                        <Link to={`/${link.label}`}>{link.label.replace(/-/g, ' ')}</Link>
+                                    </li>
+                                )
                             ))}
-                    </ul>
-                    <div>
-                        {isDropdownOpen && <MobilePopupMenu />}
+                        </ul>
+                    </div>
+
+                    <div className="col d-block d-sm-none">
+                        <ul className="menu-list">
+                            {linksXS
+                                .filter(link => link.userTypes.includes(userType))
+                                .map((link, index) => (
+                                    <li key={index} className={pathname.includes(link.label) ? "wd-active" : ""}>
+                                        {link.label === "drop-down" ?
+                                            (
+                                                <Link to={`/${link.label}`} onClick={toggleDropdown}>
+                                                    <FaBars />
+                                                </Link>
+                                            ) : (
+                                                <Link to={`/${link.label}`}>{link.label}</Link>
+                                            )
+                                        }
+                                    </li>
+                                ))}
+                        </ul>
+                        <div>
+                            {isDropdownOpen && <MobilePopupMenu />}
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-       </Provider>
+        </Provider>
     );
 };

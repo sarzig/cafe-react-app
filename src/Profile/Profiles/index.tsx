@@ -20,10 +20,45 @@ function Profiles() {
 
     // todo - replace currentUserId and userRole with state management
     const currentUserId = "a32988bc-873c-4f5a-94a7-91db454c624b";
-    const userrole = "admin";
+    const userRole = "guest";
 
     function handleDeleteProfile(): void {
         throw new Error("Function not implemented.");
+    }
+
+    function nameGenerator(profile: any) {
+
+
+        // Check if profile.favorite_drink exists and is not empty
+        if (profile.favorite_drinks && profile.favorite_drinks.length > 0) {
+            // Return the first element of the favorite_drink array
+            return "Anonymous " + profile.favorite_drinks[0] + " Drinker";
+
+        } else {
+            const sillyNouns = ["Cafe Goer", "Awesome Friend", "Serious Goofball", "Hipster Wannabe", "Introvert", "Extrovert", "Public Universal Friend"]
+            // Generate a random index to select a silly noun
+            const randomIndex = Math.floor(Math.random() * sillyNouns.length);
+            // Return "Anonymous" followed by the selected silly noun
+            return `Anonymous ${sillyNouns[randomIndex]}`;
+        }
+    }
+
+    function imageGenerator(profile: any) {
+
+        // Check if profile.favorite_drink exists and is not empty
+        if (profile.image && userRole !== "guest") {
+            // Return the first element of the favorite_drink array
+            return `/images/profiles_pages/${profile.image}`;
+
+        } else {
+
+            const minNumber = 1;
+            const maxNumber = 9;
+
+            const randomNumber = Math.floor(Math.random() * (maxNumber - minNumber + 1)) + minNumber;
+            const anonymousImages = [`anonymous${randomNumber}.jpg`];
+            return `/images/profiles_pages/${anonymousImages[0]}`;
+        }
     }
 
     return (
@@ -33,23 +68,21 @@ function Profiles() {
 
             <div className="row">
                 <div className="row row-cols-1 row-cols-md-5 g-200">
-                    {profiles.map((profile) => (
+                    {profiles.filter(profile => profile.id !== currentUserId).map((profile) => (
                         <div key={profile.id} className="col" style={{ width: 350 }}>
                             <div className="card flex-shrink-0">
 
-                                <Link className="card-title" to={`/profiles/${profile.id}`}>
+                                <Link className="card-image" to={`/profiles/${profile.id}`}>
                                     <img
-                                        src={`/images/profiles_pages/${profile.image || "anonymous.jpg"}`}
+                                        src={imageGenerator(profile)}
                                         alt="alt_text"
                                         className="card-img-top" />
                                 </Link>
 
-
-
                                 <div className="card-body">
 
                                     <Link className="card-title" to={`/profiles/${profile.id}`}>
-                                        {profile.full_name}
+                                        {nameGenerator(profile)}
                                     </Link>
 
                                     <div className="card-details">
@@ -73,7 +106,7 @@ function Profiles() {
 
                                         {profile.favorite_cafe_days && ( // Conditionally render if favorite_cafe_days
                                             <>
-                                                <span className="category">Favorite Days to Visit: </span>
+                                                <span className="category">Visits Sakivi on: </span>
                                                 <span className="detail">{profile.favorite_cafe_days.join(", ")}</span>
                                                 <br />
                                             </>
@@ -81,7 +114,7 @@ function Profiles() {
 
                                         {profile.interests && ( // Conditionally render if favorite_cafe_days
                                             <>
-                                                <span className="category">Favorite Days to Visit: </span>
+                                                <span className="category">Interests: </span>
                                                 <span className="detail">{profile.interests.join(", ")}</span>
                                                 <br />
                                             </>

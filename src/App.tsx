@@ -24,7 +24,7 @@ function App() {
           <Route path="/Login/*" element={<Login/>} />
           <Route path="/Menu/*" element={<Menu/>} />
           <Route path="/Admin-Tools/*" element={<Admin/>} />
-          <Route path="/Profiles" element={<Profiles/>} />"
+          <Route path="/All-Profiles" element={<Profiles/>} />"
         </Routes>
       </div>
     </HashRouter>

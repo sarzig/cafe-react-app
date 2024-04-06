@@ -16,7 +16,7 @@
             "Sunday"
         ],
         "favorite_drinks": [
-            "Iced Tea",
+            "Herbal Tea",
             "Smoothies"
         ]
     },
@@ -37,12 +37,11 @@
             "Friday"
         ],
         "favorite_drinks": [
-            "Green Tea",
-            "Protein Shake"
+            "Iced Coffee"
         ]
     },
     {
-        "id": "2b3c4d5e-2345-6789-abcd-ef1234567890",
+        "id": "a32988bc-873c-4f5a-94a7-91db454c624b",
         "full_name": "Sarah Witzig",
         "image": "sarah.jpg",
         "email": "sarah.witzig@example.com",
@@ -72,7 +71,9 @@
         "bio": "Passionate programmer and tech enthusiast.",
         "interests": [
             "Programming",
-            "Gaming"
+            "Gaming",
+            "Space Exploration",
+            "My Family"
         ],
         "favorite_cafe_days": [
             "Monday",
@@ -117,13 +118,13 @@
             "Friday"
         ],
         "favorite_drinks": [
-            "Butterbeer",
-            "Pumpkin Juice"
+            "Flat White",
+            "Chai Latte"
         ]
     },
     {
         "id": "14cbf2e4-f75b-4b94-81fc-7bb5d97ee3c6",
-        "full_name": "Darth Vader",
+        "full_name": "Anakin Skywalker",
         "image": "darth.jpg",
         "email": "darth.vader@example.com",
         "birthdate": "41.9 BBY",
@@ -138,8 +139,8 @@
             "Wednesday"
         ],
         "favorite_drinks": [
-            "Butterbeer",
-            "Pumpkin Juice"
+            "Hot Chocolate",
+            "Tea"
         ]
     },
     {
@@ -200,8 +201,10 @@
             "Friday"
         ],
         "favorite_drinks": [
-            "Butterbeer",
-            "Pumpkin Juice"
+            "Cabernet",
+            "Nitro Cold Brew",
+            "Mocha",
+            "Macchiato"
         ]
     },
     {
@@ -221,8 +224,7 @@
             "Sunday"
         ],
         "favorite_drinks": [
-            "Butterbeer",
-            "Pumpkin Juice"
+            "Cantina House Brew"
         ]
     },
     {
@@ -264,8 +266,7 @@
             "Sunday"
         ],
         "favorite_drinks": [
-            "Butterbeer",
-            "Pumpkin Juice"
+            "Latte"
         ]
     },
     {
@@ -284,14 +285,15 @@
             "Friday"
         ],
         "favorite_drinks": [
-            "Butterbeer",
-            "Pumpkin Juice"
+            "Espresso",
+            "Cappuccino"
         ]
     },
     {
         "id": "249b67b6-c42d-4812-8b6b-439ac4494a7f",
         "full_name": "Harry Potter",
         "email": "harry.potter@example.com",
+        "image": "harry.jpg",
         "birthdate": "1980-07-31",
         "hometown": "Godric's Hollow, England",
         "bio": "The Boy Who Lived. Gryffindor. Seeker. Defeater of Voldemort.",
@@ -304,8 +306,8 @@
             "Sunday"
         ],
         "favorite_drinks": [
-            "Butterbeer",
-            "Pumpkin Juice"
+            "Cortado",
+            "Iced Tea"
         ]
     },
     {
@@ -325,8 +327,8 @@
             "Friday"
         ],
         "favorite_drinks": [
-            "Butterbeer",
-            "Pumpkin Juice"
+            "Nitro Cold Brew",
+            "Smoothie"
         ]
     },
     {
@@ -345,7 +347,6 @@
             "Thursday"
         ],
         "favorite_drinks": [
-            "Butterbeer",
             "Pumpkin Juice"
         ]
     },
@@ -353,6 +354,7 @@
         "id": "3f3bc6a8-50c5-45c3-8e5e-1a7c5fb6127e",
         "full_name": "Leia Organa",
         "email": "leia.organa@example.com",
+        "image": "leia.jpg",
         "birthdate": "19 BBY",
         "hometown": "Alderaan",
         "bio": "Princess of Alderaan. Rebel Leader. Daughter of Anakin Skywalker.",
