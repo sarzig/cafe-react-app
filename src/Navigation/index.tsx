@@ -14,16 +14,17 @@ export default function Navigation() {
 
     const links = [
         { label: "Menu", userTypes: ["admin", "customer", "owner", "guest"] },
+        { label: "Search", userTypes: ["admin", "customer", "owner", "guest"] },
         { label: "Admin-Tools", userTypes: ["admin"] },
         { label: "My-Profile", userTypes: ["admin", "customer", "owner"] },
-        { label: "Login ~ Signup", userTypes: ["guest"] },
+        { label: "Login", userTypes: ["guest"] },
     ];
 
     const linksXS = [
         { label: "Menu", userTypes: ["admin", "customer", "owner", "guest"] },
         { label: "drop-down", userTypes: ["admin", "customer", "owner", "guest"] },
         { label: "My-Profile", userTypes: ["admin", "customer", "owner"] },
-        { label: "Login ~ Signup", userTypes: ["guest"] },
+        { label: "Login", userTypes: ["guest"] },
     ];
 
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);

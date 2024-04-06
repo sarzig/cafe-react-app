@@ -7,6 +7,7 @@ export default function Menu() {
                     <ul>
                         <li> <a href="/details">Coffee</a> </li>
                         <li> <a href="/details">Tea</a> </li>
+                        <li> <a href="/details">Pastries</a> </li>
                     </ul>
                 </div>  
             </div>
