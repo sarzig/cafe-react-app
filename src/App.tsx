@@ -8,21 +8,24 @@ import store from "./store";
 import Navigation from './Navigation';
 import Profile from './Profile';
 import EditProfile from './Profile/Edit';
+import Menu from './Menu';
+import Admin from './Admin';
 
 function App() {
   return (
     <Provider store={store}>
     <HashRouter>
       <div>
+      <Navigation />
         <Routes>
           <Route path="/" element={<Navigate to="/Home" />} />
-          <Route path="/Login" element={<Login />} />
-          <Route path="/Login/Register" element={<Register />} />
-          <Route path="/Profile" element={<Profile />} />
-          <Route path="/Profile/Edit" element={<EditProfile/>} />
+          <Route path="/Home" element={<Home />} />
+          <Route path="/My-Profile" element={<Profile/>} />
+          <Route path="/My-Profile/Edit" element={<EditProfile/>} />
+          <Route path="/Login/*" element={<Login/>} />
+          <Route path="/Menu/*" element={<Menu/>} />
+          <Route path="/Admin-Tools/*" element={<Admin/>} />
         </Routes>
-        <Navigation />
-        <Home />
       </div>
     </HashRouter>
     </Provider>
