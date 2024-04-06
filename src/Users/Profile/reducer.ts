@@ -1,8 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { accounts } from "../Database";
+import { users } from "../../Database";
 
 const initialState = {
-    accounts: accounts,
+    accounts: users,
     account: { 
         _id: "email@domain.com", 
         firstName: "First Name", 

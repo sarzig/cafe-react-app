@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { accounts } from "../Database";
-import { WebsiteState } from "../store";
+import { users } from "../../Database";
+import { WebsiteState } from "../../store";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { addAccount } from "./reducer";
@@ -14,13 +14,13 @@ function Register() {
     const [thisLastName, setThisLastName] = useState('');
     const navigate = useNavigate();
     const accountList = useSelector((state: WebsiteState) => 
-        state.accountsReducer.accounts);
+        state.usersReducer.users);
     const account = useSelector((state: WebsiteState) => 
-        state.accountsReducer.account);
+        state.usersReducer.user);
     const dispatch = useDispatch();
     function checkExistence() {
-        for (var account of accounts) {
-            if (thisUser == account._id) {
+        for (var user of users) {
+            if (thisUser == user._id) {
                 return true;
             }
         }

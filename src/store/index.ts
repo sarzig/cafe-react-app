@@ -1,16 +1,16 @@
 import { configureStore } from "@reduxjs/toolkit";
-import accountsReducer from "../Login/reducer";
+import usersReducer from "../Users/Login/reducer";
 
 export interface WebsiteState {
-    accountsReducer: {
-        accounts: any[];
-        account: any;
+    usersReducer: {
+        users: any[];
+        user: any;
     }
 }
 
 const store = configureStore({
     reducer: {
-        accountsReducer,
+        usersReducer,
     },
 });
 
