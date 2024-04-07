@@ -16,7 +16,7 @@ h1 {
 }
 
 /* Media query for small screens */
-@media (max-width: 767px) {
+@media (max-width: 768px) {
     .card {
         margin: 0;
         /* Remove margin to take up the whole screen width */
@@ -76,10 +76,15 @@ h1 {
     margin: 8px;
 }
 
+.card-button-group {
+    width: 100%;
+}
+
 .classy-button {
     border: 1px solid #000;
-    width: 100px;
+    width: 100%;
     border-radius: 0;
+    margin: 15px;
 }
 
 .classy-button:hover {
@@ -87,14 +92,18 @@ h1 {
     border: 1px solid #000;
 }
 
+/*
 .edit-button {
     float: left;
-}
+}*/
 
 .delete-button {
-    float: right;
+    float: end;
     background-color: rgb(240, 156, 156);
+    margin-left: auto;
+    width: 100%;
 }
 
 .delete-button:hover {
-    background-color: rgba(228, 60, 60, 0.853);}
+    background-color: rgba(228, 60, 60, 0.853);
+}

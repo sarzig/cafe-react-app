@@ -173,7 +173,8 @@
         "bio": "Keeper of Keys and Grounds at Hogwarts. Half-giant. Lover of magical creatures.",
         "interests": [
             "Care of Magical Creatures",
-            "Giant's Causeway"
+            "Giant's Causeway",
+            "Madame Maxime"
         ],
         "favorite_cafe_days": [
             "Monday",
@@ -248,25 +249,6 @@
             "Matcha",
             "Green Tea",
             "St. Patrick's Day Guinness"
-        ]
-    },
-    {
-        "id": "1f6f93b9-b8d1-4415-8010-3f27e73e0b2e",
-        "full_name": "Rubeus Hagrid",
-        "email": "rubeus.hagrid@example.com",
-        "birthdate": "6 December",
-        "hometown": "The Forbidden Forest, England",
-        "bio": "Keeper of Keys and Grounds at Hogwarts. Half-giant. Lover of magical creatures.",
-        "interests": [
-            "Care of Magical Creatures",
-            "Giant's Causeway"
-        ],
-        "favorite_cafe_days": [
-            "Thursday",
-            "Sunday"
-        ],
-        "favorite_drinks": [
-            "Latte"
         ]
     },
     {

@@ -24,8 +24,8 @@ function Profiles() {
 
     // todo - replace currentUserId and userRole with state management
     const currentUserId = "a32988bc-873c-4f5a-94a7-91db454c624b";
-    type UserRole = "admin" | "user" | "guest";
-    const userRole: UserRole = "guest";
+    type UserRole = "admin" | "owner" | "user" | "guest";
+    const userRole: UserRole = "admin";
     // end todo
 
     function handleDeleteProfile(): void {
@@ -82,7 +82,7 @@ function Profiles() {
             <hr />
 
             <div className="row">
-                <div className="row row-cols-1 row-cols-md-5 g-200">
+                <div className="row row-cols-1 row-cols-md-5 g-200 justify-content-center">
                     {profiles.filter(profile => profile.id !== currentUserId).map((profile) => (
                         <div key={profile.id} className="col" style={{ width: 350 }}>
                             <div className="card flex-shrink-0">
@@ -140,25 +140,21 @@ function Profiles() {
                                     <br />
 
                                 </div>
-
-                                <div className="card-buttons">
-
-                                    <div className="card-button-group">
-                                        <div className="row">
-                                            <div className="col-6">
-                                                <div className="btn edit-button classy-button">
-                                                    Edit
-                                                </div>
+                                <div className="card-button-group">
+                                    <div className="row">
+                                        <div className="col" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                                            <div className="btn edit-button classy-button">
+                                                Edit
                                             </div>
+                                        </div>
 
-                                            <div className="col-6">
+                                        <div className="col" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
 
-                                                <div
-                                                    className="btn delete-button classy-button"
-                                                    onClick={handleDeleteProfile}>
+                                            <div
+                                                className="btn delete-button classy-button"
+                                                onClick={handleDeleteProfile}>
 
-                                                    Delete
-                                                </div>
+                                                Delete
                                             </div>
                                         </div>
                                     </div>
