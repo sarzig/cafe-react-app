@@ -101,14 +101,6 @@ export default function UserTable() {
 
     return (
         <div>
-            <select
-                //onChange={(e) => fetchUsersByRole(e.target.value)}
-                value={role || "CUSTOMER"}
-                className="form-control w-25 float-end">
-                <option value="CUSTOMER">Customer</option>
-                <option value="ADMIN">Admin</option>
-                <option value="OWNER">Owner</option>
-            </select>
             <h3>User Table</h3>
             <table className="table">
                 <thead>
