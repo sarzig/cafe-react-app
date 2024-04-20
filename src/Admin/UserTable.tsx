@@ -226,7 +226,7 @@ export default function UserTable() {
                                 </button>
                             </td>
                             <td>
-                                <button className="btn btn-info">
+                                <button className="btn btn-info" title={`See ${user.email}'s profile`}>
                                     <Link
                                         to={`/profiles/${user._id}`}
                                         title={`See ${user.email}'s profile`}>

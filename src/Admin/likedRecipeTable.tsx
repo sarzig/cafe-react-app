@@ -61,8 +61,9 @@ export default function LikedRecipeTable() {
                     <tr>
                         <th>Recipe</th>
                         <th>Link</th>
-                        <th>Delete</th>
+                        <th>Delete Recipe</th>
                         <th>Likers of Recipe</th>
+                        
                     </tr>
                 </thead>
                 <tbody>
@@ -90,7 +91,7 @@ export default function LikedRecipeTable() {
                                     <div key={liker} className="d-flex align-items-center mb-2">
                                         <div className="flex-grow-1">
                                             {liker}
-                                            </div>
+                                        </div>
                                         <div>
                                             <button
                                                 className="btn btn-danger"

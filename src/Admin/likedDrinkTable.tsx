@@ -1,5 +1,9 @@
 import React from "react";
 import usersData from '../Database/users.json';
+import { BsTrash3Fill } from "react-icons/bs";
+import { MdInsertLink } from "react-icons/md";
+import { Link } from "react-router-dom";
+import "../App.css";
 
 export default function LikedDrinkTable() {
     // Define the User type with optional fields
@@ -14,14 +18,14 @@ export default function LikedDrinkTable() {
         bio?: string;
         interests: string[];
         favorite_cafe_days?: string[]; // Optional field
-        favorite_drinks?: string[]; // Optional field
-        favorite_menu_items?: string[]; // Optional field
         favorite_recipes?: string[]; // Optional field
+        favorite_menu_items?: string[]; // Optional field
+        favorite_drinks?: string[]; // Optional field
         role: string;
     };
 
     // Function to extract unique drinks and their likers
-    const getUniqueDrinksAndLikers = () => {
+    const getuniqueDrinksAndLikers = () => {
         const drinkMap = new Map<string, string[]>(); // Map to store drinks and their likers
 
         // Loop through each user
@@ -47,7 +51,7 @@ export default function LikedDrinkTable() {
         return drinkMap;
     };
 
-    const uniqueDrinksAndLikers = getUniqueDrinksAndLikers();
+    const uniqueDrinksAndLikers = getuniqueDrinksAndLikers();
 
     return (
         <div>
@@ -55,7 +59,8 @@ export default function LikedDrinkTable() {
             <table className="table">
                 <thead>
                     <tr>
-                        <th>Drinks</th>
+                        <th>Drink</th>
+                        <th>Delete Drink</th>
                         <th>Likers of Drink</th>
                     </tr>
                 </thead>
@@ -65,7 +70,31 @@ export default function LikedDrinkTable() {
                             <td>
                                 {drink}
                             </td>
-                            <td>{likers.join(", ")}</td>
+
+                            <td>
+                                <button className="btn btn-danger" title="Remove drink from ALL users' likes"
+                                >
+                                    <BsTrash3Fill />
+                                </button>
+                            </td>
+                            <td>
+                                {likers.map((liker) => (
+                                    <div key={liker} className="d-flex align-items-center mb-2">
+                                        <div className="flex-grow-1">
+                                            {liker}
+                                        </div>
+                                        <div>
+                                            <button
+                                                className="btn btn-danger"
+                                                //onClick={() => removeLiker(drink, liker)}  // xxx todo update
+                                                title="Remove drink from SINGLE user's likes"
+                                            >
+                                                <BsTrash3Fill />
+                                            </button>
+                                        </div>
+                                    </div>
+                                ))}
+                            </td>
                         </tr>
                     ))}
                 </tbody>
