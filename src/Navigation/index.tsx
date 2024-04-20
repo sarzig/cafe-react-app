@@ -1,5 +1,6 @@
 // Navigation.js
 import { Link, useLocation } from "react-router-dom";
+import { createBrowserHistory } from "history";
 import store, { WebsiteState } from "../store";
 import { Provider, useSelector } from "react-redux";
 import { useState, useEffect } from "react";
@@ -13,13 +14,12 @@ import * as db from "../Database"
 import { User } from "../Users/client";
 import * as client from "../Users/client";
 
-export default function Navigation() {
-    const userId = "admin@coffeehouse.org";
-    const [users, setUsers] = useState(db.users);
-    const user = users.find(user => user._id === userId)
+export default function Navigation({userType}: any, ) {
+    const history = createBrowserHistory();
+    const pathName = useLocation();
 
     // todo - get userType from Kiersten's work
-    const userType = "guest";
+    
   
     
 
@@ -37,6 +37,7 @@ export default function Navigation() {
         { label: "drop-down", userTypes: ["admin", "customer", "owner", "guest"] },
         { label: "Profile", userTypes: ["admin", "customer", "owner"] },
         { label: "Login", userTypes: ["guest"] },
+        { label: "Sign Out", userTypes: ["admin", "customer", "owner"]}
     ];
 
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
