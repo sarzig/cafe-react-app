@@ -1,5 +1,5 @@
 import React from "react";
-import UserTable from "./kiersten_a6";
+import UserTable from "./UserTable";
 import LikedRecipeTable from "./likedRecipeTable";
 import LikedDrinkTable from "./likedDrinkTable";
 import CollapsibleSection from "./CollapsibleSection";

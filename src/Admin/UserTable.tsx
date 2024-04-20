@@ -4,6 +4,8 @@ import { BsFillCheckCircleFill, BsPencil, BsTrash3Fill, BsPlusCircleFill } from 
 //import { User } from "./client";
 
 import usersData from '../Database/users.json'; // xxx delete this later
+import { Link } from "react-router-dom";
+import { MdInsertLink } from "react-icons/md";
 
 export default function UserTable() {
     // xxx - temporary for creation of page, delete later
@@ -19,7 +21,7 @@ export default function UserTable() {
         bio: string;
         interests: [];
         favorite_cafe_days: [];
-        favorite_cafe_drinks: [];
+        favorite_drinks: [];
         favorite_menu_items: [];
         favorite_recipes: [];
         role: string;
@@ -36,7 +38,7 @@ export default function UserTable() {
         bio: "",
         interests: [],
         favorite_cafe_days: [],
-        favorite_cafe_drinks: [],
+        favorite_drinks: [],
         favorite_menu_items: [],
         favorite_recipes: [],
         role: "CUSTOMER",
@@ -101,7 +103,13 @@ export default function UserTable() {
 
     return (
         <div>
-            <h3>User Table</h3>
+            <h3 style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                User Table
+                <Link to="/All-Profiles" className="btn btn-info">
+                    See all profiles in card view
+                </Link>
+            </h3>
+
             <table className="table">
                 <thead>
                     <tr>
@@ -111,14 +119,16 @@ export default function UserTable() {
                         <th>Visit Days</th>
                         <th>Interests</th>
                         <th>Role</th>
+                        <th>Delete</th>
                         <th>Modify</th>
+                        <th>Link</th>
                     </tr>
                     <tr>
                         <td className="text-nowrap">
                             <input
                                 className="form-control"
                                 value={user.email}
-                                placeholder="email / email"
+                                placeholder="Username / email"
                             //onChange={(e) => setUser({ ...user, email: e.target.value })} 
                             />
                             <input
@@ -160,34 +170,38 @@ export default function UserTable() {
                             //onChange={(e) => setUser({ ...user, hometown: e.target.value })} 
                             />
                         </td>
-
                         <td>
                             <select className="form-control"
                                 value={user.role}
                             //onChange={(e) => setUser({ ...user, role: e.target.value })}
                             >
-                                <option value="USER">User</option>
+                                <option value="CUSTOMER">Customer</option>
                                 <option value="ADMIN">Admin</option>
-                                <option value="FACULTY">Faculty</option>
-                                <option value="STUDENT">Student</option>
+                                <option value="Owner">OWNER</option>
                             </select>
+                        </td>
+                        <td>
                         </td>
                         <td>
                             <BsFillCheckCircleFill
                                 //onClick={updateUser}
                                 className="me-2 text-success fs-1 text"
+                                title="Modify the Selected user with these attributes"
                             />
                             <BsPlusCircleFill
                                 //onClick={createUser}
-                                className="me-2 text-success fs-1 text" />
-
+                                className="me-2 text-success fs-1 text"
+                                title="Add NEW user with these attributes"
+                            />
                         </td>
                     </tr>
                 </thead>
                 <tbody>
                     {users.map((user: any) => (
                         <tr key={user._id}>
-                            <td>{user.email}</td>
+                            <td>
+                                {user.email}
+                            </td>
                             <td>{user.full_name}</td>
                             <td>{user.hometown}</td>
                             <td>{user.favorite_cafe_days.join(', ')}</td>
@@ -196,20 +210,33 @@ export default function UserTable() {
                             <td>
                                 <button
                                     className="btn btn-danger me-2"
+                                    title="Delete this user"
                                 //onClick={() => deleteUser(user)}
                                 >
                                     <BsTrash3Fill />
                                 </button>
+                            </td>
+                            <td>
                                 <button
                                     className="btn btn-warning me-2"
+                                    title="Edit this user"
                                 //onClick={() => selectUser(user)}
                                 >
                                     <BsPencil />
                                 </button>
                             </td>
+                            <td>
+                                <button className="btn btn-info">
+                                    <Link
+                                        to={`/profiles/${user._id}`}
+                                        title={`See ${user.email}'s profile`}>
+                                        <MdInsertLink />
+                                    </Link>
+                                </button>
+                            </td>
                         </tr>))}
                 </tbody>
             </table>
-        </div>
+        </div >
     );
 }

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 const CollapsibleSection = ({ title, children }: { title: string, children: React.ReactNode }) => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
 
   const toggleSection = () => {
     setIsOpen(!isOpen);
