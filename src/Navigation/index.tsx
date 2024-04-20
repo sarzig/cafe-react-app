@@ -17,7 +17,7 @@ export default function Navigation() {
     const user = users.find(user => user._id === userId)
 
     // todo - get userType from Kiersten's work
-    const userType = "admin";
+    const userType = "guest";
   
     
 

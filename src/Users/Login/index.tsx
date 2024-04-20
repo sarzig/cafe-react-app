@@ -7,12 +7,17 @@ import {
     updateAccount,
     setAccount,
 } from "./reducer";
+import { User } from "../client";
+import * as client from "../client";
 import { WebsiteState } from "../../store";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 
-function Login() {
+export default function Login() {
+    const [credentials, setCredentials] = useState<User>({ _id: "", full_name: "", image: "",
+    email: "", password: "", hometown: "", bio: "", interests: [], favorite_cafe_days: [],
+    favorite_drinks: [], favorite_menu_items: [], favorite_recipes: [], role: "guest"});
     const [thisUser, setThisUser] = useState('');
     const [thisPassword, setThisPassword] = useState('');
     const userList = useSelector((state: WebsiteState) => 
@@ -42,6 +47,14 @@ function Login() {
     function goHome() {
         navigate(`/Home`);
     }
+    const signin = async () => {
+        try {
+          await client.signin(credentials);
+          navigate(`/Home`);
+        } catch (error) {
+          console.error("Sign-in failed:", error);
+        }
+    }
     return (
         <div className="mt-5 pt-5">
             <div className="form-control">
@@ -52,19 +65,18 @@ function Login() {
             
             <div className="form-group mb-1">
                 <h6>Email address</h6>
-                <input type="text" className="form-control" placeholder={user._id} onChange={(e) => setThisUser(e.target.value)} />
+                <input type="text" className="form-control" value={credentials.email} onChange={(e) => setCredentials({...credentials, email: e.target.value})} />
             </div>
             <div className="mb-5">
                 <h6>Password</h6>
-                <input type="text" className="form-control mb-2" placeholder={user.password} onChange={(e) => setThisPassword(e.target.value)}/>
+                <input type="text" className="form-control mb-2" value={credentials.password} onChange={(e) => setCredentials({...credentials, password: e.target.value})}/>
                 <div className="float-end">
                 <button className="btn" onClick={() => goHome()}>Cancel</button>
-                <button className="btn btn-primary" onClick={() => login()}>Login</button>
+                <button className="btn btn-primary" onClick={signin}>Login</button>
             </div>
             </div>
             
             </div>
         </div>
     );
-}
-export default Login;
+};

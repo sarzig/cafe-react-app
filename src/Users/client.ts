@@ -2,10 +2,23 @@ import axios from "axios";
 const request = axios.create({
   withCredentials: true,
 });
-export const BASE_API = process.env.REACT_APP_BASE_API_URL;
+export const BASE_API = `http://localhost:4000`;
 export const USERS_API = `${BASE_API}/api/users`;
-export interface User { _id: string, username: string; password: string; role: string;
-firstName: string, lastName: string };
+export interface User { 
+  _id: string,
+  full_name: string,
+  image: string,
+  email: string,
+  password: string,
+  hometown: string,
+  bio: string,
+  interests: [],
+  favorite_cafe_days: [],
+  favorite_drinks: [],
+  favorite_menu_items: [],
+  favorite_recipes: [],
+  role: string
+};
 export const signin = async (credentials: User) => {
   const response = await request.post( `${USERS_API}/signin`, credentials );
   return response.data;
