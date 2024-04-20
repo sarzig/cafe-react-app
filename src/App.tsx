@@ -10,7 +10,7 @@ import Profile from './Profile';
 import Search from './Search';
 import Menu from './Menu';
 import Admin from './Admin';
-import Details from './Details';
+import Details from './Search/Details';
 
 function App() {
   return (
@@ -26,7 +26,7 @@ function App() {
           <Route path="/Menu/*" element={<Menu/>} />
           <Route path="/Admin-Tools/*" element={<Admin/>} />
           <Route path="/Search" element={<Search/>} />
-          <Route path="/Details" element={<Details/>} />
+          <Route path="/Search/Details/:rid" element={<Details/>} />
         </Routes>
       </div>
     </HashRouter>

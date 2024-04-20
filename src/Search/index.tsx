@@ -1,12 +1,13 @@
-import React, { JSXElementConstructor, Key, ReactElement, ReactNode, SetStateAction, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
 import "./index.css"
-import e from 'express';
 import { useDispatch, useSelector } from 'react-redux';
 import { 
     setRecipes,
+    setRecipe,
 } from './reducer';
-import ResultList from './ResultList';
+import { WebsiteState } from '../store';
+// import ResultList from './ResultList';
 import { Link } from 'react-router-dom';
 // import reducer from './reducer';
 
@@ -28,18 +29,21 @@ export default function Search() {
 
     }
 
+    useEffect(() => {
+        getRecipes()
+        // dispatch(setRecipes(recipes));
+    //}, [recipes]);
+    }, []);
+
     // const [recipe, setRecipe] = useState<Recipe | undefined>();
     // const [recipes, setRecipes] = useState<Recipe[] | undefined>([]);
     const [searchTerm, setSearchTerm] = useState<string>("");
     // const [recipes, setRecipes] = useState<Recipe[]>([]);
-    const [recipes, setRecipes] = useState([]);
-    //const [recipes] = useState<Recipe[]>([]);
+    // const [recipes, setRecipes] = useState([]);
+    // const [recipes] = useState([]);
+    const recipes = useSelector((state: WebsiteState) => state.recipesReducer.recipes);
+    // const [recipes] = useState<Recipe[]>([]);
     const dispatch = useDispatch();
-    useEffect(() => {
-        getRecipes();
-        // dispatch(setRecipes(recipes));
-    //}, [recipes]);
-    }, []);
 
         // const handleChange = (e: Recipe[]) => {
         //     setRecipes(e);
@@ -54,18 +58,6 @@ export default function Search() {
                 const numberOfRecipes = 10;
 
                 if (!searchTerm.trim()) return; // Check if search term is empty then do nothing if so
-
-                //making spoonacular api call to get a random recipe
-                // TODO: can we make this a random coffee recipe specifically?
-                // let resp = await axios.get(`https://api.spoonacular.com/recipes/search?apiKey=${apiKey}&number=${numberOfRecipes}&query=${searchTerm}`);
-                // console.log(resp.data);
-
-                // //store the random recipe into the recipe variable
-                // // setRecipes([]);
-                // console.log(resp.data.results)
-                // handleChange(resp.data.results); // TODO:This is where the problem is
-                // // setRecipes(resp.data.results); // TODO:This is where the problem is
-                // console.log(recipes); 
 
                 // axios.get(`https://api.spoonacular.com/recipes/search?apiKey=${apiKey}&number=${numberOfRecipes}&query=${searchTerm}`)
                 // .then(resp=> {
@@ -131,11 +123,18 @@ export default function Search() {
                 console.log("resp.data.results:", resp.data.results);
     
                 //store the random recipe into the recipe variable
-                setRecipes(resp.data.results);
-                console.log("recipes:", recipes);
-                } catch (e) {
-                    console.log(e);
-                }                
+                // setRecipes(resp.data.results);
+                if (resp.data.results) {
+                    console.log("recipes:", recipes);
+                    // client.setRecipes(resp.data.results).then((status) => {
+                    //     dispatch(setRecipes(resp.data.results));
+                    // }
+                    dispatch(setRecipes(resp.data.results));
+                    console.log("recipes:", recipes);
+                }
+            } catch (e) {
+                console.log(e);
+            }                
 
         }
 
@@ -173,7 +172,7 @@ export default function Search() {
                     <div className="card mb-3" key={recipe.id.toString()}>
                         <img src={recipe?.image} className="card-img-top" alt="current recipe image"/>
                         <div className="card-body">
-                            <h5 className="card-title recipe-text">Name: {recipe?.title} </h5>
+                            <h5 className="card-title recipe-text">Title: {recipe?.title} </h5>
                             {/* TODO: update to description or some such? */}
                             {/* <p className="card-text recipe-text">Ingredients needed: </p> */}
                             <p className="card-text">
@@ -190,7 +189,13 @@ export default function Search() {
                         </div>
                         <div className="card-body">
                             {/* TODO: link to details page */}
-                            <Link to="/Details" ><button className="btn btn-light p card-link" >Details..</button> </Link>
+                            <button className="btn btn-light p card-link" onClick={() => dispatch(setRecipe(recipe))}>
+                                <Link to={`/Search/Details/${recipe?.id}`} >Details..</Link>
+                            </button>
+
+                            {/* <Link to={`/Kanbas/Courses/${courseId}/Assignments/add`} id="addAssignmentsBtnLink">
+                                + Assignment
+                            </Link> */}
                         </div>
                     </div>
                 ))}
