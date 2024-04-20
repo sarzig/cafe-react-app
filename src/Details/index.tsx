@@ -1,7 +1,7 @@
 export default function Details() {
     return (
         <div>
-            Details - menu item
+            <h1>Details of current menu item</h1>
         </div>
 
     );

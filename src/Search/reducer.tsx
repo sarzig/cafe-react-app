@@ -11,6 +11,7 @@ const recipesSlice = createSlice({
     reducers: {
         setRecipes: (state, action) => {
           state.recipes = action.payload;
+          console.log("printing from the reducer");
         },
       },
     });

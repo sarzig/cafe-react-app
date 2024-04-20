@@ -27,26 +27,37 @@ export default function Search() {
             } catch (e) {
             console.log(e);
             }
-            console.log("recipes:", recipes);
         }
 
         useEffect(() => {
             getRecipes();
         }, []);
 
+        // interface Recipe {
+        //     title: string;
+        //     sourceUrl: string;
+        //     image: string;
+        //     extendedIngredients: {
+        //         name: string;
+        //     }[];
+        //     analyzedInstructions: {
+        //         steps: {
+        //             step: string;
+        //         }[];
+        //     }[];
+        //     summary: string;
+        // }
+
         interface Recipe {
             title: string;
-            sourceUrl: string;
+            id: Number;
+            servings: Number;
             image: string;
+            sourceUrl: string;
+            readyInMinutes: Number;
             extendedIngredients: {
                 name: string;
             }[];
-            analyzedInstructions: {
-                steps: {
-                    step: string;
-                }[];
-            }[];
-            summary: string;
         }
 
     return (
@@ -70,7 +81,7 @@ export default function Search() {
 
         {/* Cards  */}
         {recipes?.map((recipe, index) => (
-            <div className="card mb-3">
+            <div className="card mb-3" key={recipe.id.toString()}>
                 <img src={recipe?.image} className="card-img-top" alt="current recipe image"/>
                 <div className="card-body">
                     <h5 className="card-title recipe-text">Name: {recipe?.title} </h5>
