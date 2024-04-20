@@ -18,8 +18,7 @@ export default function Navigation() {
 
     // todo - get userType from Kiersten's work
     const userType = "admin";
-  
-    
+
 
     const links = [
         { label: "Menu", userTypes: ["admin", "customer", "owner", "guest"] },
@@ -49,7 +48,7 @@ export default function Navigation() {
         <Provider store={store}>
             <div className="row fixed-top-row">
                 <div className="col text-center cafe-name">
-                    <Link to={`/Home`} className="cafe-name-text">Sakivi Bakery & Cafe</Link>
+                    <Link to="/" className="cafe-name-text">Sakivi Bakery & Cafe</Link>
                 </div>
                 <div className="row">
                     <div className="col d-none d-sm-block">

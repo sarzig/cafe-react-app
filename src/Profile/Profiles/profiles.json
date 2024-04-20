@@ -18,7 +18,8 @@
         "favorite_drinks": [
             "Herbal Tea",
             "Smoothies"
-        ]
+        ],
+        "password": "defaultpass"
     },
     {
         "id": "3c4d5e6f-3456-789a-bcde-f1234567890a",
@@ -38,7 +39,8 @@
         ],
         "favorite_drinks": [
             "Iced Coffee"
-        ]
+        ],
+        "password": "defaultpass"
     },
     {
         "id": "a32988bc-873c-4f5a-94a7-91db454c624b",
@@ -59,7 +61,8 @@
         "favorite_drinks": [
             "Espresso",
             "Cappuccino"
-        ]
+        ],
+        "password": "defaultpass"
     },
     {
         "id": "1a2b3c4d-1234-5678-90ab-cdef12345678",
@@ -82,7 +85,8 @@
         "favorite_drinks": [
             "Coffee",
             "Matcha Latte"
-        ]
+        ],
+        "password": "defaultpass"
     },
     {
         "id": "a32988bc-873c-4f5a-94a7-91db454c624b",
@@ -99,7 +103,8 @@
         "favorite_cafe_days": [
             "Thursday",
             "Saturday"
-        ]
+        ],
+        "password": "defaultpass"
     },
     {
         "id": "c80ff8d4-e4e8-4d9a-9d6d-14282e27c768",
@@ -120,7 +125,8 @@
         "favorite_drinks": [
             "Flat White",
             "Chai Latte"
-        ]
+        ],
+        "password": "defaultpass"
     },
     {
         "id": "14cbf2e4-f75b-4b94-81fc-7bb5d97ee3c6",
@@ -141,7 +147,8 @@
         "favorite_drinks": [
             "Hot Chocolate",
             "Tea"
-        ]
+        ],
+        "password": "defaultpass"
     },
     {
         "id": "bda83382-4c0f-4f12-ba83-c06d073ff086",
@@ -161,7 +168,8 @@
         "favorite_drinks": [
             "Butterbeer",
             "Pumpkin Juice"
-        ]
+        ],
+        "password": "defaultpass"
     },
     {
         "id": "acbb4f33-5e5d-48ad-839d-bf8c85be0c6f",
@@ -183,7 +191,8 @@
         "favorite_drinks": [
             "Butterbeer",
             "Pumpkin Juice"
-        ]
+        ],
+        "password": "defaultpass"
     },
     {
         "id": "e01171bb-9304-4530-a20b-4f1c4010d65d",
@@ -206,7 +215,8 @@
             "Nitro Cold Brew",
             "Mocha",
             "Macchiato"
-        ]
+        ],
+        "password": "defaultpass"
     },
     {
         "id": "bde786c5-d539-4b20-8602-6d28a36c9999",
@@ -226,7 +236,8 @@
         ],
         "favorite_drinks": [
             "Cantina House Brew"
-        ]
+        ],
+        "password": "defaultpass"
     },
     {
         "id": "8bf4dc1b-522e-4be6-9c2e-d953a5e179c7",
@@ -249,7 +260,8 @@
             "Matcha",
             "Green Tea",
             "St. Patrick's Day Guinness"
-        ]
+        ],
+        "password": "defaultpass"
     },
     {
         "id": "3bd7b457-59b4-4a30-a5b8-4091c68f44de",
@@ -269,7 +281,8 @@
         "favorite_drinks": [
             "Espresso",
             "Cappuccino"
-        ]
+        ],
+        "password": "defaultpass"
     },
     {
         "id": "249b67b6-c42d-4812-8b6b-439ac4494a7f",
@@ -290,7 +303,8 @@
         "favorite_drinks": [
             "Cortado",
             "Iced Tea"
-        ]
+        ],
+        "password": "defaultpass"
     },
     {
         "id": "7a325fc4-12d3-45b8-9f8b-c21a6f8b7b48",
@@ -311,7 +325,8 @@
         "favorite_drinks": [
             "Nitro Cold Brew",
             "Smoothie"
-        ]
+        ],
+        "password": "defaultpass"
     },
     {
         "id": "9d9fc5a9-e7e4-4df8-99a1-d8d148f5b69d",
@@ -330,7 +345,8 @@
         ],
         "favorite_drinks": [
             "Pumpkin Juice"
-        ]
+        ],
+        "password": "defaultpass"
     },
     {
         "id": "3f3bc6a8-50c5-45c3-8e5e-1a7c5fb6127e",
@@ -347,6 +363,7 @@
         "favorite_cafe_days": [
             "Wednesday",
             "Friday"
-        ]
+        ],
+        "password": "defaultpass"
     }
 ]
