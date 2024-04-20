@@ -14,7 +14,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 
-export default function Login() {
+export default function Login({onSignIn}: any) {
     const [credentials, setCredentials] = useState<User>({ _id: "", full_name: "", image: "",
     email: "", password: "", hometown: "", bio: "", interests: [], favorite_cafe_days: [],
     favorite_drinks: [], favorite_menu_items: [], favorite_recipes: [], role: "guest"});
@@ -50,6 +50,7 @@ export default function Login() {
     const signin = async () => {
         try {
           await client.signin(credentials);
+          onSignIn();
           navigate(`/Home`);
         } catch (error) {
           console.error("Sign-in failed:", error);

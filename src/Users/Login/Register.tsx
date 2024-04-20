@@ -6,7 +6,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { addAccount } from "./reducer";
 
-function Register() {
+function Register({onSignIn}: any) {
     const [thisUser, setThisUser] = useState('');
     const [thisPassword, setThisPassword] = useState('');
     const [passwordCheck, setPasswordCheck] = useState('');
@@ -51,6 +51,7 @@ function Register() {
             accountInfo.userRole = "customer";
             dispatch(addAccount(accountInfo));
             alert("Success! Account created.");
+            onSignIn();
             navigate(`/Home`);
         }
     }

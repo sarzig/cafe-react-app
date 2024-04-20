@@ -18,11 +18,6 @@ export default function Navigation({userType}: any, ) {
     const history = createBrowserHistory();
     const pathName = useLocation();
 
-    // todo - get userType from Kiersten's work
-    
-  
-    
-
     const links = [
         { label: "Menu", userTypes: ["admin", "customer", "owner", "guest"] },
         { label: "Admin-Tools", userTypes: ["admin"] },

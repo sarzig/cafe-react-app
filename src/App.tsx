@@ -26,6 +26,9 @@ function App() {
         setUserType("guest");
     }
   }
+    const handleLogin = () => {
+      fetchProfile();
+    }
     const handleSignOut = () => {
         setUserType("guest");
     };
@@ -43,8 +46,8 @@ function App() {
           <Route path="/Home" element={<Home />} />
           <Route path="/My-Profile" element={<Profile onSignOut={handleSignOut}/>} />
           <Route path="/My-Profile/Edit" element={<EditProfile/>} />
-          <Route path="/Login-~-Signup/*" element={<Login />} />
-          <Route path="/Login-~-Signup/Register" element={<Register/>} />
+          <Route path="/Login-~-Signup/*" element={<Login onSignIn={handleLogin}/>} />
+          <Route path="/Login-~-Signup/Register" element={<Register onSignIn={handleLogin}/>} />
           <Route path="/Menu/*" element={<Menu/>} />
           <Route path="/Admin-Tools/*" element={<Admin/>} />
           <Route path="/All-Profiles" element={<Profiles/>} />"
