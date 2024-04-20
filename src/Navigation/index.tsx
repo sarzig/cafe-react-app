@@ -10,6 +10,8 @@ import MobilePopupMenu from "./MobilePopupMenu";
 import axios from "axios";
 import children from "../Users/CurrentUser";
 import * as db from "../Database"
+import { User } from "../Users/client";
+import * as client from "../Users/client";
 
 export default function Navigation() {
     const userId = "admin@coffeehouse.org";

@@ -41,7 +41,7 @@ export default function Login() {
          }
         }
         if (window.confirm("Email address not found. Would you like to create an account?")) {
-         navigate(`/Login/Register`);
+         navigate(`/Login-~-Signup/Register`);
         }
     }
     function goHome() {
@@ -60,16 +60,16 @@ export default function Login() {
             <div className="form-control">
             <h3>Login</h3>
             <div className="mb-2">
-                Don't have an account? Register <Link to={`/Login/Register`}>here</Link>
+                Don't have an account? Register <Link to={`/Login-~-Signup/Register`}>here</Link>
             </div>
             
             <div className="form-group mb-1">
                 <h6>Email address</h6>
-                <input type="text" className="form-control" value={credentials.email} onChange={(e) => setCredentials({...credentials, email: e.target.value})} />
+                <input type="text" className="form-control" placeholder="email@domain.com" onChange={(e) => setCredentials({...credentials, email: e.target.value})} />
             </div>
             <div className="mb-5">
                 <h6>Password</h6>
-                <input type="text" className="form-control mb-2" value={credentials.password} onChange={(e) => setCredentials({...credentials, password: e.target.value})}/>
+                <input type="text" className="form-control mb-2" placeholder="Password" onChange={(e) => setCredentials({...credentials, password: e.target.value})}/>
                 <div className="float-end">
                 <button className="btn" onClick={() => goHome()}>Cancel</button>
                 <button className="btn btn-primary" onClick={signin}>Login</button>
