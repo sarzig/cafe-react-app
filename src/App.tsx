@@ -10,7 +10,7 @@ import Profiles from './Profile/Profiles';
 import Profile from './Users/Profile';
 import EditProfile from './Users/Profile/Edit';
 import Menu from './Menu';
-import Admin from './Admin';
+import AdminTools from './Admin';
 import { useEffect, useState } from 'react';
 import * as client from "./Users/client";
 
@@ -35,8 +35,8 @@ function App() {
   useEffect(() => {
     fetchProfile();
   }, [userType]);
-  return (
 
+  return (
     <Provider store={store}>
     <HashRouter>
       <div>
@@ -46,11 +46,13 @@ function App() {
           <Route path="/Home" element={<Home />} />
           <Route path="/My-Profile" element={<Profile onSignOut={handleSignOut}/>} />
           <Route path="/My-Profile/Edit" element={<EditProfile/>} />
+          <Route path="/Profile/:id/Edit" element={<EditProfile/>} />
+          <Route path="/Profile/:id" element={<Profile/>} />
           <Route path="/Login-~-Signup/*" element={<Login onSignIn={handleLogin}/>} />
           <Route path="/Login-~-Signup/Register" element={<Register onSignIn={handleLogin}/>} />
           <Route path="/Menu/*" element={<Menu/>} />
-          <Route path="/Admin-Tools/*" element={<Admin/>} />
-          <Route path="/All-Profiles" element={<Profiles/>} />"
+          <Route path="/Admin-Tools/*" element={<AdminTools userType={userType}/>} />
+          <Route path="/All-Profiles" element={<Profiles userType={userType}/>} />
         </Routes>
       </div>
     </HashRouter>

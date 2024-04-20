@@ -2,8 +2,12 @@ import axios from "axios";
 const request = axios.create({
   withCredentials: true,
 });
-export const BASE_API = `http://localhost:4000`;
+export const BASE_API = process.env.REACT_APP_API_BASE;
 export const USERS_API = `${BASE_API}/api/users`;
+
+console.log("BASE_API", BASE_API);
+console.log("USERS_API", USERS_API);
+
 export interface User { 
   _id: string,
   full_name: string,
