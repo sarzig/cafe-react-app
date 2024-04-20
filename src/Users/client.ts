@@ -1,36 +1,63 @@
 import axios from "axios";
-
-const axiosWithCredentials = axios.create({
+const request = axios.create({
   withCredentials: true,
 });
-
-// app.post("/api/users/register", register);
-export const register = async (user: any) => {
-  const response = await axiosWithCredentials.post(
-    "http://localhost:4000/api/users/register",
-    user
-  );
+export const BASE_API = `http://localhost:4000`;
+export const USERS_API = `${BASE_API}/api/users`;
+export interface User { 
+  _id: string,
+  full_name: string,
+  image: string,
+  email: string,
+  password: string,
+  hometown: string,
+  bio: string,
+  interests: [],
+  favorite_cafe_days: [],
+  favorite_drinks: [],
+  favorite_menu_items: [],
+  favorite_recipes: [],
+  role: string
+};
+export const signin = async (credentials: User) => {
+  const response = await request.post( `${USERS_API}/signin`, credentials );
   return response.data;
 };
-// app.post("/api/users/login", login);
-export const login = async (user: any) => {
-  const response = await axiosWithCredentials.post(
-    "http://localhost:4000/api/users/login",
-    user
-  );
-  return response.data;
-};
-// app.get("/api/users/profile", profile);
 export const profile = async () => {
-  const response = await axiosWithCredentials.post(
-    "http://localhost:4000/api/users/profile"
-  );
+  const response = await request.post(`${USERS_API}/profile`);
   return response.data;
 };
-// app.get("/api/users/logout", logout);
-export const logout = async () => {
-  const response = await axiosWithCredentials.post(
-    "http://localhost:4000/api/users/logout"
-  );
+export const updateUser = async (user: any) => {
+  const response = await request.put(`${USERS_API}/${user._id}`, user);
+  return response.data;
+};
+export const findAllUsers = async () => {
+  const response = await request.get(`${USERS_API}`);
+  return response.data;
+};
+export const createUser = async (user: any) => {
+  const response = await request.post(`${USERS_API}`, user);
+  return response.data;
+};
+export const deleteUser = async (user: any) => {
+  const response = await request.delete(
+    `${USERS_API}/${user._id}`);
+  return response.data;
+};
+export const findUserById = async (id: string) => {
+  const response = await request.get(`${USERS_API}/${id}`);
+  return response.data;
+};
+export const findUsersByRole = async (role: string) => {
+  const response = await
+  request.get(`${USERS_API}?role=${role}`);
+  return response.data;
+};
+export const signup = async (user: any) => {
+  const response = await request.post(`${USERS_API}/signup`, user);
+  return response.data;
+};
+export const signout = async () => {
+  const response = await request.post(`${USERS_API}/signout`);
   return response.data;
 };

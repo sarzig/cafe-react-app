@@ -6,7 +6,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { addAccount } from "./reducer";
 
-function Register() {
+function Register({onSignIn}: any) {
     const [thisUser, setThisUser] = useState('');
     const [thisPassword, setThisPassword] = useState('');
     const [passwordCheck, setPasswordCheck] = useState('');
@@ -29,7 +29,7 @@ function Register() {
     function createAccount() {
         if (account.checkExistence) {
             if (window.confirm("This email is already in use. Login instead?")) {
-                navigate(`/Login`);
+                navigate(`/Login-~-Signup`);
             }
         }
         else {
@@ -51,6 +51,7 @@ function Register() {
             accountInfo.userRole = "customer";
             dispatch(addAccount(accountInfo));
             alert("Success! Account created.");
+            onSignIn();
             navigate(`/Home`);
         }
     }
@@ -61,7 +62,7 @@ function Register() {
         <div className="form-control mt-5 pt-5">
             <h3>Register</h3>
             <div className="mb-2">
-                Have an account? Login <Link to={`/Login`}>here</Link>
+                Have an account? Login <Link to={`/Login-~-Signup`}>here</Link>
             </div>
             <div className="form-group mb-1 flex-container">
                 <div className="row">

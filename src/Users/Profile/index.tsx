@@ -1,4 +1,8 @@
-export default function Profile() {
+import * as client from "../../Users/client";
+import { useNavigate } from "react-router-dom";
+
+export default function Profile({ onSignOut }: any) {
+    const navigate = useNavigate();
     const user = {
         "_id": "admin@coffeehouse.org",
         "firstName": "Coffee",
@@ -7,6 +11,12 @@ export default function Profile() {
         "userRole": "admin",
         "history": []
     };
+    const signout = async () => {
+        await client.signout();
+        onSignOut();
+        navigate(`/Home`);
+    }
+
     return (
         <div className="mt-5 pt-5 form-control">
             <h3>Profile</h3>
@@ -18,7 +28,8 @@ export default function Profile() {
                      {user.firstName} {user.lastName}
                 </span>
                 <span>
-                <a className="btn btn-light" href="#/Profile/Edit">Edit Profile</a>
+                <a className="btn btn-light" href="#/My-Profile/Edit">Edit Profile</a> &nbsp;
+                <button className="btn btn-light" onClick={signout}>Sign Out</button>
                 </span>
                 <hr />
             </div>

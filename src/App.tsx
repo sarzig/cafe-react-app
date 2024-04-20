@@ -11,20 +11,43 @@ import Profile from './Users/Profile';
 import EditProfile from './Users/Profile/Edit';
 import Menu from './Menu';
 import Admin from './Admin';
+import { useEffect, useState } from 'react';
+import * as client from "./Users/client";
 
 function App() {
+  const [userType, setUserType] = useState("guest");
+
+   // Example initial user type
+  const fetchProfile = async () => {
+    try {
+        const account = await client.profile();
+        setUserType(account.role);
+    } catch {
+        setUserType("guest");
+    }
+  }
+    const handleLogin = () => {
+      fetchProfile();
+    }
+    const handleSignOut = () => {
+        setUserType("guest");
+    };
+  useEffect(() => {
+    fetchProfile();
+  }, [userType]);
   return (
+
     <Provider store={store}>
     <HashRouter>
       <div>
-      <Navigation />
+      <Navigation userType={userType} />
         <Routes>
           <Route path="/" element={<Navigate to="/Home" />} />
           <Route path="/Home" element={<Home />} />
-          <Route path="/Profile" element={<Profile/>} />
-          <Route path="/Profile/Edit" element={<EditProfile/>} />
-          <Route path="/Login/*" element={<Login/>} />
-          <Route path="/Login/Register" element={<Register/>} />
+          <Route path="/My-Profile" element={<Profile onSignOut={handleSignOut}/>} />
+          <Route path="/My-Profile/Edit" element={<EditProfile/>} />
+          <Route path="/Login-~-Signup/*" element={<Login onSignIn={handleLogin}/>} />
+          <Route path="/Login-~-Signup/Register" element={<Register onSignIn={handleLogin}/>} />
           <Route path="/Menu/*" element={<Menu/>} />
           <Route path="/Admin-Tools/*" element={<Admin/>} />
           <Route path="/All-Profiles" element={<Profiles/>} />"

@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import profiles from "./profiles.json";
 import "../../index.css";
 import "./index.css";
+import * as client from "../../Users/client";
 
 type UserRole = "admin" | "owner" | "user" | "guest";
 
