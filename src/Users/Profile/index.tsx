@@ -19,7 +19,7 @@ export default function Profile({ onSignOut }: any) {
     }
     useEffect(() => {
         fetchProfile();
-      }, [profile]);
+      }, []);
     return (
         <div className="mt-2 pt-3 form-control">
             <table className="row">
