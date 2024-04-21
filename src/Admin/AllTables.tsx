@@ -91,7 +91,7 @@ const AllTables = ({ userType }: { userType: string }) => {
     };
 
     const handleDeleteRecipeForSingleUser = (recipeName: string, email: string): void => {
-
+        // xxx todo this is not working
         console.log("email", email);
 
 
@@ -106,7 +106,7 @@ const AllTables = ({ userType }: { userType: string }) => {
         console.log("user", user);
         setUser({
             ...user,
-            hometown: "poopville",
+            hometown: "h",
         });
 
         updateUser();
@@ -115,6 +115,7 @@ const AllTables = ({ userType }: { userType: string }) => {
 
 
     };
+
 
     const handleDeleteRecipeForAllUsers = (recipeName: string): void => {
         for (const user of users) {
@@ -126,7 +127,7 @@ const AllTables = ({ userType }: { userType: string }) => {
                     selectUser(user);
                     setUser({ ...user, favorite_recipes: newFavoriteRecipes });
 
-                    console.log("user", user);
+                    console.log("user, should have recipe deleted", user);
                     console.log("newFavoriteRecipes", newFavoriteRecipes);
                     updateUser();
                 }
