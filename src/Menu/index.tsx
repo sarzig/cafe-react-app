@@ -1,7 +1,35 @@
-import React from "react";
+import React, { useState } from "react";
 //import { Document, Page } from "@react-pdf/renderer";
 
-export default function Menu() {
+const Menu = ({ userType }: { userType: string }) => {
+    const [selectedTab, setSelectedTab] = useState("coffee");
+
+    const handleTabClick = (tab: string) => {
+        setSelectedTab(tab);
+    };
+    const renderContent = () => {
+        switch (selectedTab) {
+            case "coffee":
+                return (
+                    <img
+                        src="path_to_coffee_image.jpg"
+                        alt="Coffee"
+                        style={{ width: "100%", height: "auto" }}
+                    />
+                );
+            case "tea":
+                return (
+                    <img
+                        src="path_to_tea_image.jpg"
+                        alt="Tea"
+                        style={{ width: "100%", height: "auto" }}
+                    />
+                );
+            default:
+                return null;
+        }
+    };
+
     return (
         <div className="container">
             <div className="row">
@@ -9,17 +37,18 @@ export default function Menu() {
                     <h2>Menu</h2>
                     <ul>
                         <li>
-                            <a href="/details">Coffee</a>
+                            <button onClick={() => handleTabClick("coffee")}>Coffee</button>
                         </li>
                         <li>
-                            <a href="/details">Tea</a>
+                            <button onClick={() => handleTabClick("tea")}>Tea</button>
                         </li>
                     </ul>
                 </div>
                 <div className="col">
-
+                    {renderContent()}
                 </div>
             </div>
         </div>
     );
-}
+};
+export default Menu;

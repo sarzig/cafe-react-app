@@ -4,6 +4,10 @@ import "../../index.css";
 import "./index.css";
 import * as client from "../../Users/client";
 import { User } from "../../Users/client";
+import nameGenerator from "./Functions/nameGenerator";
+import imageGenerator from "./Functions/imageGenerator";
+
+
 
 const Profiles = ({ userType }: { userType: string }) => {
     const [showConfirmation, setShowConfirmation] = useState(false);
@@ -54,46 +58,6 @@ const Profiles = ({ userType }: { userType: string }) => {
         navigate(`/Profiles/${user._id}`);
     };
 
-    function nameGenerator(profile: any) {
-
-        if (userType !== "guest") {
-            // If user isn't guest, then just show real names
-            return profile.full_name;
-        }
-
-        else if (profile.favorite_drinks && profile.favorite_drinks.length > 0) {
-            // If user is guest, then show anonymous name based on favorite drink
-            return "Anonymous " + profile.favorite_drinks[0] + " Drinker";
-
-
-        } else {
-            // If there are no favorite drinks, generate a silly noun
-            const sillyNouns = ["Cafe Goer", "Awesome Friend", "Serious Goofball", "Hipster Wannabe", "Introvert", "Extrovert", "Public Universal Friend"]
-            // Generate a random index to select a silly noun
-            const randomIndex = Math.floor(Math.random() * sillyNouns.length);
-            // Return "Anonymous" followed by the selected silly noun
-            return `Anonymous ${sillyNouns[randomIndex]}`;
-        }
-    }
-
-    function imageGenerator(profile: any) {
-
-        // Check if profile.favorite_drink exists and is not empty
-        if (profile.image && userType !== "guest") {
-            // Return the first element of the favorite_drink array
-            return `/images/profiles_pages/${profile.image}`;
-
-        } else {
-
-            const minNumber = 1;
-            const maxNumber = 9;
-
-            const randomNumber = Math.floor(Math.random() * (maxNumber - minNumber + 1)) + minNumber;
-            const anonymousImages = [`anonymous${randomNumber}.jpg`];
-            return `/images/profiles_pages/${anonymousImages[0]}`;
-        }
-    }
-
     return (
         <div>
             <h1>Boston Profiles</h1>
@@ -129,11 +93,11 @@ const Profiles = ({ userType }: { userType: string }) => {
                     <div key={user._id} className="col" style={{ width: 350 }}>
                         <div className="card flex-shrink-0">
                             <Link className="card-image" to={`/profiles/${user._id}`}>
-                                <img src={imageGenerator(user)} alt="user" className="card-img-top" />
+                                <img src={imageGenerator(userType, user)} alt="user" className="card-img-top" />
                             </Link>
                             <div className="card-body">
                                 <Link className="card-title" to={`/profiles/${user._id}`}>
-                                    {nameGenerator(user)}
+                                    {nameGenerator(userType, user)}
                                 </Link>
                                 <div className="card-details">
                                     <span className="category">Hometown: </span>
