@@ -4,17 +4,26 @@ import * as client from "../Users/client";
 import { User } from "../Users/client";
 import { Link } from "react-router-dom";
 import { MdInsertLink } from "react-icons/md";
+import { FaFilter } from "react-icons/fa";
 
-export default function UserTable(role: any) {
+// xxx todo: user table doesn't auto update when interests or visit days are updated
 
-    const [filterRole, setFilterRole] = useState("CUSTOMER");
+const DAYS_OF_WEEK = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+
+export default function UserTable() {
+
+    const [filterRole, setFilterRole] = useState("customer");
+
 
     const fetchUsersByRole = async (filterRole: string) => {
         const users = await client.findUsersByRole(filterRole);
-        setFilterRole(role);
+        setFilterRole(filterRole);
         setUsers(users);
     };
     const [users, setUsers] = useState<User[]>([]);
+    const [stringCafeDays, setStringCafeDays] = useState("");
+    const [stringInterests, setStringInterests] = useState("");
+
     const deleteUser = async (user: User) => {
         try {
             await client.deleteUser(user);
@@ -40,7 +49,7 @@ export default function UserTable(role: any) {
         favorite_drinks: [],
         favorite_menu_items: [],
         favorite_recipes: [],
-        role: "CUSTOMER",
+        role: "customer",
     });
     const createUser = async () => {
         try {
@@ -54,19 +63,29 @@ export default function UserTable(role: any) {
         try {
             const u = await client.findUserById(user._id);
             setUser(u);
+            setStringCafeDays(u.favorite_cafe_days.join(", "));
+            setStringInterests(u.interests.join(", "));
+
         } catch (err) {
             console.log(err);
         }
     };
     const updateUser = async () => {
         try {
-            const status = await client.updateUser(user);
+            // Parse stringCafeDays into an array of days
+            const parsedCafeDays = stringCafeDays.split(",").map((day) => day.trim());
+            const parsedInterests = stringInterests.split(",").map((day) => day.trim());
+
+            // Update user object with parsed favorite_cafe_days
+            const updatedUser = { ...user, favorite_cafe_days: parsedCafeDays, interests: parsedInterests};
+            const status = await client.updateUser(updatedUser);
             setUsers(users.map((u) =>
                 (u._id === user._id ? user : u)));
         } catch (err) {
             console.log(err);
         }
     };
+
     useEffect(() => { fetchUsers(); }, []);
 
 
@@ -76,11 +95,12 @@ export default function UserTable(role: any) {
                 User Table
                 <select
                     onChange={(e) => fetchUsersByRole(e.target.value)}
-                    value={role || "CUSTOMER"}
+                    value={filterRole}
                     className="form-control w-25 float-end">
-                    <option value="CUSTOMER">Customer</option>
-                    <option value="ADMIN">Admin</option>
-                    <option value="OWNER">Owner</option>
+                    <option value="all">Select user role</option> {/* Default placeholder option */}
+                    <option value="customer">Customer</option>
+                    <option value="admin">Admin</option>
+                    <option value="owner">Owner</option>
                 </select>
                 <Link to="/All-Profiles" className="btn btn-info">
                     See all profiles in card view
@@ -134,27 +154,27 @@ export default function UserTable(role: any) {
                         <td>
                             <input
                                 className="form-control"
-                                value={user.hometown}
+                                value={stringCafeDays}
                                 placeholder="Visit Days"
-                                onChange={(e) => setUser({ ...user, hometown: e.target.value })}
+                                onChange={(e) => setStringCafeDays(e.target.value)}
                             />
                         </td>
                         <td>
                             <input
                                 className="form-control"
-                                value={user.interests}
+                                value={stringInterests}
                                 placeholder="Interests"
-                                onChange={(e) => setUser({ ...user, hometown: e.target.value })}
+                                onChange={(e) => setStringInterests(e.target.value)}
                             />
                         </td>
                         <td>
                             <select className="form-control"
                                 value={user.role}
-                                onChange={(e) => setUser({ ...user, role: e.target.value })}
+                                onChange={(e) => setUser({ ...user, role: e.target.value.toLowerCase() })}
                             >
-                                <option value="CUSTOMER">Customer</option>
-                                <option value="ADMIN">Admin</option>
-                                <option value="Owner">OWNER</option>
+                                <option value="customer">Customer</option>
+                                <option value="admin">Admin</option>
+                                <option value="owner">Owner</option>
                             </select>
                         </td>
                         <td>

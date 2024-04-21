@@ -20,7 +20,7 @@ export interface User {
   favorite_cafe_days: [],
   favorite_drinks: [],
   favorite_menu_items: [],
-  favorite_recipes: [],
+  favorite_recipes: string[],
   role: string
 };
 export const signin = async (credentials: User) => {
@@ -53,8 +53,17 @@ export const findUserById = async (id: string) => {
   return response.data;
 };
 export const findUsersByRole = async (role: string) => {
+  let url = `${USERS_API}?role=${role}`;
+
+  // If role is 'all', change the API endpoint to fetch all users
+  if (role === 'all') {
+    url = `${USERS_API}`; // Fetch all users without filtering by role
+  } else {
+    url = `${USERS_API}?role=${role}`; // Fetch all users without filtering by role
+  }
+
   const response = await
-  request.get(`${USERS_API}?role=${role}`);
+  request.get(url);
   return response.data;
 };
 export const signup = async (user: any) => {
