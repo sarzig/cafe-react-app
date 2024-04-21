@@ -1,3 +1,6 @@
+import React from "react";
+//import { Document, Page } from "@react-pdf/renderer";
+
 export default function Menu() {
     return (
         <div className="container">
@@ -9,9 +12,11 @@ export default function Menu() {
                         <li> <a href="/details">Tea</a> </li>
                         <li> <a href="/details">Pastries</a> </li>
                     </ul>
-                </div>  
+                </div>
+                <div className="col">
+
+                </div>
             </div>
         </div>
-
     );
-};
+}

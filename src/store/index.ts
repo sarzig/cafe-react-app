@@ -1,11 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
-import accountsReducer from "../Login/reducer";
+import usersReducer from "../Users/Login/reducer";
 import recipesReducer from "../Search/reducer";
 
 export interface WebsiteState {
-    accountsReducer: {
-        accounts: any[];
-        account: any;
+    usersReducer: {
+        users: any[];
+        user: any;
     }
 
     recipesReducer: {
@@ -16,7 +16,7 @@ export interface WebsiteState {
 
 const store = configureStore({
     reducer: {
-        accountsReducer,
+        usersReducer,
         recipesReducer,
     },
 });

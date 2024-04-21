@@ -1,5 +1,5 @@
-import accounts from "./accounts.json"
+import users from "./users.json"
 
 export {
-    accounts
+    users
 };

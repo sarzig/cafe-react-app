@@ -1,0 +1,45 @@
+[
+    {
+        "id": "4d5e6f7g-4567-89ab-cdef-1234567890ab",
+        "full_name": "Victoria K.",
+        "image": "victoria.jpg",
+        "email": "victoria.k@example.com",
+        "birthdate": "1992-03-25",
+        "hometown": "Chicago, Illinois",
+        "bio": "Musician and nature lover.",
+        "interests": [
+            "Music",
+            "Hiking"
+        ],
+        "favorite_cafe_days": [
+            "Thursday",
+            "Sunday"
+        ],
+        "favorite_drinks": [
+            "Herbal Tea",
+            "Smoothies"
+        ],
+        "password": "defaultpass"
+    },
+    {
+        "id": "3c4d5e6f-3456-789a-bcde-f1234567890a",
+        "full_name": "Kiersten G.",
+        "image": "kiersten.jpg",
+        "email": "kiersten.g@example.com",
+        "birthdate": "1988-07-01",
+        "hometown": "Los Angeles, California",
+        "bio": "Fitness enthusiast and health coach.",
+        "interests": [
+            "Fitness",
+            "Nutrition"
+        ],
+        "favorite_cafe_days": [
+            "Tuesday",
+            "Friday"
+        ],
+        "favorite_drinks": [
+            "Iced Coffee"
+        ],
+        "password": "defaultpass"
+    }
+]
