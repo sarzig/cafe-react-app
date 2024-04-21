@@ -4,12 +4,19 @@ import { users } from "../../Database";
 const initialState = {
     users: users,
     user: { 
-        _id: "email@domain.com", 
-        firstName: "First Name", 
-        lastName: "Last Name",
-        password: "Password",
-        userRole: "guest",
-        history: []
+      _id: "",
+      full_name: "",
+      image: "",
+      email: "",
+      password: "",
+      hometown: "",
+      bio: "",
+      interests: [],
+      favorite_cafe_days: [],
+      favorite_drinks: [],
+      favorite_menu_items: [],
+      favorite_recipes: [],
+      role: "guest"
     }
 };
 

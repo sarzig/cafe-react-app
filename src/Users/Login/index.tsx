@@ -8,51 +8,63 @@ import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 
-export default function Login({onSignIn}: any) {
-    const [credentials, setCredentials] = useState<User>({ _id: "", full_name: "", image: "",
-    email: "", password: "", hometown: "", bio: "", interests: [], favorite_cafe_days: [],
-    favorite_drinks: [], favorite_menu_items: [], favorite_recipes: [], role: "guest"});
+export default function Login({ onSignIn }: any) {
+    const [credentials, setCredentials] = useState<User>({
+        _id: "", full_name: "", image: "",
+        email: "", password: "", hometown: "", bio: "", interests: [], favorite_cafe_days: [],
+        favorite_drinks: [], favorite_menu_items: [], favorite_recipes: [], role: "guest"
+    });
     const [thisUser, setThisUser] = useState('');
     const [thisPassword, setThisPassword] = useState('');
-    const userList = useSelector((state: WebsiteState) => 
+    const userList = useSelector((state: WebsiteState) =>
         state.usersReducer.users);
-    const user = useSelector((state: WebsiteState) => 
+    const user = useSelector((state: WebsiteState) =>
         state.usersReducer.user);
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    function login() { 
+    function login() {
         for (var user of users) {
-         if (thisUser == user._id) {
-           if (thisPassword == user.password) {
-             //set account of current session to be the user
-             navigate(`/Home`);
-             return;
-           }
-           else {
-             alert("Incorrect password.");
-             return;
-           }
-         }
+            if (thisUser == user._id) {
+                if (thisPassword == user.password) {
+                    //set account of current session to be the user
+                    navigate(`/Home`);
+                    return;
+                }
+                else {
+                    alert("Incorrect password.");
+                    return;
+                }
+            }
         }
         if (window.confirm("Email address not found. Would you like to create an account?")) {
-         navigate(`/Login-~-Signup/Register`);
+            navigate(`/Login-~-Signup/Register`);
         }
     }
+    const showPassword = () => {
+        var x = document.getElementById("password_box") as HTMLInputElement;
+        if (x.type === "password") {
+            x.type = "text";
+        } else {
+            x.type = "password";
+        }
+    };
     function goHome() {
         navigate(`/Home`);
     }
     const signin = async () => {
         try {
-          await client.signin(credentials);
-          onSignIn();
-          navigate(`/Home`);
+            await client.signin(credentials);
+            onSignIn();
+            navigate(`/Home`);
         } catch (error) {
-          alert("Sign-in failed. Please check your email address and password and try again. If you do not have an account, register at the link below.");
+            alert("Sign-in failed. Please check your email address and password and try again. If you do not have an account, register at the link below.");
         }
     }
+
     return (
         <div className="container mt-5 pt-5">
             <div className="form-control">
+
             <h3>Login</h3>
             <div className="mb-2">
                 Don't have an account? Register <Link to={`/Login-~-Signup/Register`}>here</Link>
@@ -64,13 +76,14 @@ export default function Login({onSignIn}: any) {
             </div>
             <div className="mb-5">
                 <h6>Password</h6>
-                <input type="text" className="form-control mb-2" placeholder="Password" onChange={(e) => setCredentials({...credentials, password: e.target.value})}/>
+                <input type="password" id="password_box" className="form-control mb-2" placeholder="Password" onChange={(e) => setCredentials({...credentials, password: e.target.value})}/>
+                <input type="checkbox" id="show_password" onChange={showPassword}/> &nbsp;
+                <label htmlFor="show_password">Show password</label>
                 <div className="float-end">
                 <button className="btn" onClick={() => goHome()}>Cancel</button>
                 <button className="btn btn-primary" onClick={signin}>Login</button>
             </div>
             </div>
-            
             </div>
         </div>
     );
