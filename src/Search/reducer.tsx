@@ -12,11 +12,11 @@ const recipesSlice = createSlice({
     reducers: {
         setRecipes: (state, action) => {
           state.recipes = action.payload;
-          console.log("printing from the reducer - recipes");
+          // console.log("printing from the reducer - recipes");
         },
         setRecipe: (state, action) => {
           state.recipe = action.payload;
-          console.log("printing from the reducer - recipe");
+          // console.log("printing from the reducer - recipe");
         },
       },
     });
