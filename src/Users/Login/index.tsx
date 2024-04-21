@@ -1,12 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { users } from "../../Database";
-import {
-    addAccount,
-    deleteAccount,
-    updateAccount,
-    setAccount,
-} from "./reducer";
 import { User } from "../client";
 import * as client from "../client";
 import { WebsiteState } from "../../store";
@@ -53,7 +47,7 @@ export default function Login({onSignIn}: any) {
           onSignIn();
           navigate(`/Home`);
         } catch (error) {
-          console.error("Sign-in failed:", error);
+          alert("Sign-in failed. Please check your email address and password and try again. If you do not have an account, register at the link below.");
         }
     }
     return (
