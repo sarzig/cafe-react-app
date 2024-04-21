@@ -38,6 +38,14 @@ export default function Login({onSignIn}: any) {
          navigate(`/Login-~-Signup/Register`);
         }
     }
+    const showPassword = () => {
+        var x = document.getElementById("password_box") as HTMLInputElement;
+        if (x.type === "password") {
+            x.type = "text";
+        } else {
+            x.type = "password";
+        }
+    };
     function goHome() {
         navigate(`/Home`);
     }
@@ -64,7 +72,9 @@ export default function Login({onSignIn}: any) {
             </div>
             <div className="mb-5">
                 <h6>Password</h6>
-                <input type="text" className="form-control mb-2" placeholder="Password" onChange={(e) => setCredentials({...credentials, password: e.target.value})}/>
+                <input type="password" id="password_box" className="form-control mb-2" placeholder="Password" onChange={(e) => setCredentials({...credentials, password: e.target.value})}/>
+                <input type="checkbox" id="show_password" onChange={showPassword}/> &nbsp;
+                <label htmlFor="show_password">Show password</label>
                 <div className="float-end">
                 <button className="btn" onClick={() => goHome()}>Cancel</button>
                 <button className="btn btn-primary" onClick={signin}>Login</button>

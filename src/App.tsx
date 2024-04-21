@@ -17,7 +17,6 @@ import * as client from "./Users/client";
 function App() {
   const [userType, setUserType] = useState("guest");
 
-   // Example initial user type
   const fetchProfile = async () => {
     try {
         const account = await client.profile();
@@ -44,9 +43,9 @@ function App() {
         <Routes>
           <Route path="/" element={<Navigate to="/Home" />} />
           <Route path="/Home" element={<Home />} />
-          <Route path="/Profile" element={<Profile onSignOut={handleSignOut}/>} />
-          <Route path="/Profile/Edit" element={<EditProfile/>} />
-          <Route path="/Profile/:id/Edit" element={<EditProfile/>} />
+          <Route path="/Profile" element={<Profile onSignOut={handleSignOut} />} />
+          <Route path="/Profile/Edit" element={<EditProfile />} />
+          <Route path="/Profile/:id/Edit" element={<EditProfile />} />
           <Route path="/Profile/:id" element={<Profile/>} />
           <Route path="/Login-~-Signup/*" element={<Login onSignIn={handleLogin}/>} />
           <Route path="/Login-~-Signup/Register" element={<Register onSignIn={handleLogin}/>} />

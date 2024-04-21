@@ -2,7 +2,7 @@ import axios from "axios";
 const request = axios.create({
   withCredentials: true,
 });
-export const BASE_API = "http://localhost:4000";
+export const BASE_API = process.env.REACT_APP_API_BASE;
 export const USERS_API = `${BASE_API}/api/users`;
 
 console.log("BASE_API", BASE_API);
@@ -16,11 +16,11 @@ export interface User {
   password: string,
   hometown: string,
   bio: string,
-  interests: [],
-  favorite_cafe_days: [],
-  favorite_drinks: [],
-  favorite_menu_items: [],
-  favorite_recipes: [],
+  interests: string[],
+  favorite_cafe_days: string[],
+  favorite_drinks: string[],
+  favorite_menu_items: string[],
+  favorite_recipes: string[],
   role: string
 };
 export const signin = async (credentials: User) => {
