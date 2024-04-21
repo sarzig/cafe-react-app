@@ -10,7 +10,7 @@ export default function MobilePopupMenu() {
     const links = [
         { label: "Menu", userTypes: ["admin", "customer", "owner", "guest"] },
         { label: "Admin-Tools", userTypes: ["admin"] },
-        { label: "My-Profile", userTypes: ["admin", "customer", "owner"] },
+        { label: "Profile", userTypes: ["admin", "customer", "owner"] },
         { label: "Login ~ Signup", userTypes: ["guest"] },
     ];
 

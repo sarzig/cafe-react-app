@@ -44,8 +44,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Navigate to="/Home" />} />
           <Route path="/Home" element={<Home />} />
-          <Route path="/My-Profile" element={<Profile onSignOut={handleSignOut}/>} />
-          <Route path="/My-Profile/Edit" element={<EditProfile/>} />
+          <Route path="/Profile" element={<Profile onSignOut={handleSignOut}/>} />
+          <Route path="/Profile/Edit" element={<EditProfile/>} />
           <Route path="/Profile/:id/Edit" element={<EditProfile/>} />
           <Route path="/Profile/:id" element={<Profile/>} />
           <Route path="/Login-~-Signup/*" element={<Login onSignIn={handleLogin}/>} />

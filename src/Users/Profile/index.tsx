@@ -30,7 +30,7 @@ export default function Profile({ onSignOut }: any) {
                 </span>
             <div>
                 <br />
-                <a className="btn btn-light" href="#/My-Profile/Edit">Edit Profile</a> &nbsp;
+                <a className="btn btn-light" href="#/Profile/Edit">Edit Profile</a> &nbsp;
                 <button className="btn btn-light" onClick={signout}>Sign Out</button>
             </div>
                 

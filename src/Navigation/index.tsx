@@ -18,7 +18,7 @@ export default function Navigation({userType}: any,) {
         { label: "Menu", userTypes: ["admin", "customer", "owner", "guest"] },
         { label: "Admin-Tools", userTypes: ["admin"] },
 
-        { label: "My-Profile", userTypes: ["admin", "customer", "owner"] },
+        { label: "Profile", userTypes: ["admin", "customer", "owner"] },
         { label: "All-Profiles", userTypes: ["admin", "customer", "owner", "guest"] },
         { label: "Login-~-Signup", userTypes: ["guest"] },
     ];

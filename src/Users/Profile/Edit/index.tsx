@@ -22,7 +22,7 @@ export default function EditProfile() {
     const handleSave = () => {
         const updatedAccount = {_id: thisEmail, firstName: thisFirstName, lastName: thisLastName, }
         dispatch(updateAccount(updatedAccount));
-        navigate(`#/My-Profile`);
+        navigate(`#/Profile`);
     };
     const showPassword = () => {
         var x = document.getElementById("password_box") as HTMLInputElement;
@@ -70,7 +70,7 @@ export default function EditProfile() {
                 </div> 
                 <span className="">
                     <button className="btn btn-primary float-end" onClick={handleSave}>Save</button> &nbsp;
-                    <a href="#/My-Profile" className="btn btn-light float-end">Cancel</a>
+                    <a href="#/Profile" className="btn btn-light float-end">Cancel</a>
                 </span>
                 <br /><br />
             </div>
