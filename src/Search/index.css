@@ -20,6 +20,7 @@
   /* max-width: 100px; */
 }
 
-.card-link {
+.button-link {
+  color: black;
   text-decoration: none;
 }

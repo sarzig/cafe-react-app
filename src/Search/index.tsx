@@ -190,7 +190,7 @@ export default function Search() {
                         <div className="card-body">
                             {/* TODO: link to details page */}
                             <button className="btn btn-light p card-link" onClick={() => dispatch(setRecipe(recipe))}>
-                                <Link to={`/Search/Details/${recipe?.id}`} >Details..</Link>
+                                <Link to={`/Search/Details/${recipe?.id}`} className="button-link" >Details..</Link>
                             </button>
 
                             {/* <Link to={`/Kanbas/Courses/${courseId}/Assignments/add`} id="addAssignmentsBtnLink">
