@@ -112,17 +112,17 @@ interface RecipeInfoType {
 export default function Details() {
 
     const { rid } = useParams();
-    const { recipeId } = useParams();
+    // const { recipeId } = useParams();
     // const { recipe } = "";
     const dispatch = useDispatch();
     // const recipe = getRecipe();
     const recipe = useSelector((state: WebsiteState) => state.recipesReducer.recipe);
-    console.log("recipe:", recipe);
-    const [ingredients, setIngredients] = useState([]);
+    // console.log("recipe:", recipe);
+    // const [ingredients, setIngredients] = useState([]);
     const [recipeInfo, setRecipeInfo] = useState<RecipeInfoType>();
 
     useEffect(() => {
-        getIngredients()
+        // getIngredients()
         getRecipeInfo()
     }, []);
 
@@ -130,27 +130,27 @@ export default function Details() {
     //     getRecipeInfo()
     // }, []);
 
-    async function getIngredients() {
-        try {
+    // async function getIngredients() {
+    //     try {
 
-            const options = {
-                method: 'GET',
-                url: `https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/${rid}/ingredientWidget.json`,
-                headers: {
-                    'X-RapidAPI-Key': '7a2a0058b9msh9b1cd6e240d6fbep1cbc4fjsn82e3f8b8474a',
-                    'X-RapidAPI-Host': 'spoonacular-recipe-food-nutrition-v1.p.rapidapi.com'
-                }
-            };
+    //         const options = {
+    //             method: 'GET',
+    //             url: `https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/${rid}/ingredientWidget.json`,
+    //             headers: {
+    //                 'X-RapidAPI-Key': '7a2a0058b9msh9b1cd6e240d6fbep1cbc4fjsn82e3f8b8474a',
+    //                 'X-RapidAPI-Host': 'spoonacular-recipe-food-nutrition-v1.p.rapidapi.com'
+    //             }
+    //         };
 
-            const resp = await axios.request(options);
-            console.log("ingredients data:", resp.data);
-            // RecipeInfoType
-            setIngredients(resp.data.ingredients);
-        } catch (e) {
-            console.log(e);
-        }                
+    //         const resp = await axios.request(options);
+    //         console.log("ingredients data:", resp.data);
+    //         // RecipeInfoType
+    //         setIngredients(resp.data.ingredients);
+    //     } catch (e) {
+    //         console.log(e);
+    //     }                
 
-    }
+    // }
 
     async function getRecipeInfo() {
         try {
@@ -164,8 +164,8 @@ export default function Details() {
             };
 
             const resp = await axios.request(options);
-            console.log("recipe data:", resp.data);
             setRecipeInfo(resp.data);
+            console.log("recipeInfo:", recipeInfo);
         } catch (e) {
             console.log(e);
         }
@@ -173,43 +173,49 @@ export default function Details() {
 
     return (
         <> 
-            <div className="d-flex flex-column align-items-center justify-content-center">
-                <div className="card mb-100">
-                    <img src={recipe.image} className="card-img-top" alt="current recipe image"/>
-                        <div className="card-body">
-                            <h5 className="card-title recipe-text">Title: {recipe.title} </h5>
-                        {/* <p> Servings: {recipe.servings} </p>
-                        <p> Ready in Minutes: {recipe.readyInMinutes} </p> */}
-                        {/* <p> Ingredients: {recipe} </p> */}
-                            {/* TODO: update to description or some such? */}
-                            {/* <p className="card-text recipe-text">Ingredients needed: </p> */}
-                            {/* <h5> Summary: </h5>
-                            <p> {recipeInfo && recipeInfo.summary || ""} </p> */}
-                            <h5> Ingredients needed: </h5>
-                            <p className="card-text">
-                                {ingredients.map((ingredient: any, index: any) => (
-                                    <span key={index}> {ingredient.name} - </span>
-                                ))}
-                            </p>
-                            {/* <p>{recipe?.summary}</p> */}
-                            <h5> Recipe Fans: </h5>
-                            <p className="card-text">
-                                {ingredients.map((ingredient: any, index: any) => (
-                                    <span key={index}> {ingredient.name} - </span>
-                                ))}
-                            </p>
-                            <button className="btn btn-light p card-link" >
-                                <Link to={`/Search`} className="button-link">Return</Link>
-                            </button>
-                            <button className="btn btn-light p card-link" >
-                                <Link to={recipeInfo && recipeInfo.sourceUrl || ""} className="button-link">Source</Link>
-                            </button>
-                            <button className="btn btn-light p card-link" >
-                                <Link to={recipe.sourceUrl} className="button-link">+ Favorite</Link>
-                            </button>
-                        </div>
+            {recipeInfo && (
+                <div className="d-flex flex-column align-items-center justify-content-center">
+                    <div className="card mb-100">
+                        <img src={recipe.image} className="card-img-top" alt="current recipe image"/>
+                            <div className="card-body">
+                                <h5 className="card-title recipe-text">Title: {recipe.title} </h5>
+                            {/* <p> Servings: {recipe.servings} </p>
+                            <p> Ready in Minutes: {recipe.readyInMinutes} </p> */}
+                            {/* <p> Ingredients: {recipe} </p> */}
+                                {/* TODO: update to description or some such? */}
+                                {/* <p className="card-text recipe-text">Ingredients needed: </p> */}
+                                {/* <h5> Summary: </h5>
+                                <p> {recipeInfo && recipeInfo.summary || ""} </p> */}
+                                <h5> Ingredients needed: </h5>
+                                <p className="card-text">
+                                    {/* {ingredients.map((ingredient: any, index: any) => (
+                                        <span key={index}> {ingredient.name} - </span>
+                                    ))} */}
+                                    {recipeInfo.extendedIngredients.map((ingredient: any, index: any) => (
+                                        <span key={index}> {ingredient.name} - </span>
+                                    ))}
+                                </p>
+                                {/* <p>{recipe?.summary}</p> */}
+                                <h5> Recipe Fans: </h5>
+                                <p className="card-text">
+                                    placeholder..
+                                    {/* {ingredients.map((ingredient: any, index: any) => (
+                                        <span key={index}> {ingredient.name} - </span>
+                                    ))} */}
+                                </p>
+                                <button className="btn btn-light p card-link" >
+                                    <Link to={`/Search`} className="button-link">Return</Link>
+                                </button>
+                                <button className="btn btn-light p card-link" >
+                                    <Link to={recipeInfo.sourceUrl || ""} className="button-link">Source</Link>
+                                </button>
+                                <button className="btn btn-light p card-link" >
+                                    <Link to={recipe.sourceUrl} className="button-link">+ Favorite</Link>
+                                </button>
+                            </div>
+                    </div>
                 </div>
-            </div>
+            )}
         </>
     );
 };
