@@ -11,7 +11,7 @@ import Profile from './Users/Profile';
 import EditProfile from './Users/Profile/Edit';
 import Search from './Search';
 import Menu from './Menu';
-import AdminTools from './Admin';
+import AllTables from './Admin';
 import { useEffect, useState } from 'react';
 import * as client from "./Users/client";
 import Details from './Search/Details';
@@ -52,8 +52,8 @@ function App() {
           <Route path="/Profile/:id" element={<Profile/>} />
           <Route path="/Login-~-Signup/*" element={<Login onSignIn={handleLogin}/>} />
           <Route path="/Login-~-Signup/Register" element={<Register onSignIn={handleLogin}/>} />
-          <Route path="/Menu/*" element={<Menu/>} />
-          <Route path="/Admin-Tools/*" element={<AdminTools userType={userType}/>} />
+          <Route path="/Menu/*" element={<Menu userType={userType}/>} />
+          <Route path="/Admin-Tools/*" element={<AllTables userType={userType}/>} />
           <Route path="/All-Profiles" element={<Profiles userType={userType}/>} />
           <Route path="/Search" element={<Search/>} />
           <Route path="/Search/Details/:rid" element={<Details/>} />

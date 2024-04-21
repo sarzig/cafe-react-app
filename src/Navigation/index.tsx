@@ -1,17 +1,12 @@
 // Navigation.js
 import { Link, useLocation } from "react-router-dom";
-import store, { WebsiteState } from "../store";
-import { Provider, useSelector } from "react-redux";
-import { useState, useEffect } from "react";
+import store from "../store";
+import { Provider } from "react-redux";
+import { useState } from "react";
 import { FaBars } from 'react-icons/fa';
 import "./index.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import MobilePopupMenu from "./MobilePopupMenu";
-import axios from "axios";
-import children from "../Users/CurrentUser";
-import * as db from "../Database"
-import { User } from "../Users/client";
-import * as client from "../Users/client";
 
 export default function Navigation({userType}: any,) {
     const links = [
