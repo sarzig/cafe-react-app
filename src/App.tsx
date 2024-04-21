@@ -10,7 +10,7 @@ import Profiles from './Profile/Profiles';
 import Profile from './Users/Profile';
 import EditProfile from './Users/Profile/Edit';
 import Menu from './Menu';
-import AllTables from './Admin/AllTables';
+import AllTables from './Admin';
 import { useEffect, useState } from 'react';
 import * as client from "./Users/client";
 
