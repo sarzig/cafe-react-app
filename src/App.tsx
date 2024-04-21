@@ -17,14 +17,18 @@ import * as client from "./Users/client";
 import Details from './Search/Details';
 
 function App() {
+  console.log("USERS_API", process.env.REACT_APP_USERS_API);
   const [userType, setUserType] = useState("guest");
+  const [user, setUser] = useState(null);
 
   const fetchProfile = async () => {
     try {
         const account = await client.profile();
         setUserType(account.role);
+        setUser(account);
     } catch {
         setUserType("guest");
+        setUser(null);
     }
   }
     const handleLogin = () => {
@@ -44,7 +48,7 @@ function App() {
       <Navigation userType={userType} />
         <Routes>
           <Route path="/" element={<Navigate to="/Home" />} />
-          <Route path="/Home" element={<Home />} />
+          <Route path="/Home" element={<Home user={user}/>} />
           <Route path="/Profile" element={<Profile onSignOut={handleSignOut}/>} />
           <Route path="/Profile/Edit" element={<EditProfile/>} />
           <Route path="/Profile/:id/Edit" element={<EditProfile/>} />
