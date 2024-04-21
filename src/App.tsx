@@ -50,7 +50,7 @@ function App() {
           <Route path="/Profile/:id" element={<Profile/>} />
           <Route path="/Login-~-Signup/*" element={<Login onSignIn={handleLogin}/>} />
           <Route path="/Login-~-Signup/Register" element={<Register onSignIn={handleLogin}/>} />
-          <Route path="/Menu/*" element={<Menu/>} />
+          <Route path="/Menu/*" element={<Menu userType={userType}/>} />
           <Route path="/Admin-Tools/*" element={<AllTables userType={userType}/>} />
           <Route path="/All-Profiles" element={<Profiles userType={userType}/>} />
         </Routes>

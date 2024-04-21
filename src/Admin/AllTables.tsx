@@ -90,7 +90,7 @@ const AllTables = ({ userType }: { userType: string }) => {
         }
     };
 
-    const handleDeleteRecipeForSingleUser = (recipeName: string, email: string): void => {
+    const handleDeleteRecipeForSingleUserOriginal = (recipeName: string, email: string): void => {
         // xxx todo this is not working
         console.log("email", email);
 
@@ -116,8 +116,64 @@ const AllTables = ({ userType }: { userType: string }) => {
 
     };
 
+    const handleDeleteRecipeForSingleUser = async (recipeName: string, email: string): Promise<void> => {
+        try {
+            // Find the target user based on the provided email
+            const targetUser = users.find((user) => user.email === email);
 
-    const handleDeleteRecipeForAllUsers = (recipeName: string): void => {
+            if (targetUser) {
+                // Filter out the recipe from the target user's favorite recipes
+                const updatedFavoriteRecipes = (targetUser.favorite_recipes || []).filter((recipe) => recipe !== recipeName);
+
+                // Update the target user with the new favorite recipes
+                const updatedUser = { ...targetUser, favorite_recipes: updatedFavoriteRecipes };
+
+                // Update the users state with the modified user
+                const updatedUsers = users.map((user) => (user._id === updatedUser._id ? updatedUser : user));
+                await setUsers(updatedUsers);
+
+                // Perform additional operations here, such as updating the user in the backend
+                await client.updateUser(updatedUser);
+
+                console.log(`Recipe '${recipeName}' removed from user '${email}' successfully.`);
+            } else {
+                console.log(`User with email '${email}' not found.`);
+            }
+        } catch (err) {
+            console.log("Error deleting recipe for single user:", err);
+        }
+    };
+
+
+    const handleDeleteRecipeForAllUsers = async (recipeName: string): Promise<void> => {
+        console.log("in HandleDeleteRecipeForAllUsers");
+        try {
+            const updatedUsers = users.map((user) => {
+                if (Array.isArray(user.favorite_recipes) && user.favorite_recipes.includes(recipeName)) {
+                    const newFavoriteRecipes = user.favorite_recipes.filter((recipe) => recipe !== recipeName);
+                    return { ...user, favorite_recipes: newFavoriteRecipes };
+                }
+                return user;
+            });
+
+            // Update the state after mapping through all users
+            await setUsers(updatedUsers);
+
+            // Now you can perform additional operations after the state update
+            console.log("Users after deleting recipe:", updatedUsers);
+
+            // Example: Perform an API update for each user
+            for (const user of updatedUsers) {
+                await client.updateUser(user);
+            }
+
+            console.log("All users updated after deleting recipe.");
+        } catch (err) {
+            console.log("Error deleting recipe for all users:", err);
+        }
+    };
+
+    const handleDeleteRecipeForAllUsersOriginal = (recipeName: string): void => {
         for (const user of users) {
             if (Array.isArray(user.favorite_recipes)) {
                 if (user.favorite_recipes.includes(recipeName)) {
@@ -336,11 +392,11 @@ const AllTables = ({ userType }: { userType: string }) => {
                             </td>
 
                             <td>
-                                <button className="btn btn-info" title="Go to recipe link">
-                                    <a href={recipe}>
+                                <a href={recipe}>
+                                    <button className="btn btn-info" title="Go to recipe link">
                                         <MdInsertLink />
-                                    </a>
-                                </button>
+                                    </button>
+                                </a>
                             </td>
                             <td>
                                 <button
