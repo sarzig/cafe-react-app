@@ -14,10 +14,7 @@ import * as db from "../Database"
 import { User } from "../Users/client";
 import * as client from "../Users/client";
 
-export default function Navigation({userType}: any, ) {
-    const history = createBrowserHistory();
-    const pathName = useLocation();
-
+export default function Navigation({userType}: any,) {
     const links = [
         { label: "Menu", userTypes: ["admin", "customer", "owner", "guest"] },
         { label: "Admin-Tools", userTypes: ["admin"] },
