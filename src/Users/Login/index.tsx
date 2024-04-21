@@ -51,7 +51,7 @@ export default function Login({onSignIn}: any) {
         }
     }
     return (
-        <div className="mt-5 pt-5">
+        <div className="container mt-5 pt-5">
             <div className="form-control">
             <h3>Login</h3>
             <div className="mb-2">

@@ -8,12 +8,9 @@ export default function Menu() {
                 <div className="col">
                     <h2>Menu</h2>
                     <ul>
-                        <li>
-                            <a href="/details">Coffee</a>
-                        </li>
-                        <li>
-                            <a href="/details">Tea</a>
-                        </li>
+                        <li> <a href="/details">Coffee</a> </li>
+                        <li> <a href="/details">Tea</a> </li>
+                        <li> <a href="/details">Pastries</a> </li>
                     </ul>
                 </div>
                 <div className="col">

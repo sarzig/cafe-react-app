@@ -1,0 +1,82 @@
+[
+    {
+        "readyInMinutes": 35,
+        "sourceUrl": "http://cooking2perfection.blogspot.com/2012/11/easy-homemade-rice-and-beans.html",
+        "image": "easy-homemade-rice-and-beans-716627.jpg",
+        "servings": 2,
+        "id": 716627,
+        "title": "Easy Homemade Rice and Beans"
+    },
+    {
+        "readyInMinutes": 45,
+        "sourceUrl": "https://www.foodista.com/recipe/YX5XP75N/herbivoracious-white-bean-and-kale-soup",
+        "image": "Herbivoracious-White-Bean-and-Kale-Soup-646738.jpg",
+        "servings": 6,
+        "id": 646738,
+        "title": "Herbivoracious' White Bean and Kale Soup"
+    },
+    {
+        "readyInMinutes": 30,
+        "sourceUrl": "http://www.pinkwhen.com/cheesy-chicken-enchilada-quinoa-casserole/",
+        "image": "cheesy-chicken-enchilada-quinoa-casserole-715421.jpg",
+        "servings": 4,
+        "id": 715421,
+        "title": "Cheesy Chicken Enchilada Quinoa Casserole"
+    },
+    {
+        "readyInMinutes": 45,
+        "sourceUrl": "http://foodandspice.blogspot.com/2016/08/spicy-black-eyed-pea-curry-with-swiss.html",
+        "image": "spicy-black-eyed-pea-curry-with-swiss-chard-and-roasted-eggplant-798400.jpg",
+        "servings": 6,
+        "id": 798400,
+        "title": "Spicy Black-Eyed Pea Curry with Swiss Chard and Roasted Eggplant"
+    },
+    {
+        "readyInMinutes": 45,
+        "sourceUrl": "http://foodandspice.blogspot.com/2012/07/spicy-hummus-indian-style.html",
+        "image": "spicy-indian-style-hummus-716195.jpg",
+        "servings": 12,
+        "id": 716195,
+        "title": "Spicy Indian-Style Hummus"
+    },
+    {
+        "readyInMinutes": 45,
+        "sourceUrl": "https://www.foodista.com/recipe/6K5LNQ7F/skinny-kale-basil-pesto",
+        "image": "Skinny-Kale-Basil-Pesto-660228.jpg",
+        "servings": 3,
+        "id": 660228,
+        "title": "Skinny Kale Basil Pesto"
+    },
+    {
+        "readyInMinutes": 45,
+        "sourceUrl": "https://www.foodista.com/recipe/7TTSVX56/salmon-with-roasted-vegetables",
+        "image": "Salmon-with-roasted-vegetables-659135.jpg",
+        "servings": 2,
+        "id": 659135,
+        "title": "Salmon with roasted vegetables"
+    },
+    {
+        "readyInMinutes": 45,
+        "sourceUrl": "https://www.foodista.com/recipe/FKQCYKYR/curried-butternut-squash-and-apple-soup",
+        "image": "Curried-Butternut-Squash-and-Apple-Soup-641057.jpg",
+        "servings": 1,
+        "id": 641057,
+        "title": "Curried Butternut Squash and Apple Soup"
+    },
+    {
+        "readyInMinutes": 45,
+        "sourceUrl": "https://www.foodista.com/recipe/SJS46FPS/penne-pasta-with-broccoli-and-cheese",
+        "image": "Penne-Pasta-with-Broccoli-and-Cheese-655575.jpg",
+        "servings": 4,
+        "id": 655575,
+        "title": "Penne Pasta with Broccoli and Cheese"
+    },
+    {
+        "readyInMinutes": 25,
+        "sourceUrl": "http://www.foodista.com/recipe/MB7NYM87/carrot-and-cabbage-salad-with-coriandercumin-dry-rub",
+        "image": "Carrot-and-Cabbage-Salad-With-Coriander+cumin-Dry-Rub-637162.jpg",
+        "servings": 1,
+        "id": 637162,
+        "title": "Carrot and Cabbage Salad With Coriander+cumin Dry Rub"
+    }
+]

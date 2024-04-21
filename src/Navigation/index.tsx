@@ -16,6 +16,7 @@ import * as client from "../Users/client";
 export default function Navigation({userType}: any,) {
     const links = [
         { label: "Menu", userTypes: ["admin", "customer", "owner", "guest"] },
+        { label: "Search", userTypes: ["admin", "customer", "owner", "guest"] },
         { label: "Admin-Tools", userTypes: ["admin"] },
 
         { label: "Profile", userTypes: ["admin", "customer", "owner"] },
