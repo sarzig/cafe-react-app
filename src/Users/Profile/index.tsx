@@ -26,7 +26,7 @@ export default function Profile({ onSignOut }: any) {
             <h3>Profile</h3>
             <div className="col" style={{width: 50}}>
                 <span>
-                    <img src={`/images/profiles_pages/${profile.image}`} alt="Profile photo." className="rounded-circle shadow-4-strong"/>
+                    <img src={`/images/profiles_pages/${profile.image}`} alt="sleek headshot" className="rounded-circle shadow-4-strong"/>
                 </span>
             <div>
                 <br />

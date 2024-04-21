@@ -80,38 +80,12 @@ const AllTables = ({ userType }: { userType: string }) => {
 
             // Update user object with parsed favorite_cafe_days
             //const updatedUser = { ...user, favorite_cafe_days: parsedCafeDays, interests: parsedInterests };
-            const status = await client.updateUser(user);
+            await client.updateUser(user);
             setUsers(users.map((u) =>
                 (u._id === user._id ? user : u)));
         } catch (err) {
             console.log(err);
         }
-    };
-
-    const handleDeleteRecipeForSingleUserOriginal = (recipeName: string, email: string): void => {
-        // xxx todo this is not working
-        console.log("email", email);
-
-
-        const targetUser = users.find((user) => user.email === email);
-        if (targetUser) {
-            selectUser(targetUser);
-        }
-        const updatedFavoriteRecipes = targetUser?.favorite_recipes?.filter((recipe) => recipe !== recipeName);
-        console.log("updatedFavoriteRecipes", updatedFavoriteRecipes);
-        console.log("targetUser", targetUser);
-        console.log("email", email);
-        console.log("user", user);
-        setUser({
-            ...user,
-            hometown: "h",
-        });
-
-        updateUser();
-
-        console.log("user", user);
-
-
     };
 
     const handleDeleteRecipeForSingleUser = async (recipeName: string, email: string): Promise<void> => {
@@ -142,7 +116,6 @@ const AllTables = ({ userType }: { userType: string }) => {
         }
     };
 
-
     const handleDeleteRecipeForAllUsers = async (recipeName: string): Promise<void> => {
         console.log("in HandleDeleteRecipeForAllUsers");
         try {
@@ -171,23 +144,62 @@ const AllTables = ({ userType }: { userType: string }) => {
         }
     };
 
-    const handleDeleteRecipeForAllUsersOriginal = (recipeName: string): void => {
-        for (const user of users) {
-            if (Array.isArray(user.favorite_recipes)) {
-                if (user.favorite_recipes.includes(recipeName)) {
-                    console.log(`User: ${user.full_name}`);
-                    console.log("Favorite Recipes:", user.favorite_recipes);
-                    const newFavoriteRecipes = user.favorite_recipes.filter((recipe) => recipe !== recipeName);
-                    selectUser(user);
-                    setUser({ ...user, favorite_recipes: newFavoriteRecipes });
-
-                    console.log("user, should have recipe deleted", user);
-                    console.log("newFavoriteRecipes", newFavoriteRecipes);
-                    updateUser();
-                }
+    const handleDeleteDrinkForSingleUser = async (drinkName: string, email: string): Promise<void> => {
+        try {
+            // Find the target user based on the provided email
+            const targetUser = users.find((user) => user.email === email);
+    
+            if (targetUser) {
+                // Filter out the drink from the target user's favorite drinks
+                const updatedFavoriteDrinks = (targetUser.favorite_drinks || []).filter((drink) => drink !== drinkName);
+    
+                // Update the target user with the new favorite drinks
+                const updatedUser = { ...targetUser, favorite_drinks: updatedFavoriteDrinks };
+    
+                // Update the users state with the modified user
+                const updatedUsers = users.map((user) => (user._id === updatedUser._id ? updatedUser : user));
+                setUsers(updatedUsers);
+    
+                // Perform additional operations here, such as updating the user in the backend
+                await client.updateUser(updatedUser);
+    
+                console.log(`Drink '${drinkName}' removed from user '${email}' successfully.`);
+            } else {
+                console.log(`User with email '${email}' not found.`);
             }
+        } catch (err) {
+            console.log("Error deleting drink for single user:", err);
         }
-    }
+    };
+    
+    const handleDeleteDrinkForAllUsers = async (drinkName: string): Promise<void> => {
+        console.log("in HandleDeleteDrinkForAllUsers");
+        try {
+            const updatedUsers = users.map((user) => {
+                if (Array.isArray(user.favorite_drinks) && user.favorite_drinks.includes(drinkName)) {
+                    const newFavoriteDrinks = user.favorite_drinks.filter((drink) => drink !== drinkName);
+                    return { ...user, favorite_drinks: newFavoriteDrinks };
+                }
+                return user;
+            });
+    
+            // Update the state after mapping through all users
+            setUsers(updatedUsers);
+    
+            // Now you can perform additional operations after the state update
+            console.log("Users after deleting drink:", updatedUsers);
+    
+            // Example: Perform an API update for each user
+            for (const user of updatedUsers) {
+                await client.updateUser(user);
+            }
+    
+            console.log("All users updated after deleting drink.");
+        } catch (err) {
+            console.log("Error deleting drink for all users:", err);
+        }
+    };
+
 
     useEffect(() => { fetchUsers(); }, []);
 
@@ -480,7 +492,9 @@ const AllTables = ({ userType }: { userType: string }) => {
 
                             <td>
                                 <button className="btn btn-danger" title="Remove drink from ALL users' likes"
-                                >
+                                onClick={() =>
+                                    handleDeleteDrinkForAllUsers(drink)
+                                }>
                                     <BsTrash3Fill />
                                 </button>
                             </td>
@@ -495,7 +509,9 @@ const AllTables = ({ userType }: { userType: string }) => {
                                                 className="btn btn-danger"
                                                 //onClick={() => removeLiker(drink, liker)}  // xxx todo update
                                                 title="Remove drink from SINGLE user's likes"
-                                            >
+                                                onClick={() =>
+                                                    handleDeleteDrinkForSingleUser(drink, liker)
+                                                }>
                                                 <BsTrash3Fill />
                                             </button>
                                         </div>

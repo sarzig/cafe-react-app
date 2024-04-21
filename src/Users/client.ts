@@ -16,10 +16,10 @@ export interface User {
   password: string,
   hometown: string,
   bio: string,
-  interests: [],
-  favorite_cafe_days: [],
-  favorite_drinks: [],
-  favorite_menu_items: [],
+  interests: string[],
+  favorite_cafe_days: string[],
+  favorite_drinks: string[],
+  favorite_menu_items: string[],
   favorite_recipes: string[],
   role: string
 };

@@ -53,12 +53,6 @@ export default function Login({ onSignIn }: any) {
         }
     }
 
-    const handleKeyUp = (event: React.KeyboardEvent<HTMLInputElement>) => {
-        if (event.key === "Enter") {
-            // Trigger login when Enter key is pressed
-            signin();
-        }
-    };
     return (
         <div className="mt-5 pt-5">
             <div className="form-control">
