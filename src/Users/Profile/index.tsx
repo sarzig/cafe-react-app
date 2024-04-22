@@ -70,7 +70,7 @@ export default function Profile({ onSignOut }: any) {
                     <div className="row">
                         <div className="col">Favorite recipes:</div>
                         <div className="col">{profile.favorite_recipes.map((recipe) => 
-                            <a href={`${recipe}`}>{recipe} <br /></a>
+                            <a key={recipe} href={`${recipe}`}>{recipe} <br /></a>
                         )}</div>
                     </div>
                     </div>
