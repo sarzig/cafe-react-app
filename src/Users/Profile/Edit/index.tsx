@@ -2,10 +2,10 @@ import { useSelector, useDispatch } from "react-redux";
 import { setAccount, updateAccount } from "../reducer";
 import React, { useEffect, useState } from "react";
 import { WebsiteState } from "../../../store";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { User } from "../../client";
 import * as client from "../../client";
-import { FaTimes, FaXRay } from "react-icons/fa";
+import { FaLock, FaTimes, FaXRay } from "react-icons/fa";
 
 export default function EditProfile() {
     const { userId } = useParams();
@@ -18,20 +18,34 @@ export default function EditProfile() {
     favorite_drinks: [], favorite_menu_items: [], favorite_recipes: [], role: "guest"});
     const fetchProfile = async () => {
         if (userId) {
-            const account = await client.findUserById(userId);
-            setProfile(account);
-            setReserveUser(account);
+            try {
+                const account = await client.findUserById(userId);
+                setProfile(account);
+                const current = await client.profile();
+                setReserveUser(current);
+            } catch {
+                
+            }
         } else {
-            const account = await client.profile();
-            setProfile(account);
-            setReserveUser(account);
+            try {
+                const account = await client.profile();
+                setProfile(account);
+                setReserveUser(account);
+            } catch {
+
+            }
         }
     }
     const handleSave = async () => {
         await client.signout();
         await client.updateUser(profile);
         await client.signin(reserveUser);
-        navigate(`/Profile`);
+        if (userId) {
+            navigate(`/All-Profiles`);
+        } else {
+            navigate(`/Profile`);
+        }
+        
     };
     const showPassword = () => {
         var x = document.getElementById("password_box") as HTMLInputElement;
@@ -105,12 +119,28 @@ export default function EditProfile() {
         fetchProfile();
       }, []);
     return (
+        <div>
+        {(reserveUser.role !== "admin" && (userId || reserveUser._id !== profile._id)) &&
+        <div className="text-center">
+            <h1>Access Denied</h1>
+            <h1><FaLock /></h1>
+            <br />
+            You do not have permission to view this resource. 
+            { reserveUser.role === "guest" &&
+            <div>
+                <Link to="/Login-~-Signup">Login</Link> here.
+            </div>
+            }
+            
+        </div>
+        }
+        {(reserveUser.role === "admin" || (!userId && reserveUser._id === profile._id)) && 
         <div className="flex-container form-control mx-2">
             <h3>Profile</h3>
             <div className="row">
                 <div className="col-sm text-center">
                 <span>
-                    <img src={`/images/profiles_pages/${profile.image}`} className="rounded-circle shadow-4-strong"/>
+                    <img src={`/images/profiles_pages/${profile.image}`} className="rounded-circle shadow-4-strong img-fluid"/>
                 </span>
                 </div>
                 <div className="col-md-8">
@@ -177,6 +207,7 @@ export default function EditProfile() {
                 </span>
                 <br /><br />
             </div>
+        </div>}
         </div>
     );
 };
