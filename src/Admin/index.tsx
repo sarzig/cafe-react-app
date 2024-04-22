@@ -206,7 +206,6 @@ const AllTables = ({ userType }: { userType: string }) => {
     const userTable =
         <div>
             <h3 style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                User Table
                 <select
                     onChange={(e) => fetchUsersByRole(e.target.value)}
                     value={filterRole}
@@ -229,10 +228,10 @@ const AllTables = ({ userType }: { userType: string }) => {
                         <th className="col-2">Hometown</th>
                         <th className="col-2">Visit Days</th>
                         <th className="col-2">Interests</th>
-                        <th className="col-2">Role</th>
-                        <th className="col-1">Delete</th>
-                        <th className="col-1">Modify</th>
-                        <th className="col-1">Link</th>
+                        <th className="width-120">Role</th>
+                        <th className="width-70">Delete</th>
+                        <th className="width-70">Modify</th>
+                        <th className="width-70">Link</th>
                     </tr>
                     <tr>
                         <td className="text-nowrap">
@@ -304,6 +303,8 @@ const AllTables = ({ userType }: { userType: string }) => {
                                 className="me-2 text-success fs-1 text"
                                 title="Add NEW user with these attributes"
                             />
+                        </td>
+                        <td>
                         </td>
                     </tr>
                 </thead>
@@ -383,14 +384,13 @@ const AllTables = ({ userType }: { userType: string }) => {
 
     const likedRecipeTable =
         <div>
-            <h2>Liked Recipe Table</h2>
             <table className="table table-bordered">
                 <thead>
                     <tr>
-                        <th>Recipe</th>
-                        <th>Link</th>
-                        <th>Delete Recipe</th>
-                        <th>Likers of Recipe</th>
+                        <th className="col-5">Recipe</th>
+                        <th className="width-70">Link</th>
+                        <th className="width-70">Delete Recipe</th>
+                        <th className="col-5">Likers of Recipe</th>
 
                     </tr>
                 </thead>
@@ -474,13 +474,12 @@ const AllTables = ({ userType }: { userType: string }) => {
 
     const likedDrinkTable =
         <div>
-            <h2>Liked Drink Table</h2>
             <table className="table table-bordered">
                 <thead>
                     <tr>
-                        <th>Drink</th>
-                        <th>Delete Drink</th>
-                        <th>Likers of Drink</th>
+                        <th className="col-6">Drink</th>
+                        <th className="col-1 width-70">Delete Drink</th>
+                        <th className="col-6">Likers of Drink</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -522,12 +521,12 @@ const AllTables = ({ userType }: { userType: string }) => {
                     ))}
                 </tbody>
             </table>
+
+
         </div>
 
     const adminText =
         <div>
-            <h1>Admin Tools</h1>
-
             <div className="admin-section">
                 <CollapsibleSection title="User Table">
                     {userTable}
@@ -549,19 +548,16 @@ const AllTables = ({ userType }: { userType: string }) => {
 
     const ownerText =
         <div>
-            <h1>Admin Tools</h1>
             <h1>You are logged in as an Owner, not an Admin. Go to Login link to fix.</h1>
         </div>
 
     const customerText =
         <div>
-            <h1>Admin Tools</h1>
             <h1>You are logged in as a Customer, not an Admin. Go to Login link to fix.</h1>
         </div>
 
     const guestText =
         <div>
-            <h1>Admin Tools</h1>
             <h1>You are not logged in. Go to Login link to fix.</h1>
         </div>
 
@@ -586,6 +582,8 @@ const AllTables = ({ userType }: { userType: string }) => {
 
     return (
         <div className="container-fluid px-5">
+            <h1>Admin Tools</h1>
+
             {displayText}
         </div>
     );

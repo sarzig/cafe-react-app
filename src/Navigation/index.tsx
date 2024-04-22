@@ -22,13 +22,12 @@ export default function Navigation({ userType }: any,) {
         { label: "drop-down", userTypes: ["admin", "customer", "owner", "guest"] },
         { label: "Profile", userTypes: ["admin", "customer", "owner"] },
         { label: "Login", userTypes: ["guest"] },
-        { label: "Sign Out", userTypes: ["admin", "customer", "owner"] }
     ];
 
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
     const toggleDropdown = () => {
-        setIsDropdownOpen(!isDropdownOpen);
+        //setIsDropdownOpen(!isDropdownOpen);
     };
 
     const { pathname } = useLocation();
@@ -38,7 +37,7 @@ export default function Navigation({ userType }: any,) {
             <h2>
                 <Link to="/" className="cafe-name-text">Sakivi Bakery & Cafe</Link>
             </h2>
-            <div className="row">
+            <div className="row custom-nav-row">
                 <div className="col d-none d-sm-block">
                     <ul className="menu-list">
                         {links.map((link, index) => (

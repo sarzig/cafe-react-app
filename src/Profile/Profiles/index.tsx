@@ -126,17 +126,15 @@ const Profiles = ({ userType }: { userType: string }) => {
                     <div className="popup">
                         <div className="row">
                             <p>
-                                Are you sure you want to delete this user?<br />This action cannot be undone.
+                                Are you sure you want to delete user "{user?.full_name}"?<br /><br />This action cannot be undone.
                             </p>
                         </div>
                         <div className="button-container">
-                            <div className="row">
+                            <div className="row justify-content-center">
                                 <div className="col button-col">
                                     <button className="delete-button classy-button popup-button" onClick={handleConfirmDelete}>
                                         Confirm Delete
                                     </button>
-                                </div>
-                                <div className="col button-col">
                                     <button className="classy-button popup-button" onClick={handleCancelDelete}>
                                         No
                                     </button>

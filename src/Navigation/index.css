@@ -36,8 +36,14 @@ ul {
     border-bottom: 1px solid black; /* Add bottom border */
 }
 
+.custom-nav-row {
+    width: 100%;
+    padding-right: 0;
+}
+
 .menu-list {
     padding-left: 0;
+    
 }
 
 /* note- change this to add borders in between elements. Have to figure out IF we want borders

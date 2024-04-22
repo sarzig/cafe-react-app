@@ -43,7 +43,8 @@ html {
 }
 
 .app-container {
-  margin: 10px;
+  margin: 20px;
+  margin-top: 12px;
 }
 
 /* BUTTONS */
@@ -90,7 +91,7 @@ html {
   border: 1px solid #0e0d0d;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
   z-index: 1000;
-  height: 200px;
+  height: 270px;
   width: 400px;
   display: flex;
   flex-direction: column;
@@ -99,13 +100,6 @@ html {
   /* Center-align items horizontally */
 }
 
-/* Media query for small screens */
-@media (max-width: 768px) {
-  .popup {
-    height: 50%;
-    width: 80%;
-  }
-}
 
 .button-col {
   display: flex;
@@ -119,7 +113,7 @@ html {
 }
 
 .popup-button {
-  width: 120px;
+  width: 150px;
   height: 40px;
   float: left;
 }
