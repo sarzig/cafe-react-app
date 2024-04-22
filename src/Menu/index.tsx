@@ -9,7 +9,7 @@ const Menu = () => {
     const renderMenuWithLink = (imageUrl: string, altText: string) => {
         return (
             <div>
-                <div className="text-center d-md-none bold">
+                <div className="text-center d-lg-none bold">
                     ~ Click menu to view in new tab ~
                 </div>
                 <a href={imageUrl} target="_blank" rel="noopener noreferrer">

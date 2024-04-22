@@ -68,14 +68,23 @@ function Register({ onSignIn }: any) {
                         <h6>Name:</h6>
                         <input type="text" className="form-control" placeholder="John Smith" onChange={(e) => setCredentials({ ...credentials, full_name: e.target.value })} />
                     </div>
+
+                    <br />
+
                     <div className="form-group mb-1">
                         <h6>Email address</h6>
                         <input type="text" className="form-control" placeholder="email@domain.com" onChange={(e) => setCredentials({ ...credentials, email: e.target.value })} />
                     </div>
+
+                    <br />
+                    
                     <div className="form-group mb-1">
                         <h6>Password</h6>
                         <input type="text" className="form-control" placeholder="Password" onChange={(e) => setThisPassword(e.target.value)} />
                     </div>
+
+                    <br />
+                    
                     <div className="form-group mb-5">
                         <h6>Re-type Password</h6>
                         <input type="text" className="form-control" placeholder="Password" onChange={(e) => setPasswordCheck(e.target.value)} />

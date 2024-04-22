@@ -146,19 +146,19 @@ export default function Search() {
             {/* SARAH ADDED THIS Hero image visible only on large screens (lg and up) */}
             <div className="d-none d-lg-block">
                 <div className="text-center">
-                    note - this hero is super blurry but maybe you can kind of get what i'm going for - some generic pic of food. I added this to cohere with menu and because prior to searching the page is very empty.
+
+                    <p> Recipes @ Sakivi: Search, Like, Share, Repeat. Find a new favorite recipe and "Like" to keep for later.</p>
+
                     {/* Use a wrapper div to control width */}
                     <div style={{ maxWidth: "100%" }}>
-                        <img src={`/images/recipes/recipe_hero.jpg`} alt="A lucious capuccino with a foam heart sits on a dark blue background with scattered candied fruit." style={{ width: "100%" }} />
+                        <img src={`/images/recipes/recipe_hero_no_text.jpg`} alt="A lucious capuccino with a foam heart sits on a dark blue background with scattered candied fruit." style={{ width: "100%" }} />
                     </div>
                 </div>
             </div>
             <div className="d-flex flex-column align-items-center justify-content-center">
 
                 {/* Search bar and stuff  */}
-                <div className="d-flex flex-row">
-                    <h3>Search Recipes</h3>
-                </div>
+
                 <div className="d-flex flex-row" id="search-bar">
                     <form className="form-outline my-2 my-lg-6">
                         <input
