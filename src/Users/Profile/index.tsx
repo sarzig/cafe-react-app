@@ -23,20 +23,21 @@ export default function Profile({ onSignOut }: any) {
     return (
         <div className="mt-2 pt-3 form-control">
             <table className="row">
+            <div className="col-md-1"></div>
+            <div className="col-md-2 text-center">
             <h3>Profile</h3>
-            <div className="col" style={{width: 50}}>
                 <span>
                     <img src={`/images/profiles_pages/${profile.image}`} alt="sleek headshot" className="rounded-circle shadow-4-strong"/>
                 </span>
             <div>
                 <br />
-                <a className="btn btn-light" href="#/Profile/Edit">Edit Profile</a> &nbsp;
-                <button className="btn btn-light" onClick={signout}>Sign Out</button>
+                <a className="btn btn-light w-100" href="#/Profile/Edit">Edit Profile</a>
+                <button className="btn btn-light w-100 mt-2" onClick={signout}>Sign Out</button>
+                <br /><br />
             </div>
-                
-                
             </div>
-            <div className="col-9">
+            <div className="col-1"></div>
+            <div className="col-8">
                 <span className="px-5 fs-3">
                     {profile.full_name}
                     <br />

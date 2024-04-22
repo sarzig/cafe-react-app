@@ -82,10 +82,10 @@ export default function EditProfile() {
         fetchProfile();
       }, []);
     return (
-        <div className="flex-container form-control">
+        <div className="flex-container form-control mx-2">
             <h3>Profile</h3>
             <div className="row">
-                <div className="col-sm">
+                <div className="col-sm text-center">
                 <span>
                     <img src={`/images/profiles_pages/${profile.image}`} className="rounded-circle shadow-4-strong"/>
                 </span>
