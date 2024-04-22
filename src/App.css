@@ -30,14 +30,8 @@ html {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
 .bold {
   font-weight: bold;
-
 }
 
 .App-header {
@@ -53,16 +47,6 @@ html {
 
 .App-link {
   color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg);
-  }
 }
 
 .app-container {
