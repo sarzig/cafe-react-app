@@ -4,6 +4,7 @@ import coffeeBackgroundImage from '../images/coffee_beans.jpg';
 import cortadoBackgroundImage from '../images/cortado-xs.jpg';
 import { User } from '../Users/client';
 import { getFirstName } from './getFirstName'; // Import the getFirstName function
+import { Link } from 'react-router-dom';
 
 const Home: React.FC<{ user?: User | null }> = ({ user }) => {
 
@@ -23,7 +24,7 @@ const Home: React.FC<{ user?: User | null }> = ({ user }) => {
                 <div className="col-md-5 p-lg-5 mx-auto my-5">
                     <h1 className="display-4 font-weight-normal">{greeting}</h1>
                     <p className="lead font-weight-normal">The community cafe that serves drinks and vibes.</p>
-                    <a className="btn btn-outline-secondary" href="/Menu">Menu</a>
+                    <Link className="btn btn-outline-secondary" to="/Menu">Menu</Link>
                 </div>
                 <div className="product-device box-shadow d-none d-md-block"></div>
                 <div className="product-device product-device-2 box-shadow d-none d-md-block"></div>

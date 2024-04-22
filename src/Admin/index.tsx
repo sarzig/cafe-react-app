@@ -148,21 +148,21 @@ const AllTables = ({ userType }: { userType: string }) => {
         try {
             // Find the target user based on the provided email
             const targetUser = users.find((user) => user.email === email);
-    
+
             if (targetUser) {
                 // Filter out the drink from the target user's favorite drinks
                 const updatedFavoriteDrinks = (targetUser.favorite_drinks || []).filter((drink) => drink !== drinkName);
-    
+
                 // Update the target user with the new favorite drinks
                 const updatedUser = { ...targetUser, favorite_drinks: updatedFavoriteDrinks };
-    
+
                 // Update the users state with the modified user
                 const updatedUsers = users.map((user) => (user._id === updatedUser._id ? updatedUser : user));
                 setUsers(updatedUsers);
-    
+
                 // Perform additional operations here, such as updating the user in the backend
                 await client.updateUser(updatedUser);
-    
+
                 console.log(`Drink '${drinkName}' removed from user '${email}' successfully.`);
             } else {
                 console.log(`User with email '${email}' not found.`);
@@ -171,7 +171,7 @@ const AllTables = ({ userType }: { userType: string }) => {
             console.log("Error deleting drink for single user:", err);
         }
     };
-    
+
     const handleDeleteDrinkForAllUsers = async (drinkName: string): Promise<void> => {
         console.log("in HandleDeleteDrinkForAllUsers");
         try {
@@ -182,18 +182,18 @@ const AllTables = ({ userType }: { userType: string }) => {
                 }
                 return user;
             });
-    
+
             // Update the state after mapping through all users
             setUsers(updatedUsers);
-    
+
             // Now you can perform additional operations after the state update
             console.log("Users after deleting drink:", updatedUsers);
-    
+
             // Example: Perform an API update for each user
             for (const user of updatedUsers) {
                 await client.updateUser(user);
             }
-    
+
             console.log("All users updated after deleting drink.");
         } catch (err) {
             console.log("Error deleting drink for all users:", err);
@@ -206,7 +206,6 @@ const AllTables = ({ userType }: { userType: string }) => {
     const userTable =
         <div>
             <h3 style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                User Table
                 <select
                     onChange={(e) => fetchUsersByRole(e.target.value)}
                     value={filterRole}
@@ -221,18 +220,18 @@ const AllTables = ({ userType }: { userType: string }) => {
                 </Link>
             </h3>
 
-            <table className="table">
-                <thead>
+            <table className="table table-bordered">
+                <thead className="thead-light">
                     <tr>
-                        <th>Username / Email</th>
-                        <th>Full Name</th>
-                        <th>Hometown</th>
-                        <th>Visit Days</th>
-                        <th>Interests</th>
-                        <th>Role</th>
-                        <th>Delete</th>
-                        <th>Modify</th>
-                        <th>Link</th>
+                        <th className="col-2">Username / Email</th>
+                        <th className="col-2">Full Name</th>
+                        <th className="col-2">Hometown</th>
+                        <th className="col-2">Visit Days</th>
+                        <th className="col-2">Interests</th>
+                        <th className="width-120">Role</th>
+                        <th className="width-70">Delete</th>
+                        <th className="width-70">Modify</th>
+                        <th className="width-70">Link</th>
                     </tr>
                     <tr>
                         <td className="text-nowrap">
@@ -304,6 +303,8 @@ const AllTables = ({ userType }: { userType: string }) => {
                                 className="me-2 text-success fs-1 text"
                                 title="Add NEW user with these attributes"
                             />
+                        </td>
+                        <td>
                         </td>
                     </tr>
                 </thead>
@@ -383,14 +384,13 @@ const AllTables = ({ userType }: { userType: string }) => {
 
     const likedRecipeTable =
         <div>
-            <h2>Liked Recipe Table</h2>
-            <table className="table">
+            <table className="table table-bordered">
                 <thead>
                     <tr>
-                        <th>Recipe</th>
-                        <th>Link</th>
-                        <th>Delete Recipe</th>
-                        <th>Likers of Recipe</th>
+                        <th className="col-5">Recipe</th>
+                        <th className="width-70">Link</th>
+                        <th className="width-70">Delete Recipe</th>
+                        <th className="col-5">Likers of Recipe</th>
 
                     </tr>
                 </thead>
@@ -474,13 +474,12 @@ const AllTables = ({ userType }: { userType: string }) => {
 
     const likedDrinkTable =
         <div>
-            <h2>Liked Drink Table</h2>
-            <table className="table">
+            <table className="table table-bordered">
                 <thead>
                     <tr>
-                        <th>Drink</th>
-                        <th>Delete Drink</th>
-                        <th>Likers of Drink</th>
+                        <th className="col-6">Drink</th>
+                        <th className="col-1 width-70">Delete Drink</th>
+                        <th className="col-6">Likers of Drink</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -492,9 +491,9 @@ const AllTables = ({ userType }: { userType: string }) => {
 
                             <td>
                                 <button className="btn btn-danger" title="Remove drink from ALL users' likes"
-                                onClick={() =>
-                                    handleDeleteDrinkForAllUsers(drink)
-                                }>
+                                    onClick={() =>
+                                        handleDeleteDrinkForAllUsers(drink)
+                                    }>
                                     <BsTrash3Fill />
                                 </button>
                             </td>
@@ -522,12 +521,12 @@ const AllTables = ({ userType }: { userType: string }) => {
                     ))}
                 </tbody>
             </table>
+
+
         </div>
 
     const adminText =
         <div>
-            <h1>Admin Tools</h1>
-
             <div className="admin-section">
                 <CollapsibleSection title="User Table">
                     {userTable}
@@ -549,19 +548,16 @@ const AllTables = ({ userType }: { userType: string }) => {
 
     const ownerText =
         <div>
-            <h1>Admin Tools</h1>
             <h1>You are logged in as an Owner, not an Admin. Go to Login link to fix.</h1>
         </div>
 
     const customerText =
         <div>
-            <h1>Admin Tools</h1>
             <h1>You are logged in as a Customer, not an Admin. Go to Login link to fix.</h1>
         </div>
 
     const guestText =
         <div>
-            <h1>Admin Tools</h1>
             <h1>You are not logged in. Go to Login link to fix.</h1>
         </div>
 
@@ -585,7 +581,13 @@ const AllTables = ({ userType }: { userType: string }) => {
     }
 
     return (
-        <div className="container">
+        <div className="container-fluid">
+            <div className="heading-div">
+                <h1>Admin Tools</h1>
+            </div>
+            <br/>
+
+
             {displayText}
         </div>
     );

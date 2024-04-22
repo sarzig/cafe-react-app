@@ -1,58 +1,80 @@
 .container {
-    margin: 0 auto;
-    padding: 20px;
-  }
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.body {
+  /* font fam georgia */
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.admin-heading {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.admin-section {
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.collapsible-title {
+  background-color: #f5f5f5;
+  width: 200px;
+  padding: 15px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-weight: bold;
+}
+
+.collapsible-title:hover {
+  background-color: #e0e0e0;
+}
+
+.collapsible-content {
+  padding: 15px;
+}
+
+/* Table styling (adjust as needed) */
+.table {
+  display: block;
+  max-width: -moz-fit-content;
+  max-width: 100%;
+  margin: 0 auto;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.width-70 {
+  width: 70px;
+}
+
+.width-120 {
+  width: 120px;
+}
+
+.table td {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+  white-space: normal;
+  word-wrap: break-word;
+
+}
+
+.table th {
+  background-color: #f5f5f5;
+  text-align: center;
   
-  .admin-heading {
-    font-size: 28px;
-    font-weight: bold;
-    margin-bottom: 20px;
-    text-align: center;
-  }
-  
-  .admin-section {
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    overflow: hidden;
-  }
-  
-  .collapsible-title {
-    background-color: #f5f5f5;
-    width: 200px;
-    padding: 15px;
-    cursor: pointer;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .collapsible-title:hover {
-    background-color: #e0e0e0;
-  }
-  
-  .collapsible-content {
-    padding: 15px;
-  }
-  
-  /* Table styling (adjust as needed) */
-  .table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  
-  .table th,
-  .table td {
-    padding: 10px;
-    border-bottom: 1px solid #ddd;
-  }
-  
-  .table th {
-    background-color: #f5f5f5;
-    text-align: left;
-  }
-  
-  .table tbody tr:hover {
-    background-color: #f9f9f9;
-  }
-  
+}
+
+.table tbody tr:hover {
+  background-color: #f9f9f9;
+}

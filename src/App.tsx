@@ -23,46 +23,47 @@ function App() {
 
   const fetchProfile = async () => {
     try {
-        const account = await client.profile();
-        setUserType(account.role);
-        setUser(account);
+      const account = await client.profile();
+      setUserType(account.role);
+      setUser(account);
     } catch {
-        setUserType("guest");
-        setUser(null);
+      setUserType("guest");
+      setUser(null);
     }
   }
-    const handleLogin = () => {
-      fetchProfile();
-    }
-    const handleSignOut = () => {
-        setUserType("guest");
-    };
+  const handleLogin = () => {
+    fetchProfile();
+  }
+  const handleSignOut = () => {
+    setUserType("guest");
+  };
+
   useEffect(() => {
     fetchProfile();
   }, [userType]);
 
   return (
     <Provider store={store}>
-    <HashRouter>
-      <div>
-      <Navigation userType={userType} />
-        <Routes>
-          <Route path="/" element={<Navigate to="/Home" />} />
-          <Route path="/Home" element={<Home user={user}/>} />
-          <Route path="/Profile" element={<Profile onSignOut={handleSignOut}/>} />
-          <Route path="/Profile/Edit" element={<EditProfile/>} />
-          <Route path="/Profile/Edit/:userId" element={<EditProfile/>} />
-          <Route path="/Profile/:userId" element={<Profile onSignOut={handleSignOut} />} />
-          <Route path="/Login-~-Signup/*" element={<Login onSignIn={handleLogin}/>} />
-          <Route path="/Login-~-Signup/Register" element={<Register onSignIn={handleLogin}/>} />
-          <Route path="/Menu/*" element={<Menu userType={userType}/>} />
-          <Route path="/Admin-Tools/*" element={<AllTables userType={userType}/>} />
-          <Route path="/All-Profiles" element={<Profiles userType={userType}/>} />
-          <Route path="/Search" element={<Search/>} />
-          <Route path="/Search/Details/:rid" element={<Details/>} />
-        </Routes>
-      </div>
-    </HashRouter>
+      <HashRouter>
+        <div className="app-container">
+          <Navigation userType={userType} />
+          <Routes>
+            <Route path="/" element={<Navigate to="/Home" />} />
+            <Route path="/Home" element={<Home user={user} />} />
+            <Route path="/Profile" element={<Profile onSignOut={handleSignOut} />} />
+            <Route path="/Profile/Edit" element={<EditProfile />} />
+            <Route path="/Profile/:id/Edit" element={<EditProfile />} />
+            <Route path="/Profile/:id" element={<Profile />} />
+            <Route path="/Login-~-Signup/*" element={<Login onSignIn={handleLogin} />} />
+            <Route path="/Login-~-Signup/Register" element={<Register onSignIn={handleLogin} />} />
+            <Route path="/Menu/*" element={<Menu/>} />
+            <Route path="/Admin-Tools/*" element={<AllTables userType={userType} />} />
+            <Route path="/All-Profiles" element={<Profiles userType={userType} />} />
+            <Route path="/Search" element={<Search />} />
+            <Route path="/Search/Details/:rid" element={<Details />} />
+          </Routes>
+        </div>
+      </HashRouter>
     </Provider>
   );
 }
