@@ -21,7 +21,7 @@ export default function Navigation({ userType }: any,) {
         { label: "Menu", userTypes: ["admin", "customer", "owner", "guest"] },
         { label: "drop-down", userTypes: ["admin", "customer", "owner", "guest"] },
         { label: "Profile", userTypes: ["admin", "customer", "owner"] },
-        { label: "Login", userTypes: ["guest"] },
+        { label: "Login-~-Signup", userTypes: ["guest"] },
     ];
 
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);

@@ -4,7 +4,6 @@ html {
 }
 
 .login-register-box {
-  font-family: Georgia, 'Times New Roman', Times, serif;
   width: 90%;
   /* Use a percentage width to adapt to different screen sizes */
   height: 100vh;
