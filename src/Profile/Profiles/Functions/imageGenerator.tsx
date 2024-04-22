@@ -6,12 +6,21 @@ export default function imageGenerator(userType: string, user: any) {
         return `/images/profiles_pages/${user.image}`;
 
     } else {
+        const maxNumber = 7;
 
-        const minNumber = 1;
-        const maxNumber = 9;
+        // Hash the user's email to generate a seemingly random index
+        // Calculate sum of ASCII values of characters in the full name
+        // Calculate the hash based on user.full_name
+        const email = user.email.toLowerCase(); // Ensure consistency in character case
+        let sum = 0;
+        for (let i = 0; i < email.length; i++) {
+            sum += email.charCodeAt(i);
+        }
 
-        const randomNumber = Math.floor(Math.random() * (maxNumber - minNumber + 1)) + minNumber;
-        const anonymousImages = [`anonymous${randomNumber}.jpg`];
+        // Calculate the index using modulo operation with sillyNouns length
+        const index = sum % maxNumber;
+
+        const anonymousImages = [`anonymous${index}.jpg`];
         return `/images/profiles_pages/${anonymousImages[0]}`;
     }
 }

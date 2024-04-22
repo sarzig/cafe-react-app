@@ -6,6 +6,8 @@ import * as client from "../client";
 import { WebsiteState } from "../../store";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+// import { setUser } from "../reducer";
+import { setCurrentUser } from "../reducer";
 
 
 export default function Login({ onSignIn }: any) {
@@ -55,6 +57,7 @@ export default function Login({ onSignIn }: any) {
         try {
             await client.signin(credentials);
             onSignIn();
+            dispatch(setCurrentUser(user));
             navigate(`/Home`);
         } catch (error) {
             alert("Sign-in failed. Please check your email address and password and try again. If you do not have an account, register at the link below.");
@@ -62,29 +65,41 @@ export default function Login({ onSignIn }: any) {
     }
 
     return (
-        <div className="container mt-5 pt-5">
-            <div className="form-control">
+        <>
+            <div className="heading-div">
+                <h1>Login</h1>
+            </div>
+            <div className="login-register-box">
+            <div className="">
+                    <div className="mb-2">
+                        Don't have an account? Register <Link to={`/Login-~-Signup/Register`}>here</Link>.
+                    </div>
 
-            <h3>Login</h3>
-            <div className="mb-2">
-                Don't have an account? Register <Link to={`/Login-~-Signup/Register`}>here</Link>
+                    <br />
+
+                    <div className="form-group mb-1">
+                        <h6>Email address</h6>
+                        <input type="text" className="form-control" placeholder="email@domain.com" onChange={(e) => setCredentials({ ...credentials, email: e.target.value })} />
+                    </div>
+
+                    <br />
+
+                    <div className="mb-5">
+                        <h6>Password</h6>
+                        <input type="password" id="password_box" className="form-control mb-2" placeholder="Password" onChange={(e) => setCredentials({ ...credentials, password: e.target.value })} />
+                        
+                        <br />
+
+                        <input type="checkbox" id="show_password" onChange={showPassword} /> &nbsp;
+                        
+                        <label htmlFor="show_password">Show password</label>
+                        <div className="float-end">
+                            <button className="btn cancel-button-important" onClick={() => goHome()}>Cancel</button>
+                            <button className="btn btn-primary register-button-important" onClick={signin}>Login</button>
+                        </div>
+                    </div>
+                </div>
             </div>
-            
-            <div className="form-group mb-1">
-                <h6>Email address</h6>
-                <input type="text" className="form-control" placeholder="email@domain.com" onChange={(e) => setCredentials({...credentials, email: e.target.value})} />
-            </div>
-            <div className="mb-5">
-                <h6>Password</h6>
-                <input type="password" id="password_box" className="form-control mb-2" placeholder="Password" onChange={(e) => setCredentials({...credentials, password: e.target.value})}/>
-                <input type="checkbox" id="show_password" onChange={showPassword}/> &nbsp;
-                <label htmlFor="show_password">Show password</label>
-                <div className="float-end">
-                <button className="btn" onClick={() => goHome()}>Cancel</button>
-                <button className="btn btn-primary" onClick={signin}>Login</button>
-            </div>
-            </div>
-            </div>
-        </div>
+        </>
     );
 };
