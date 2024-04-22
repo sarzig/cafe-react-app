@@ -146,32 +146,32 @@ const Profiles = ({ userType }: { userType: string }) => {
             </div>
 
             <div className="row row-cols-1 row-cols-md-5 justify-content-center">
-                {users.map((user) => (
-                    <div key={user._id} className="col" style={{ width: 350 }}>
+                {users.map((loopUser) => (
+                    <div key={loopUser._id} className="col" style={{ width: 350 }}>
                         <div className="card flex-shrink-0">
-                            <Link className="card-image" to={`/profiles/${user._id}`}>
-                                <img src={imageGenerator(userType, user)} alt="user" className="card-img-top" />
+                            <Link className="card-image" to={`/Profile/${loopUser._id}`}>
+                                <img src={imageGenerator(userType, loopUser)} alt="user" className="card-img-top" />
                             </Link>
-                            {buttonRow(user)}
+                            {buttonRow(loopUser)}
                             <div className="card-body">
-                                <Link className="card-title" to={`/profiles/${user._id}`}>
-                                    {nameGenerator(userType, user)}
+                                <Link className="card-title" to={`/Profile/${loopUser._id}`}>
+                                    {nameGenerator(userType, loopUser)}
                                 </Link>
                                 <div className="card-details">
                                     <span className="category">Hometown: </span>
-                                    <span className="detail">{user.hometown}</span>
+                                    <span className="detail">{loopUser.hometown}</span>
                                     <br />
                                     <span className="category">Favorite Drinks: </span>
-                                    <span className="detail">{user.favorite_drinks?.join(", ")}</span>
+                                    <span className="detail">{loopUser.favorite_drinks?.join(", ")}</span>
                                     <br />
                                     <span className="category">Visits Sakivi on: </span>
-                                    <span className="detail">{user.favorite_cafe_days?.join(", ")}</span>
+                                    <span className="detail">{loopUser.favorite_cafe_days?.join(", ")}</span>
                                     <br />
                                     <span className="category">Interests: </span>
-                                    <span className="detail">{user.interests?.join(", ")}</span>
+                                    <span className="detail">{loopUser.interests?.join(", ")}</span>
                                     <br />
                                     <span className="category">Bio: </span>
-                                    <span className="detail">{user.bio}</span>
+                                    <span className="detail">{loopUser.bio}</span>
                                     <br />
                                 </div>
                             </div>
