@@ -18,8 +18,10 @@ export default function EditProfile() {
         setProfile(account);
     }
     const handleSave = async () => {
-        await client.updateUser(profile).then(() => navigate(`/Profile`));
-
+        await client.signout();
+        await client.updateUser(profile);
+        await client.signin(profile);
+        navigate(`/Profile`);
     };
     const showPassword = () => {
         var x = document.getElementById("password_box") as HTMLInputElement;
@@ -49,6 +51,31 @@ export default function EditProfile() {
         const newRecipes = profile.favorite_recipes.filter((item) => item !== recipe);
         setProfile({...profile, favorite_recipes: newRecipes});
     };
+    const [field, setField] = useState("interests");
+    const [text, setText] = useState("");
+    
+    const addData = () => {
+        if (field === "interests") {
+            const array = profile.interests;
+            array.push(text);
+            setProfile({...profile, interests: array});
+        }
+        else if (field === "days") {
+            const array = profile.favorite_cafe_days;
+            array.push(text);
+            setProfile({...profile, favorite_cafe_days: array});
+        }
+        else if (field === "drinks") {
+            const array = profile.favorite_drinks;
+            array.push(text);
+            setProfile({...profile, favorite_drinks: array});
+        }
+        else if (field === "menu_items") {
+            const array = profile.favorite_menu_items;
+            array.push(text);
+            setProfile({...profile, favorite_menu_items: array});
+        }
+    }
     
     
     useEffect(() => {
@@ -83,6 +110,16 @@ export default function EditProfile() {
                         <input type="checkbox" id="show_password" onChange={showPassword}/> &nbsp;
                         <label htmlFor="show_password">Show password</label>
                         <br />
+                        <h6 className="mt-3">Add user data:</h6>
+                        <select className="form-control" onChange={(e) => setField(e.target.value)}>
+                            <option value="interests">Interests</option>
+                            <option value="days">Days</option>
+                            <option value="drinks">Drinks</option>
+                            <option value="menu_items">Menu Items</option>
+                        </select>
+                        <input type="text" className="form-control mt-1" onChange={(e) => setText(e.target.value)}/>
+                        <button className="mt-1 w-100 btn btn-success" onClick={() => addData()}>Add</button>
+                        <br />
                         <h6 className="mt-2">Interests:</h6>
                         {profile?.interests.map((interest) => (
                             <button key={interest} className="btn btn-light text-center" onClick={() => deleteInterest(interest)}>{interest} <FaTimes /></button>
@@ -92,7 +129,6 @@ export default function EditProfile() {
                         {profile?.favorite_cafe_days.map((day) => (
                             <button key={day} className="btn btn-light text-center" onClick={() => deleteCafeDays(day)}>{day} <FaTimes/></button>
                         ))}
-                        </div>
                         <br />
                         <h6 className="mt-2">Favorite drinks:</h6>
                         {profile?.favorite_drinks.map((drink) => (
@@ -108,9 +144,9 @@ export default function EditProfile() {
                         {profile?.favorite_recipes.map((recipe) => (
                             <button key={recipe} className="btn btn-light text-center" onClick={() => deleteRecipes(recipe)}>{recipe} <FaTimes/></button>
                         ))}
+                        </div>
                     </div>
                 <br />
-                
                 </div> 
                 <span className="">
                     <button className="btn btn-primary float-end" onClick={handleSave}>Save</button> &nbsp;
