@@ -52,8 +52,8 @@ function App() {
             <Route path="/Home" element={<Home user={user} />} />
             <Route path="/Profile" element={<Profile onSignOut={handleSignOut} />} />
             <Route path="/Profile/Edit" element={<EditProfile />} />
-            <Route path="/Profile/:id/Edit" element={<EditProfile />} />
-            <Route path="/Profile/:id" element={<Profile />} />
+            <Route path="/Profile/Edit/:userId" element={<EditProfile />} />
+            <Route path="/Profile/:userId" element={<Profile />} />
             <Route path="/Login-~-Signup/*" element={<Login onSignIn={handleLogin} />} />
             <Route path="/Login-~-Signup/Register" element={<Register onSignIn={handleLogin} />} />
             <Route path="/Menu/*" element={<Menu/>} />
