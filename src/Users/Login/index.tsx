@@ -6,6 +6,8 @@ import * as client from "../client";
 import { WebsiteState } from "../../store";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+// import { setUser } from "../reducer";
+import { setCurrentUser } from "../reducer";
 
 
 export default function Login({ onSignIn }: any) {
@@ -55,6 +57,7 @@ export default function Login({ onSignIn }: any) {
         try {
             await client.signin(credentials);
             onSignIn();
+            dispatch(setCurrentUser(user));
             navigate(`/Home`);
         } catch (error) {
             alert("Sign-in failed. Please check your email address and password and try again. If you do not have an account, register at the link below.");
