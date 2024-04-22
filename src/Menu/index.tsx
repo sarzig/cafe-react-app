@@ -1,13 +1,24 @@
-import React, { useState } from "react";
+import React from "react";
 import CollapsibleSection from "../Admin/CollapsibleSection";
-//import { Document, Page } from "@react-pdf/renderer";
+import { Link } from "react-router-dom";
 
 const Menu = () => {
-
     const coffeeMenu = `/images/menus/coffee-menu.jpg`;
     const allDayMenu = `/images/menus/all-day-menu.jpg`;
     const specialOrdersMenu = `/images/menus/special-orders-menu.jpg`;
 
+    const renderMenuWithLink = (imageUrl: string, altText: string) => {
+        return (
+            <div>
+                <div className="text-center d-md-none bold">
+                    ~ Click menu to view in new tab ~
+                </div>
+                <a href={imageUrl} target="_blank" rel="noopener noreferrer">
+                    <img src={imageUrl} alt={altText} style={{ maxWidth: "100%" }} />
+                </a>
+            </div>
+        );
+    };
 
     return (
         <div className="container">
@@ -18,23 +29,24 @@ const Menu = () => {
             <div>
                 <div className="admin-section">
                     <CollapsibleSection title="Coffee Menu">
-                        <img src={coffeeMenu} alt="coffee Menu" style={{ maxWidth: "100%" }} />
+                        {renderMenuWithLink(coffeeMenu, "Coffee Menu")}
                     </CollapsibleSection>
                 </div>
 
                 <div className="admin-section">
                     <CollapsibleSection title="All Day Menu">
-                        <img src={allDayMenu} alt="all Day Menu" style={{ maxWidth: "100%" }} />
+                        {renderMenuWithLink(allDayMenu, "All Day Menu")}
                     </CollapsibleSection>
                 </div>
 
                 <div className="admin-section">
                     <CollapsibleSection title="Special Orders">
-                        <img src={specialOrdersMenu} alt="special Orders Menu" style={{ maxWidth: "100%" }} />
+                        {renderMenuWithLink(specialOrdersMenu, "Special Orders Menu")}
                     </CollapsibleSection>
                 </div>
             </div>
         </div>
     );
 };
+
 export default Menu;
