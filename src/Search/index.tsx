@@ -125,10 +125,9 @@ export default function Search() {
             </div>
             <div className="d-flex flex-column align-items-center justify-content-center">
 
-            {/* Search bar and stuff  */}
-            <div className="heading-div">
-                <h1>Search Recipes</h1>
-            </div>
+            {/* <div className="heading">
+                <h3>Search</h3>
+            </div> */}
             <div className="d-flex flex-row" id="search-bar">
                 <form className="form-outline my-2 my-lg-6">
                     <input 
