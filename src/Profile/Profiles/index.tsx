@@ -117,8 +117,10 @@ const Profiles = ({ userType }: { userType: string }) => {
 
     return (
         <div>
-            <h1>Boston Profiles</h1>
-            <hr />
+            <div className="heading-div">
+                <h1>Boston Profiles</h1>
+            </div>
+
             <div>
                 {showConfirmation && (
                     <div className="popup">
@@ -145,7 +147,7 @@ const Profiles = ({ userType }: { userType: string }) => {
                 )}
             </div>
 
-            <div className="row row-cols-1 row-cols-md-5 g-200 justify-content-center">
+            <div className="row row-cols-1 row-cols-md-5 justify-content-center">
                 {users.map((user) => (
                     <div key={user._id} className="col" style={{ width: 350 }}>
                         <div className="card flex-shrink-0">
