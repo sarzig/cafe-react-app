@@ -123,6 +123,7 @@ export default function Details() {
     // const [ingredients, setIngredients] = useState([]);
     const [recipeInfo, setRecipeInfo] = useState<RecipeInfoType>();
     const [users, setUsers] = useState<User[]>([]);
+    const [validLogin, setValidLogin] = useState(false);
 
     const fetchUsers = async () => {
         const users = await client.findAllUsers();
@@ -146,6 +147,7 @@ export default function Details() {
     const fetchProfile = async () => {
         const account = await client.profile();
         setUser(account);
+        setValidLogin(true);
     }
     // const current_User = useSelector((state: WebsiteState) => state.usersReducer.user);
     // console.log("current user:", current_User);
@@ -344,12 +346,20 @@ export default function Details() {
                             <button className="btn btn-light p card-link" >
                                 <Link to={recipeInfo.sourceUrl || ""} className="button-link">Source</Link>
                             </button>
+                            {/* {user && (
+                                    <button 
+                                    className="btn btn-light p card-link" 
+                                    onClick={() => 
+                                        handleAddRecipeForSingleUser(String(recipeInfo.sourceUrl))
+                                    } >
+                                    + Favorite
+                                </button>
+                            )} */}
                             <button 
                                 className="btn btn-light p card-link" 
                                 onClick={() => 
                                     handleAddRecipeForSingleUser(String(recipeInfo.sourceUrl))
                                 } >
-                                {/* <Link to={`/Search`} className="button-link">+ Favorite</Link> */}
                                 + Favorite
                             </button>
                         </div>
