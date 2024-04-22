@@ -2,25 +2,35 @@ import { useSelector, useDispatch } from "react-redux";
 import { setAccount, updateAccount } from "../reducer";
 import React, { useEffect, useState } from "react";
 import { WebsiteState } from "../../../store";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { User } from "../../client";
 import * as client from "../../client";
 import { FaTimes, FaXRay } from "react-icons/fa";
 
 export default function EditProfile() {
-    const dispatch = useDispatch();
+    const { userId } = useParams();
     const navigate = useNavigate();
     const [profile, setProfile] = useState<User>({ _id: "", full_name: "", image: "",
     email: "", password: "", hometown: "", bio: "", interests: [], favorite_cafe_days: [],
     favorite_drinks: [], favorite_menu_items: [], favorite_recipes: [], role: "guest"});
+    const [reserveUser, setReserveUser] = useState<User>({ _id: "", full_name: "", image: "",
+    email: "", password: "", hometown: "", bio: "", interests: [], favorite_cafe_days: [],
+    favorite_drinks: [], favorite_menu_items: [], favorite_recipes: [], role: "guest"});
     const fetchProfile = async () => {
-        const account = await client.profile();
-        setProfile(account);
+        if (userId) {
+            const account = await client.findUserById(userId);
+            setProfile(account);
+            setReserveUser(account);
+        } else {
+            const account = await client.profile();
+            setProfile(account);
+            setReserveUser(account);
+        }
     }
     const handleSave = async () => {
         await client.signout();
         await client.updateUser(profile);
-        await client.signin(profile);
+        await client.signin(reserveUser);
         navigate(`/Profile`);
     };
     const showPassword = () => {
@@ -76,16 +86,29 @@ export default function EditProfile() {
             setProfile({...profile, favorite_menu_items: array});
         }
     }
+    const setPassword = (newPassword: any) => {
+        setProfile({...profile, password: newPassword});
+        if (!userId) {
+            setReserveUser({...reserveUser, password: newPassword});
+        }
+        
+    }
+    const setEmail = (newEmail: any) => {
+        setProfile({...profile, email: newEmail});
+        if (!userId) {
+            setReserveUser({...reserveUser, email: newEmail});
+        }
+    }
     
     
     useEffect(() => {
         fetchProfile();
       }, []);
     return (
-        <div className="flex-container form-control">
+        <div className="flex-container form-control mx-2">
             <h3>Profile</h3>
             <div className="row">
-                <div className="col-sm">
+                <div className="col-sm text-center">
                 <span>
                     <img src={`/images/profiles_pages/${profile.image}`} className="rounded-circle shadow-4-strong"/>
                 </span>
@@ -103,10 +126,10 @@ export default function EditProfile() {
                         <textarea className="form-control" onChange={(e) => setProfile({...profile, bio: e.target.value})} defaultValue={profile.bio}></textarea>
                         <br />
                         <h6>Email:</h6>
-                        <input type="text" className="form-control" onChange={(e) => setProfile({...profile, email: e.target.value})} defaultValue={profile.email}/>
+                        <input type="text" className="form-control" onChange={(e) => setEmail(e.target.value)} defaultValue={profile.email}/>
                         <br />
                         <h6>Password:</h6>
-                        <input type="password" id="password_box" className="form-control" onChange={(e) => setProfile({...profile, password: e.target.value})} defaultValue={profile.password} />
+                        <input type="password" id="password_box" className="form-control" onChange={(e) => setPassword(e.target.value)} defaultValue={profile.password} />
                         <input type="checkbox" id="show_password" onChange={showPassword}/> &nbsp;
                         <label htmlFor="show_password">Show password</label>
                         <br />
