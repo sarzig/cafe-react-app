@@ -581,8 +581,12 @@ const AllTables = ({ userType }: { userType: string }) => {
     }
 
     return (
-        <div className="container-fluid px-5">
-            <h1>Admin Tools</h1>
+        <div className="container-fluid">
+            <div className="heading-div">
+                <h1>Admin Tools</h1>
+            </div>
+            <br/>
+
 
             {displayText}
         </div>

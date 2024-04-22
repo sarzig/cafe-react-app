@@ -37,7 +37,7 @@ export default function Navigation({ userType }: any,) {
             <h2>
                 <Link to="/" className="cafe-name-text">Sakivi Bakery & Cafe</Link>
             </h2>
-            <div className="row custom-nav-row">
+            <div className="row custom-nav-row g-0">
                 <div className="col d-none d-sm-block">
                     <ul className="menu-list">
                         {links.map((link, index) => (
