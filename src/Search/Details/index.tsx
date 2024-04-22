@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 // import { setRecipe } from "../reducer";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import axios from 'axios';
 import { WebsiteState } from "../../store";
 import "../index.css"
 import * as client from "../../Users/client";
 import { User } from "../../Users/client";
+import nameGenerator from "../../Profile/Profiles/Functions/nameGenerator";
 
 interface RecipeInfoType {
     vegetarian: boolean;
@@ -114,16 +115,10 @@ interface RecipeInfoType {
 export default function Details() {
 
     const { rid } = useParams();
-    // const { recipeId } = useParams();
-    // const { recipe } = "";
-    // const dispatch = useDispatch();
-    // const recipe = getRecipe();
     const recipe = useSelector((state: WebsiteState) => state.recipesReducer.recipe);
-    // console.log("recipe:", recipe);
-    // const [ingredients, setIngredients] = useState([]);
     const [recipeInfo, setRecipeInfo] = useState<RecipeInfoType>();
     const [users, setUsers] = useState<User[]>([]);
-    const [validLogin, setValidLogin] = useState(false);
+    const [currentUserType, setCurrentUserType] = useState("guest");
 
     const fetchUsers = async () => {
         const users = await client.findAllUsers();
@@ -145,37 +140,18 @@ export default function Details() {
         role: "customer",
     });
     const fetchProfile = async () => {
-        const account = await client.profile();
-        setUser(account);
-        setValidLogin(true);
+        try {
+            const account = await client.profile();
+            setUser(account);
+            setCurrentUserType("customer");
+        } catch (err) {
+            setCurrentUserType("guest");
+            console.log("User is not logged in.");
+        }
     }
-    // const current_User = useSelector((state: WebsiteState) => state.usersReducer.user);
-    // console.log("current user:", current_User);
-    // setUser(current_User);
-    // console.log("current user:", user);
-
-    // const selectUser = async (user: User) => {
-    //     try {
-    //         const u = await client.findUserById(user._id);
-    //         setUser(u);
-    //         setStringCafeDays(u.favorite_cafe_days.join(", "));
-    //         setStringInterests(u.interests.join(", "));
-
-    //         console.log("Selected user:", user.email);
-
-    //     } catch (err) {
-    //         console.log(err);
-    //     }
-    // };
 
     const updateUser = async () => {
         try {
-            // Parse stringCafeDays into an array of days
-            //const parsedCafeDays = stringCafeDays.split(",").map((day) => day.trim());
-            //const parsedInterests = stringInterests.split(",").map((day) => day.trim());
-
-            // Update user object with parsed favorite_cafe_days
-            //const updatedUser = { ...user, favorite_cafe_days: parsedCafeDays, interests: parsedInterests };
             await client.updateUser(user);
             setUsers(users.map((u) =>
                 (u._id === user._id ? user : u)));
@@ -212,80 +188,42 @@ export default function Details() {
 
     useEffect(() => { fetchUsers(); }, []);
 
-    // // Function to extract unique drinks and their likers
-    // const getuniqueRecipesAndLikers = () => {
-    //     const drinkMap = new Map<string, string[]>(); // Map to store drinks and their likers
-
-    //     // Loop through each user
-    //     users.forEach((user: User) => {
-    //         if (user.favorite_recipes && user.email) {
-    //             // Ensure favorite_recipes and email are defined
-    //             user.favorite_recipes.forEach((recipe_id: string) => {
-    //                 if (recipe_id) {
-    //                     // Ensure recipe is defined
-    //                     if (!drinkMap.has(recipe_id)) {
-    //                         drinkMap.set(recipe_id, [user.email]); // Initialize with the first liker
-    //                     } else {
-    //                         const currentLikers = drinkMap.get(recipe_id) || [];
-    //                         if (!currentLikers.includes(user.email)) {
-    //                             drinkMap.set(recipe_id, [...currentLikers, user.email]); // Add new liker
-    //                         }
-    //                     }
-    //                 }
-    //             });
-    //         }
-    //     });
-    //     // console.log("drinkMap:", drinkMap);
-    //     return drinkMap;
-    // };
-
-    // Function to extract unique drinks and their likers
     const getuniqueRecipesAndLikers = () => {
-        const drinkMap = new Map<string, { email: string; id: string }[]>(); // Map to store drinks and their likers
+        const drinkMap = new Map<string, User[]>(); // Map to store drinks and their likers
 
         // Loop through each user
         users.forEach((user: User) => {
-            if (user.favorite_recipes && user.email && user._id) {
-                // Ensure favorite_recipes, email, and _id are defined
+            if (user.favorite_recipes && user.email && user._id && user.full_name) {
+                // Ensure favorite_recipes, email, _id, full_name, and favorite_drinks are defined
                 user.favorite_recipes.forEach((recipe_id: string) => {
                     if (recipe_id) {
-                        // Ensure recipe is defined
+                        // Ensure drink_id is defined
                         if (!drinkMap.has(recipe_id)) {
-                            drinkMap.set(recipe_id, [{ email: user.email, id: user._id }]); // Initialize with the first liker
+                            drinkMap.set(recipe_id, [user]); // Initialize with the first liker
                         } else {
                             const currentLikers = drinkMap.get(recipe_id) || [];
-                            const userExists = currentLikers.some(like => like.email === user.email); // Check if user already liked the recipe
+                            const userExists = currentLikers.some(like => like.email === user.email); // Check if user already liked the drink
                             if (!userExists) {
-                                drinkMap.set(recipe_id, [...currentLikers, { email: user.email, id: user._id }]); // Add new liker
+                                drinkMap.set(recipe_id, [...currentLikers, user]); // Add new liker
                             }
                         }
                     }
                 });
             }
         });
-        console.log("drinkMap:", drinkMap);
+        // console.log("drinkMap:", drinkMap);
         return drinkMap;
     };
 
     const uniqueRecipesAndLikers = getuniqueRecipesAndLikers();
     const likedRecipes = Array.from(uniqueRecipesAndLikers.entries());
-    console.log("liked Recipes:", likedRecipes);
-    // console.log("recipe info url:", recipeInfo && recipeInfo.sourceUrl);
-    // const recipeUrl = recipeInfo && String(recipeInfo.sourceUrl);
+    // console.log("liked Recipes:", likedRecipes);
     const filteredLikedRecipes = likedRecipes.filter(([recipe_id]) => recipeInfo && String(recipe_id) === String(recipeInfo.sourceUrl));
-    // const filteredLikedRecipes = likedRecipes.filter(([recipe_id]) => {
-    //     console.log("Current recipe_id:", recipe_id);
-    //     return recipeInfo && String(recipe_id) === String(recipeInfo.sourceUrl);
-    // });
-    // console.log("filteredLikedRecipes:", filteredLikedRecipes);
     const likers = filteredLikedRecipes.map(([recipe_id, likers]) => likers);
-    console.log("likers:", likers);
+    // console.log("likers:", likers);
 
     async function handleAddRecipeForSingleUser(recipeName: string): Promise<void> {
         try {
-            // setUser(user);
-            // Find the target user based on the provided email
-            // const targetUser = users.find((user) => user.email === user.email);
             const targetUser = user;
 
             if (targetUser) {
@@ -333,7 +271,8 @@ export default function Details() {
                             <p className="card-text recipe-text">
                                 {likers.map((likersArray: any[], index: any) => (
                                     likersArray.map((liker: any, innerIndex: any) => (
-                                        <span key={`${index}-${innerIndex}`}> <Link to={`/profiles/${liker.id}`}>{liker.email}</Link> </span>
+                                        // <span key={`${index}-${innerIndex}`}> <Link to={`/profiles/${liker.id}`}>{liker.full_name}</Link></span>
+                                        <div key={`${index}-${innerIndex}`}> <Link to={`/profiles/${liker.id}`}>{nameGenerator(currentUserType, liker)}</Link></div>
                                     ))
                                 ))}
                             </p>
@@ -346,7 +285,7 @@ export default function Details() {
                             <button className="btn btn-light p card-link" >
                                 <Link to={recipeInfo.sourceUrl || ""} className="button-link">Source</Link>
                             </button>
-                            {/* {user && (
+                            {(currentUserType  == "customer") && (
                                     <button 
                                     className="btn btn-light p card-link" 
                                     onClick={() => 
@@ -354,14 +293,7 @@ export default function Details() {
                                     } >
                                     + Favorite
                                 </button>
-                            )} */}
-                            <button 
-                                className="btn btn-light p card-link" 
-                                onClick={() => 
-                                    handleAddRecipeForSingleUser(String(recipeInfo.sourceUrl))
-                                } >
-                                + Favorite
-                            </button>
+                            )}
                         </div>
                     </div>
                 </div>
