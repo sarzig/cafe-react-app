@@ -1,51 +1,37 @@
 import React, { useState } from "react";
+import CollapsibleSection from "../Admin/CollapsibleSection";
 //import { Document, Page } from "@react-pdf/renderer";
 
-const Menu = ({ userType }: { userType: string }) => {
-    const [selectedTab, setSelectedTab] = useState("coffee");
+const Menu = () => {
 
-    const handleTabClick = (tab: string) => {
-        setSelectedTab(tab);
-    };
-    const renderContent = () => {
-        switch (selectedTab) {
-            case "coffee":
-                return (
-                    <img
-                        src="path_to_coffee_image.jpg"
-                        alt="Coffee"
-                        style={{ width: "100%", height: "auto" }}
-                    />
-                );
-            case "tea":
-                return (
-                    <img
-                        src="path_to_tea_image.jpg"
-                        alt="Tea"
-                        style={{ width: "100%", height: "auto" }}
-                    />
-                );
-            default:
-                return null;
-        }
-    };
+    const coffeeMenu = `/images/menus/coffee-menu.jpg`;
+    const allDayMenu = `/images/menus/all-day-menu.jpg`;
+    const specialOrdersMenu = `/images/menus/special-orders-menu.jpg`;
+
 
     return (
         <div className="container">
-            <div className="row">
-                <div className="col">
-                    <h2>Menu</h2>
-                    <ul>
-                        <li>
-                            <button onClick={() => handleTabClick("coffee")}>Coffee</button>
-                        </li>
-                        <li>
-                            <button onClick={() => handleTabClick("tea")}>Tea</button>
-                        </li>
-                    </ul>
+            <div className="heading-div">
+                <h1>Menus</h1>
+            </div>
+
+            <div>
+                <div className="admin-section">
+                    <CollapsibleSection title="Coffee Menu">
+                        <img src={coffeeMenu} alt="coffee Menu" style={{ maxWidth: "100%" }} />
+                    </CollapsibleSection>
                 </div>
-                <div className="col">
-                    {renderContent()}
+
+                <div className="admin-section">
+                    <CollapsibleSection title="All Day Menu">
+                        <img src={allDayMenu} alt="all Day Menu" style={{ maxWidth: "100%" }} />
+                    </CollapsibleSection>
+                </div>
+
+                <div className="admin-section">
+                    <CollapsibleSection title="Special Orders">
+                        <img src={specialOrdersMenu} alt="special Orders Menu" style={{ maxWidth: "100%" }} />
+                    </CollapsibleSection>
                 </div>
             </div>
         </div>

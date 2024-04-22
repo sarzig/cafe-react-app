@@ -118,7 +118,7 @@ const Profiles = ({ userType }: { userType: string }) => {
     return (
         <div>
             <div className="heading-div">
-                <h1>Boston Profiles</h1>
+                <h1>All Profiles</h1>
             </div>
 
             <div>
