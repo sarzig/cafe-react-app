@@ -1,15 +1,22 @@
 import * as client from "../../Users/client";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { User } from "../client";
 import { useEffect, useState } from "react";
 
 export default function Profile({ onSignOut }: any) {
+    const { userId } = useParams();
     const [profile, setProfile] = useState<User>({ _id: "", full_name: "", image: "",
     email: "", password: "", hometown: "", bio: "", interests: [], favorite_cafe_days: [],
     favorite_drinks: [], favorite_menu_items: [], favorite_recipes: [], role: "guest"});
+    
     const fetchProfile = async () => {
-        const account = await client.profile();
-        setProfile(account);
+        if (userId) {
+            const account = await client.findUserById(userId);
+            setProfile(account);
+        } else {
+            const account = await client.profile();
+            setProfile(account);
+        }
     }
     const navigate = useNavigate();
     const signout = async () => {
@@ -31,6 +38,7 @@ export default function Profile({ onSignOut }: any) {
                 </span>
             <div>
                 <br />
+
                 <a className="btn btn-light w-100" href="#/Profile/Edit">Edit Profile</a>
                 <button className="btn btn-light w-100 mt-2" onClick={signout}>Sign Out</button>
                 <br /><br />

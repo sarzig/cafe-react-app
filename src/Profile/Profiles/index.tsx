@@ -51,11 +51,11 @@ const Profiles = ({ userType }: { userType: string }) => {
     };
 
     const handleEditProfile = (user: User) => {
-        navigate(`/Profiles/Edit/${user._id}`);
+        navigate(`/Profile/Edit/${user._id}`);
     };
 
     const handleSeeUserProfile = (user: User) => {
-        navigate(`/Profiles/${user._id}`);
+        navigate(`/Profile/${user._id}`);
     };
 
     return (
