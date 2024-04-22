@@ -1,3 +1,31 @@
+/* Always show scroll bar (makes things not hop around) */
+html {
+  overflow: scroll;
+}
+
+.login-register-box {
+  width: 90%;
+  /* Use a percentage width to adapt to different screen sizes */
+  height: 100vh;
+  /* Use a percentage height to adapt to different screen sizes */
+  max-height: 600px;
+  max-width: 600px;
+  /* Set a maximum width to prevent excessive stretching on larger screens */
+  margin: 0 auto;
+  /* Center the box horizontally */
+  margin-top: 20px;
+  background-color: #1111110e;
+  border: 1px solid #000;
+  padding: 15px;
+  border-radius: 7px;
+  box-sizing: border-box;
+  /* Ensure padding is included in the total width */
+}
+
+.heading-div {
+  border-bottom: 1px solid rgb(187, 178, 178);
+}
+
 .App {
   text-align: center;
 }
@@ -7,10 +35,9 @@
   pointer-events: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.bold {
+  font-weight: bold;
+
 }
 
 .App-header {
@@ -38,6 +65,11 @@
   }
 }
 
+.app-container {
+  margin: 20px;
+  margin-top: 12px;
+}
+
 /* BUTTONS */
 .classy-button {
   border: 1px solid #000;
@@ -51,6 +83,25 @@
   border: 1px solid #000;
 }
 
+
+.cancel-button-important {
+  background-color: rgb(240, 156, 156) !important;
+  margin-right: 10px !important;
+  border-radius: 0px !important;
+  border: 1px solid #000 !important;
+  width: 90px !important;
+}
+
+.cancel-button-important:hover {
+  background-color: rgb(241, 104, 104) !important;
+}
+
+.register-button-important {
+  border-radius: 0px !important;
+  border: 1px solid #000 !important;
+  width: 90px !important;
+
+}
 
 .delete-button {
   float: end;
@@ -82,7 +133,7 @@
   border: 1px solid #0e0d0d;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
   z-index: 1000;
-  height: 200px;
+  height: 270px;
   width: 400px;
   display: flex;
   flex-direction: column;
@@ -91,13 +142,6 @@
   /* Center-align items horizontally */
 }
 
-/* Media query for small screens */
-@media (max-width: 768px) {
-  .popup {
-    height: 50%;
-    width: 80%;
-  }
-}
 
 .button-col {
   display: flex;
@@ -111,7 +155,7 @@
 }
 
 .popup-button {
-  width: 120px;
+  width: 150px;
   height: 40px;
   float: left;
 }

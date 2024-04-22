@@ -13,9 +13,20 @@ export default function nameGenerator(userType: string, user: any) {
     } else {
         // If there are no favorite drinks, generate a silly noun
         const sillyNouns = ["Cafe Goer", "Awesome Friend", "Serious Goofball", "Hipster Wannabe", "Introvert", "Extrovert", "Public Universal Friend"]
-        // Generate a random index to select a silly noun
-        const randomIndex = Math.floor(Math.random() * sillyNouns.length);
+
+        // Hash the user's email to generate a seemingly random index
+        // Calculate sum of ASCII values of characters in the full name
+        // Calculate the hash based on user.full_name
+        const email = user.email.toLowerCase(); // Ensure consistency in character case
+        let sum = 0;
+        for (let i = 0; i < email.length; i++) {
+            sum += email.charCodeAt(i);
+        }
+
+        // Calculate the index using modulo operation with sillyNouns length
+        const index = sum % sillyNouns.length;
+
         // Return "Anonymous" followed by the selected silly noun
-        return `Anonymous ${sillyNouns[randomIndex]}`;
+        return `Anonymous ${sillyNouns[index]}`;
     }
 }

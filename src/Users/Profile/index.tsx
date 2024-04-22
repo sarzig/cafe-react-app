@@ -1,15 +1,22 @@
 import * as client from "../../Users/client";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { User } from "../client";
 import { useEffect, useState } from "react";
 
 export default function Profile({ onSignOut }: any) {
+    const { userId } = useParams();
     const [profile, setProfile] = useState<User>({ _id: "", full_name: "", image: "",
     email: "", password: "", hometown: "", bio: "", interests: [], favorite_cafe_days: [],
     favorite_drinks: [], favorite_menu_items: [], favorite_recipes: [], role: "guest"});
+    
     const fetchProfile = async () => {
-        const account = await client.profile();
-        setProfile(account);
+        if (userId) {
+            const account = await client.findUserById(userId);
+            setProfile(account);
+        } else {
+            const account = await client.profile();
+            setProfile(account);
+        }
     }
     const navigate = useNavigate();
     const signout = async () => {
@@ -23,20 +30,22 @@ export default function Profile({ onSignOut }: any) {
     return (
         <div className="mt-2 pt-3 form-control">
             <table className="row">
+            <div className="col-md-1"></div>
+            <div className="col-md-2 text-center">
             <h3>Profile</h3>
-            <div className="col" style={{width: 50}}>
                 <span>
                     <img src={`/images/profiles_pages/${profile.image}`} alt="sleek headshot" className="rounded-circle shadow-4-strong"/>
                 </span>
             <div>
                 <br />
-                <a className="btn btn-light" href="#/Profile/Edit">Edit Profile</a> &nbsp;
-                <button className="btn btn-light" onClick={signout}>Sign Out</button>
+
+                <a className="btn btn-light w-100" href="#/Profile/Edit">Edit Profile</a>
+                <button className="btn btn-light w-100 mt-2" onClick={signout}>Sign Out</button>
+                <br /><br />
             </div>
-                
-                
             </div>
-            <div className="col-9">
+            <div className="col-1"></div>
+            <div className="col-8">
                 <span className="px-5 fs-3">
                     {profile.full_name}
                     <br />
@@ -70,7 +79,7 @@ export default function Profile({ onSignOut }: any) {
                     <div className="row">
                         <div className="col">Favorite recipes:</div>
                         <div className="col">{profile.favorite_recipes.map((recipe) => 
-                            <a href={`${recipe}`}>{recipe} <br /></a>
+                            <a key={recipe} href={`${recipe}`}>{recipe} <br /></a>
                         )}</div>
                     </div>
                     </div>

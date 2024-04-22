@@ -6,7 +6,7 @@ export const BASE_API = process.env.REACT_APP_API_BASE;
 export const USERS_API = `${BASE_API}/api/users`;
 
 console.log("BASE_API", BASE_API);
-console.log("USERS_API", USERS_API);
+console.log("USERS_APIx", USERS_API);
 
 export interface User { 
   _id: string,

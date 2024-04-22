@@ -4,6 +4,12 @@
     font-family:Georgia, 'Times New Roman', Times, serif;
 }
 
+h2 {
+    font-size: 1.5em;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    text-align: center;
+}
+
 .cafe-name-text {
     text-decoration: none;
     color: black;
@@ -18,21 +24,26 @@
     background-color: white; /* Set background color to white. alternatively, make the buttons see through too */
 }
 
-
 ul {
     list-style-type: none;
     margin: 0;
     overflow: hidden;
     background-color: white;
     display: flex; /* Use flexbox */
-    width: 100vw; /* Set width to viewport width */
+    width: 100%; /* Set width to viewport width */
     margin-left: 0; /* Remove default margin */
     border-top: 1px solid black; /* Add top border */
     border-bottom: 1px solid black; /* Add bottom border */
 }
 
+.custom-nav-row {
+    width: 100%;
+    padding-right: 0;
+}
+
 .menu-list {
     padding-left: 0;
+    
 }
 
 /* note- change this to add borders in between elements. Have to figure out IF we want borders
