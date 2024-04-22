@@ -10,9 +10,8 @@ h1 {
     border-radius: 0;
     border: 1px solid #00000034;
     margin: 15px;
-    height: 500px;
+    height: 450px;
     overflow: hidden;
-    /* Hide any overflowing content */
 }
 
 /* Media query for small screens */
@@ -57,16 +56,22 @@ h1 {
 
 .card-body {
     padding: 10px;
+    margin-bottom: 10px;
     padding-top: 0px;
     margin-top: 0;
     overflow: hidden;
-    text-overflow: ellipsis;
-    /* Show ellipsis (...) if text overflows horizontally */
-    max-height: calc(1.2em * 8);
-    /* Maximum height for six lines of text */
+    /* Set the maximum number of lines before showing ellipsis */
+    max-height: calc(1.2em * 6); /* Adjust the number of lines as needed */
     line-height: 1.2em;
-    /* Line height for the text */
+    /* Allow text to wrap naturally */
+    word-wrap: break-word;
+    /* Show ellipsis (...) for overflowing text */
+    text-overflow: ellipsis;
+    /* Ensure that the text does not overflow horizontally */
+    white-space: normal;
 }
+
+
 
 .card-buttons {
     position: absolute;
@@ -78,4 +83,39 @@ h1 {
 
 .card-button-group {
     width: 100%;
+}
+
+.reactive-col {
+    display: flex;
+    justify-content: center;
+    /* Horizontally center content */
+    align-items: center;
+    /* Vertically center content */
+    border: 1px solid rgba(128, 128, 128, 0.104);
+    height: 40px;
+    text-align: center;
+}
+
+.green-reactive-col {
+    background-color: #dcfddd;
+}
+
+.red-reactive-col {
+    background-color: rgb(253, 209, 209);
+}
+
+.gray-reactive-col {
+    background-color: rgb(224, 220, 220);
+}
+
+.green-reactive-col:hover {
+    background-color: #bcf4be;
+}
+
+.red-reactive-col:hover {
+    background-color: rgb(246, 130, 130);
+}
+
+.gray-reactive-col:hover {
+    background-color: rgb(190, 186, 186);
 }

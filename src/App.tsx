@@ -37,6 +37,7 @@ function App() {
     const handleSignOut = () => {
         setUserType("guest");
     };
+    
   useEffect(() => {
     fetchProfile();
   }, [userType]);

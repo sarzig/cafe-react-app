@@ -6,7 +6,7 @@ import * as client from "../../Users/client";
 import { User } from "../../Users/client";
 import nameGenerator from "./Functions/nameGenerator";
 import imageGenerator from "./Functions/imageGenerator";
-
+import { BsTrash3Fill, BsPencil, BsPerson } from "react-icons/bs";
 
 
 const Profiles = ({ userType }: { userType: string }) => {
@@ -58,6 +58,63 @@ const Profiles = ({ userType }: { userType: string }) => {
         navigate(`/Profiles/${user._id}`);
     };
 
+    const buttonRow = (user: User) => (
+        <div className="row">
+            {(userType === "admin") && (
+                <>
+                    <div
+                        className="col text-center reactive-col green-reactive-col"
+                        title="See user"
+                        onClick={() => handleSeeUserProfile(user)}
+                    >
+                        <BsPerson className="icon see" />
+                    </div>
+                    <div
+                        className="col text-center reactive-col red-reactive-col"
+                        title="Delete user"
+                        onClick={() => handleDeleteProfile(user)}
+                    >
+                        <BsTrash3Fill className="icon delete" />
+                    </div>
+                    <div
+                        className="col text-center reactive-col gray-reactive-col"
+                        title="Edit user"
+                        onClick={() => handleEditProfile(user)}
+                    >
+                        <BsPencil className="icon edit" />
+                    </div>
+                </>
+            )}
+            {(userType === "owner") && (
+                <>
+                    <div
+                        className="col text-center reactive-col green-reactive-col"
+                        title="See user"
+                        onClick={() => handleSeeUserProfile(user)}
+                    >
+                        <BsPerson className="icon see" />
+                    </div>
+                    <div
+                        className="col text-center reactive-col red-reactive-col"
+                        title="Delete user"
+                        onClick={() => handleDeleteProfile(user)}
+                    >
+                        <BsTrash3Fill className="icon delete" />
+                    </div>
+                </>
+            )}
+            {(userType === "guest" || userType === "customer") && (
+                <>
+                    <div className="col text-center reactive-col green-reactive-col"
+                        title="See user"
+                        onClick={() => handleSeeUserProfile(user)}>
+                        <BsPerson className="icon see" />
+                    </div>
+                </>
+            )}
+        </div>
+    );
+
     return (
         <div>
             <h1>Boston Profiles</h1>
@@ -95,6 +152,7 @@ const Profiles = ({ userType }: { userType: string }) => {
                             <Link className="card-image" to={`/profiles/${user._id}`}>
                                 <img src={imageGenerator(userType, user)} alt="user" className="card-img-top" />
                             </Link>
+                            {buttonRow(user)}
                             <div className="card-body">
                                 <Link className="card-title" to={`/profiles/${user._id}`}>
                                     {nameGenerator(userType, user)}
@@ -112,38 +170,17 @@ const Profiles = ({ userType }: { userType: string }) => {
                                     <span className="category">Interests: </span>
                                     <span className="detail">{user.interests?.join(", ")}</span>
                                     <br />
+                                    <span className="category">Bio: </span>
+                                    <span className="detail">{user.bio}</span>
+                                    <br />
                                 </div>
-                                {userType === "admin" || userType === "owner" || userType === "user" || userType === "guest" ? (
-                                    <div className="card-button-group">
-                                        <div className="row">
-                                            <div className="col button-col">
-                                                <button className="see-user-button classy-button" onClick={() => handleSeeUserProfile(user)}>
-                                                    See User
-                                                </button>
-                                            </div>
-                                            {(userType === "admin" || userType === "owner") && (
-                                                <div className="col button-col">
-                                                    <button className="delete-button classy-button" onClick={() => handleDeleteProfile(user)}>
-                                                        Delete
-                                                    </button>
-                                                </div>
-                                            )}
-                                            {userType === "admin" && (
-                                                <div className="col button-col">
-                                                    <button className="edit-button classy-button" onClick={() => handleEditProfile(user)}>
-                                                        Edit
-                                                    </button>
-                                                </div>
-                                            )}
-                                        </div>
-                                    </div>
-                                ) : null}
                             </div>
                         </div>
                     </div>
-                ))}
-            </div>
-        </div>
+                ))
+                }
+            </div >
+        </div >
     );
 };
 
