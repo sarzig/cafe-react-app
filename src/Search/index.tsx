@@ -135,7 +135,7 @@ export default function Search() {
                     <input 
                         className="form-control my-2 my-sm-0 custom-search-input" 
                         type="search" 
-                        placeholder="Latte Art" 
+                        placeholder="Latte Mug Cake" 
                         aria-label="Search"
                         value={searchTerm}
                         onChange={(e) => setSearchTerm(e.target.value)}
