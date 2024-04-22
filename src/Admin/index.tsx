@@ -340,7 +340,7 @@ const AllTables = ({ userType }: { userType: string }) => {
                             <td>
                                 <button className="btn btn-info" title={`See ${user.email}'s profile`}>
                                     <Link
-                                        to={`/profiles/${user._id}`}
+                                        to={`/Profile/${user._id}`}
                                         title={`See ${user.email}'s profile`}>
                                         <MdInsertLink />
                                     </Link>
