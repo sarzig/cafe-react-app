@@ -203,6 +203,7 @@ export default function EditProfile() {
                 </div> 
                 <span className="">
                     <button className="btn btn-primary float-end" onClick={handleSave}>Save</button> &nbsp;
+                    {/*Todo Kiersten - update - if user id in url, go back to my own profile (view). If no user id (we're viewing someone elses), go to All-profiles */}
                     <a href="#/Profile" className="btn btn-light float-end">Cancel</a>
                 </span>
                 <br /><br />
