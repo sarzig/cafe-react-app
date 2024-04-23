@@ -64,7 +64,7 @@ h2 {
 }
 
 .menu-vertical li {
-    border-top: 1px solid black; /* Add top border */
+    /* border-top: 1px solid black; Add top border */
     border-bottom: 1px solid black; /* Add bottom border */
 }
 
@@ -76,7 +76,8 @@ h2 {
 
 .menu-list {
     padding-left: 0;
-    
+    border-top: 1px solid black; /* Add top border */
+    border-bottom: 1px solid black; /* Add bottom border */
 }
 
 /* note- change this to add borders in between elements. Have to figure out IF we want borders
