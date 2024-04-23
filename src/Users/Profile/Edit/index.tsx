@@ -138,7 +138,7 @@ export default function EditProfile() {
 
                 </div>
             }
-            {(reserveUser.role === "admin" || (!userId && reserveUser._id === profile._id)) &&
+            {(reserveUser.role === "admin" || (!userId && reserveUser._id === profile._id) || process.env.REACT_APP_DEMO_VERSION) &&
                 <>
                     <div className="heading-div">
                         <h1>Edit Profile</h1>

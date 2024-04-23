@@ -55,10 +55,10 @@ function App() {
             <Route path="/Profile" element={<Profile onSignOut={handleSignOut} />} />
             <Route path="/Profile/Edit" element={<EditProfile />} />
             <Route path="/Profile/Edit/:userId" element={<EditProfile />} />
-            <Route path="/Profile/:userId" element={<Profile onSignOut={handleSignOut}/>} />
+            <Route path="/Profile/:userId" element={<Profile onSignOut={handleSignOut} />} />
             <Route path="/Login-~-Signup/*" element={<Login onSignIn={handleLogin} />} />
             <Route path="/Login-~-Signup/Register" element={<Register onSignIn={handleLogin} />} />
-            <Route path="/Menu/*" element={<Menu/>} />
+            <Route path="/Menu/*" element={<Menu />} />
             <Route path="/Admin-Tools/*" element={<AllTables userType={userType} />} />
             <Route path="/All-Profiles" element={<Profiles userType={userType} />} />
             <Route path="/Search" element={<Search />} />

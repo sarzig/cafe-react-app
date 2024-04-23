@@ -60,7 +60,7 @@ const Profiles = ({ userType }: { userType: string }) => {
 
     const buttonRow = (user: User) => (
         <div className="button-row row">
-            {(userType === "admin") && (
+            {(userType === "admin" || process.env.REACT_APP_DEMO_VERSION) && (
                 <>
                     <div
                         className="col text-center reactive-col green-reactive-col"
@@ -103,7 +103,7 @@ const Profiles = ({ userType }: { userType: string }) => {
                     </div>
                 </>
             )}
-            {(userType === "guest" || userType === "customer") && (
+            {((userType === "guest" || userType === "customer") && !process.env.REACT_APP_DEMO_VERSION ) && (
                 <>
                     <div className="col text-center reactive-col green-reactive-col"
                         title="See user"
