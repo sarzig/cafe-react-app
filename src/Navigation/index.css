@@ -49,14 +49,18 @@ h2 {
 
 .menu-vertical {
     position: absolute;
-    top: 0;
+    top: 150;
     left: 0;
     z-index: 9999;
+    width: 100%;
+    background-color: white;
 }
 
 .menu-vertical ul {
     margin: 0;
     padding: 0;
+    border-top: 1px solid black; /* Add top border */
+    border-bottom: 1px solid black; /* Add bottom border */
 }
 
 .custom-nav-row {
