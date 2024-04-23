@@ -7,8 +7,6 @@ import { MdInsertLink } from "react-icons/md";
 import CollapsibleSection from "./CollapsibleSection";
 import "./index.css";
 
-// xxx todo: user table doesn't auto update when interests or visit days are updated
-
 const AllTables = ({ userType }: { userType: string }) => {
 
     const [filterRole, setFilterRole] = useState("customer");

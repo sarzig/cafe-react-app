@@ -24,6 +24,9 @@
 }
 
 .recipe-details-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   width: 40rem;
   height: 40rem;
 }

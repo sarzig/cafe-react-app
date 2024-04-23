@@ -103,9 +103,15 @@ h1 {
     /* Horizontally center content */
     align-items: center;
     /* Vertically center content */
-    border: 1px solid rgba(128, 128, 128, 0.104);
-    height: 40px;
+    border: 1px solid rgba(128, 128, 128, 0.207);
+    height: 46px;
     text-align: center;
+    cursor: pointer;
+    color: black;
+}
+
+.height-50 {
+    height: 55px;
 }
 
 .green-reactive-col {
@@ -130,4 +136,12 @@ h1 {
 
 .gray-reactive-col:hover {
     background-color: rgb(190, 186, 186);
+}
+
+.blue-reactive-col {
+    background-color: rgba(64, 0, 225, 0.275);
+}
+
+.blue-reactive-col:hover {
+    background-color: rgba(46, 19, 200, 0.478)
 }

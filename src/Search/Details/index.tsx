@@ -8,6 +8,9 @@ import "../index.css"
 import * as client from "../../Users/client";
 import { User } from "../../Users/client";
 import nameGenerator from "../../Profile/Profiles/Functions/nameGenerator";
+import { BsPerson, BsTrash3Fill } from "react-icons/bs";
+import { MdInsertLink } from "react-icons/md";
+import { IoMdArrowBack } from "react-icons/io";
 
 interface RecipeInfoType {
     vegetarian: boolean;
@@ -222,6 +225,37 @@ export default function Details() {
     const likers = filteredLikedRecipes.map(([recipe_id, likers]) => likers);
     // console.log("likers:", likers);
 
+    const buttonRow = (recipeInfo: any) => (
+        <div className="button-row row height-50">
+
+            <Link to={`/Search`}
+                className="col text-center reactive-col red-reactive-col height-50"
+                title="Back to Search Results"
+            >
+                <IoMdArrowBack className="big-icon" />
+            </Link>
+
+            <Link to={recipeInfo.sourceUrl || ""}
+                className="col text-center reactive-col blue-reactive-col height-50"
+                title="Go to Recipe Link"
+            >
+                <MdInsertLink className="big-icon" />
+            </Link>
+
+            {(currentUserType !== "guest") && (
+                <>
+                    <div
+                        className="col text-center reactive-col green-reactive-col height-50"
+                        onClick={() =>
+                            handleAddRecipeForSingleUser(String(recipeInfo.sourceUrl))
+                        } >
+                         + Favorite
+                    </div>
+                </>
+            )}
+        </div>
+    );
+
     async function handleAddRecipeForSingleUser(recipeName: string): Promise<void> {
         try {
             const targetUser = user;
@@ -282,23 +316,8 @@ export default function Details() {
                             </p>
                             {/* <p>Your mom <br/></p> */}
                         </div>
-                        <div className="card-footer bg-transparent">
-                            <button className="btn btn-light p card-link" >
-                                <Link to={`/Search`} className="button-link">Return</Link>
-                            </button>
-                            <button className="btn btn-light p card-link" >
-                                <Link to={recipeInfo.sourceUrl || ""} className="button-link">Source</Link>
-                            </button>
-                            {(currentUserType == "customer") && (
-                                <button
-                                    className="btn btn-light p card-link"
-                                    onClick={() =>
-                                        handleAddRecipeForSingleUser(String(recipeInfo.sourceUrl))
-                                    } >
-                                    + Favorite
-                                </button>
-                            )}
-                        </div>
+
+                        {buttonRow(recipeInfo)}
                     </div>
                 </div>
             )}
