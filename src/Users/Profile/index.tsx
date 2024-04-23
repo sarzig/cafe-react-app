@@ -94,10 +94,6 @@ export default function Profile({ onSignOut }: any) {
                                     <div className="col">{profile.favorite_drinks?.join(", ")}</div>
                                 </div>
                                 <div className="row">
-                                    <div className="col bold">Favorite menu items:</div>
-                                    <div className="col">{profile.favorite_menu_items?.join(", ")} </div>
-                                </div>
-                                <div className="row">
                                     <div className="col bold">Favorite recipes:</div>
                                     <div className="col">{profile.favorite_recipes.map((recipe) =>
                                         <a key={recipe} href={`${recipe}`}>{recipe} <br /></a>

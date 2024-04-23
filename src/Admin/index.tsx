@@ -229,7 +229,8 @@ const AllTables = ({ userType }: { userType: string }) => {
                         <th className="width-120">Role</th>
                         <th className="width-70">Delete</th>
                         <th className="width-70">Modify</th>
-                        <th className="width-70">Link</th>
+                        <th className="width-70">View</th>
+                        <th className="width-70">Edit</th>
                     </tr>
                     <tr>
                         <td className="text-nowrap">
@@ -263,29 +264,19 @@ const AllTables = ({ userType }: { userType: string }) => {
                             />
                         </td>
                         <td>
-                            <input
-                                className="form-control"
-                                value={stringCafeDays}
-                                placeholder="Visit Days"
-                                onChange={(e) => setStringCafeDays(e.target.value)}
-                            />
+                            Can modify in Edit Profile Screen
                         </td>
                         <td>
-                            <input
-                                className="form-control"
-                                value={stringInterests}
-                                placeholder="Interests"
-                                onChange={(e) => setStringInterests(e.target.value)}
-                            />
+                            Can modify in Edit Profile Screen
                         </td>
                         <td>
                             <select className="form-control"
                                 value={user.role}
                                 onChange={(e) => setUser({ ...user, role: e.target.value.toLowerCase() })}
                             >
-                                <option value="customer">Customer</option>
-                                <option value="admin">Admin</option>
-                                <option value="owner">Owner</option>
+                                <option value="customer">customer</option>
+                                <option value="admin">admin</option>
+                                <option value="owner">owner</option>
                             </select>
                         </td>
                         <td>
@@ -301,6 +292,8 @@ const AllTables = ({ userType }: { userType: string }) => {
                                 className="me-2 text-success fs-1 text"
                                 title="Add NEW user with these attributes"
                             />
+                        </td>
+                        <td>
                         </td>
                         <td>
                         </td>
@@ -340,6 +333,15 @@ const AllTables = ({ userType }: { userType: string }) => {
                                     <Link
                                         to={`/Profile/${user._id}`}
                                         title={`See ${user.email}'s profile`}>
+                                        <MdInsertLink />
+                                    </Link>
+                                </button>
+                            </td>
+                            <td>
+                                <button className="btn btn-info" title={`Edit ${user.email}'s profile`}>
+                                    <Link
+                                        to={`/Profile/Edit/${user._id}`}
+                                        title={`Edit ${user.email}'s profile`}>
                                         <MdInsertLink />
                                     </Link>
                                 </button>
@@ -399,14 +401,14 @@ const AllTables = ({ userType }: { userType: string }) => {
                                 {recipe}
                             </td>
 
-                            <td>
+                            <td className="text-center">
                                 <a href={recipe}>
                                     <button className="btn btn-info" title="Go to recipe link">
                                         <MdInsertLink />
                                     </button>
                                 </a>
                             </td>
-                            <td>
+                            <td className="text-center">
                                 <button
                                     className="btn btn-danger"
                                     title="Remove recipe from ALL users' likes"
@@ -476,18 +478,18 @@ const AllTables = ({ userType }: { userType: string }) => {
                 <thead>
                     <tr>
                         <th className="col-6">Drink</th>
-                        <th className="col-1 width-70">Delete Drink</th>
+                        <th className="col-1 width-70 ">Delete Drink</th>
                         <th className="col-6">Likers of Drink</th>
                     </tr>
                 </thead>
                 <tbody>
                     {Array.from(uniqueDrinksAndLikers.entries()).map(([drink, likers]) => (
                         <tr key={drink}>
-                            <td>
+                            <td className="text-center" style={{ verticalAlign: 'middle' }}>
                                 {drink}
                             </td>
 
-                            <td>
+                            <td className="text-center">
                                 <button className="btn btn-danger" title="Remove drink from ALL users' likes"
                                     onClick={() =>
                                         handleDeleteDrinkForAllUsers(drink)
@@ -583,7 +585,7 @@ const AllTables = ({ userType }: { userType: string }) => {
             <div className="heading-div">
                 <h1>Admin Tools</h1>
             </div>
-            <br/>
+            <br />
 
 
             {displayText}
