@@ -54,6 +54,8 @@ h2 {
     z-index: 9999;
     width: 100%;
     background-color: white;
+    border-top: 1px solid black; /* Add top border */
+    border-bottom: 1px solid black; /* Add bottom border */
 }
 
 .menu-vertical ul {
