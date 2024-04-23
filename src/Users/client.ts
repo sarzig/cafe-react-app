@@ -2,7 +2,9 @@ import axios from "axios";
 const request = axios.create({
   withCredentials: true,
 });
-export const USERS_API = process.env.REACT_APP_USERS_API;
+
+
+export const USERS_API = process.env.REACT_APP_API_BASE + "/api/users";
 console.log("USERS_API", USERS_API);
 
 export interface User { 
