@@ -11,7 +11,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 const Navigation = ({ userType }: { userType: any }) => {
     const links = [
         {
-            label: "Menu2",
+            label: "Menu3",
             path: "Menu",
             stringComprehension: "/Menu",
             userTypes: ["admin", "customer", "owner", "guest"]
@@ -41,7 +41,7 @@ const Navigation = ({ userType }: { userType: any }) => {
             userTypes: ["admin", "customer", "owner", "guest"]
         },
         {
-            label: "Login-~-Signup",
+            label: "Login ~ Signup",
             path: "Login-~-Signup",
             stringComprehension: "Login",
             userTypes: ["guest"]
@@ -57,17 +57,39 @@ const Navigation = ({ userType }: { userType: any }) => {
     const { pathname } = useLocation();
     console.log(pathname);
 
+    /*
     const makeMenuUL = (menuType: string) => (
         <ul>
             {links.map((link, index) => (
                 link.userTypes.includes(userType) && (
                     <li key={index} className={pathname.includes(`/${link.path}`) ? "menu-active" : ""}>
-                        <Link to={`/${link.path}`}>{link.label.replace(/-/g, ' ')}</Link>
+                        <Link to={`/${link.path}`}>{link.label}</Link>
                     </li>
                 )
             ))}
         </ul>
     );
+    */
+
+    const makeMenuUL = (menuType: string) => (
+    <ul>
+        {links.map((link, index) => (
+            link.userTypes.includes(userType) && (
+                <li key={index} className={pathname.includes(`/${link.path}`) ? "menu-active" : ""}>
+                    <Link
+                        to={`/${link.path}`}
+                        onClick={() => {
+                            if (menuType === "menu-vertical") {
+                                toggleDropDown(); // Call toggleDropDown if menuType is "menu-vertical"
+                            }
+                        }}>
+                        {link.label}
+                    </Link>
+                </li>
+            )
+        ))}
+    </ul>
+);
 
     return (
         <div className="row fixed-top-row">
