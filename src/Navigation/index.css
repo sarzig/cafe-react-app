@@ -24,7 +24,18 @@ h2 {
     background-color: white; /* Set background color to white. alternatively, make the buttons see through too */
 }
 
-ul {
+.icon-container {
+    align-items: center; /* Center items vertically */
+    vertical-align: middle;
+    padding-top: 10px;
+    padding-bottom: 19px;
+}
+
+.icon:hover {
+    border: 1px solid black;
+}
+
+.menu-horizontal ul {
     list-style-type: none;
     margin: 0;
     overflow: hidden;
@@ -34,7 +45,30 @@ ul {
     margin-left: 0; /* Remove default margin */
     border-top: 1px solid black; /* Add top border */
     border-bottom: 1px solid black; /* Add bottom border */
+    height: 55px;
 }
+
+.menu-vertical {
+    position: absolute;
+    top: 150;
+    left: 0;
+    z-index: 9999;
+    width: 100%;
+    background-color: white;
+    /*border-top: 1px solid black;  Add top border */
+    /*border-bottom: 1px solid black;  Add bottom border */
+}
+
+.menu-vertical ul {
+    margin: 0;
+    padding: 0;
+}
+
+.menu-vertical li {
+    /* border-top: 1px solid black; Add top border */
+    border-bottom: 1px solid black; /* Add bottom border */
+}
+
 
 .custom-nav-row {
     width: 100%;
@@ -43,7 +77,8 @@ ul {
 
 .menu-list {
     padding-left: 0;
-    
+    border-top: 1px solid black; /* Add top border */
+    border-bottom: 1px solid black; /* Add bottom border */
 }
 
 /* note- change this to add borders in between elements. Have to figure out IF we want borders
