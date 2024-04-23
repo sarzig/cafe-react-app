@@ -57,7 +57,7 @@ const Navigation = ({ userType }: { userType: any }) => {
     const { pathname } = useLocation();
     console.log(pathname);
 
-    const makeMenuUL = () => (
+    const makeMenuUL = (menuType: string) => (
         <ul className="menu-list">
             {links.map((link, index) => (
                 link.userTypes.includes(userType) && (
@@ -76,7 +76,7 @@ const Navigation = ({ userType }: { userType: any }) => {
             </h2>
             <div className="row custom-nav-row g-0">
                 <div className="col d-none d-sm-block">
-                    {makeMenuUL()}
+                    {makeMenuUL("horizontal")}
                 </div>
 
                 <div className="col d-block d-sm-none">
