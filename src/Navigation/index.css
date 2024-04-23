@@ -28,6 +28,7 @@ h2 {
     align-items: center; /* Center items vertically */
     vertical-align: middle;
     padding-top: 9px;
+    padding-bottom: 12px;
 }
 
 .icon:hover {
