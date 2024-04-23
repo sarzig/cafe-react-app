@@ -66,7 +66,7 @@ const Navigation = ({ userType }: { userType: any }) => {
                         to={`/${link.path}`}
                         onClick={() => {
                             if (menuType === "menu-vertical") {
-                                toggleDropDown(); // Call toggleDropDown if menuType is "menu-vertical"
+                                toggleDropdown(); // Call toggleDropdown if menuType is "menu-vertical"
                             }
                         }}>
                         {link.label}
