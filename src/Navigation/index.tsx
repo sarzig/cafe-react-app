@@ -90,11 +90,11 @@ const Navigation = ({ userType }: { userType: any }) => {
                 </div>
 
                 <div className="col d-block d-sm-none">
-                    <ul className="menu-list">
+                    <div className="menu-list">
                         <li className="icon-container" onClick={toggleDropdown}>
                             <FaBars className="big-icon icon"/>
                         </li>
-                    </ul>
+                    </div>
                     {isDropdownOpen && (
                         <div className="menu-vertical">
                             {makeMenuUL("menu-vertical")}
