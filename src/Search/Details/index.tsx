@@ -139,10 +139,26 @@ export default function Details() {
         favorite_recipes: [],
         role: "customer",
     });
+    const [reserveUser, setReserveUser] = useState<User>({
+        _id: "",
+        full_name: "",
+        email: "",
+        password: "",
+        image: "",
+        hometown: "",
+        bio: "",
+        interests: [],
+        favorite_cafe_days: [],
+        favorite_drinks: [],
+        favorite_menu_items: [],
+        favorite_recipes: [],
+        role: "customer",
+    });
     const fetchProfile = async () => {
         try {
             const account = await client.profile();
             setUser(account);
+            setReserveUser(account);
             setCurrentUserType("customer");
         } catch (err) {
             setCurrentUserType("guest");
@@ -189,7 +205,7 @@ export default function Details() {
     useEffect(() => { fetchUsers(); }, []);
 
     const getuniqueRecipesAndLikers = () => {
-        const drinkMap = new Map<string, User[]>(); // Map to store drinks and their likers
+        const recipeMap = new Map<string, User[]>(); // Map to store drinks and their likers
 
         // Loop through each user
         users.forEach((user: User) => {
@@ -198,21 +214,27 @@ export default function Details() {
                 user.favorite_recipes.forEach((recipe_id: string) => {
                     if (recipe_id) {
                         // Ensure drink_id is defined
-                        if (!drinkMap.has(recipe_id)) {
-                            drinkMap.set(recipe_id, [user]); // Initialize with the first liker
+                        if (!recipeMap.has(recipe_id)) {
+                            recipeMap.set(recipe_id, [user]); // Initialize with the first liker
                         } else {
-                            const currentLikers = drinkMap.get(recipe_id) || [];
+                            const currentLikers = recipeMap.get(recipe_id) || [];
                             const userExists = currentLikers.some(like => like.email === user.email); // Check if user already liked the drink
                             if (!userExists) {
-                                drinkMap.set(recipe_id, [...currentLikers, user]); // Add new liker
+                                recipeMap.set(recipe_id, [...currentLikers, user]); // Add new liker
                             }
                         }
                     }
                 });
             }
         });
-        // console.log("drinkMap:", drinkMap);
-        return drinkMap;
+        // console.log("recipeMap:", recipeMap);
+        return recipeMap;
+    };
+
+    const handleSave = async (updatedUser: User) => {
+        await client.updateUser(updatedUser);
+        await client.signout();
+        await client.signin(reserveUser);
     };
 
     const uniqueRecipesAndLikers = getuniqueRecipesAndLikers();
@@ -224,24 +246,31 @@ export default function Details() {
 
     async function handleAddRecipeForSingleUser(recipeName: string): Promise<void> {
         try {
-            const targetUser = user;
 
-            if (targetUser) {
-                setUser(targetUser);
+            if (user) {
+                setUser(user);
+                setReserveUser(user);
                 // Filter out the recipe from the target user's favorite recipes
-                const updatedFavoriteRecipes = Array.from(new Set([...(targetUser.favorite_recipes || []), recipeName]));
+                const updatedFavoriteRecipes = Array.from(new Set([...(user.favorite_recipes || []), recipeName]));
 
                 // Update the target user with the new favorite recipes
-                const updatedUser = { ...targetUser, favorite_recipes: updatedFavoriteRecipes };
+                const updatedUser = { ...user, favorite_recipes: updatedFavoriteRecipes };
+                // console.log("updated user..", updatedUser);
 
                 // Update the users state with the modified user
-                const updatedUsers = users.map((user) => (user._id === updatedUser._id ? updatedUser : user));
+                const updatedUsers = users.map((iuser) => (iuser._id === updatedUser._id ? updatedUser : iuser));
                 await setUsers(updatedUsers);
 
+                // console.log("updated users from handle add..:", updatedUsers);
+
                 // Perform additional operations here, such as updating the user in the backend
-                await client.updateUser(updatedUser);
+                // const res = await client.updateUser(updatedUser);
+                handleSave(updatedUser);
 
                 console.log(`Recipe '${recipeName}' added to user '${user.email}' successfully.`);
+
+                const userConf = await client.profile();
+                // console.log("server confirmation ofuser update to favorite recipes: ", userConf.favorite_recipes);
             } else {
                 console.log(`User not logged in or email not found.`);
             }
@@ -255,9 +284,9 @@ export default function Details() {
             {recipeInfo && (
                 <div className="d-flex flex-column align-items-center justify-content-center">
                     <div className="card">
-                        <img src={recipe.image} className="card-img-top" alt="current recipe image"/>
+                        <img src={recipeInfo.image} className="card-img-top" alt="current recipe image"/>
                         <div className="card-body">
-                            <h5 className="card-title recipe-text">Title: {recipe.title} </h5>
+                            <h5 className="card-title recipe-text">Title: {recipeInfo.title} </h5>
                             <h5> Ingredients needed: </h5>
                             <p className="card-text recipe-text">
                                 {recipeInfo.extendedIngredients.map((ingredient: any, index: any) => (
@@ -272,7 +301,7 @@ export default function Details() {
                                 {likers.map((likersArray: any[], index: any) => (
                                     likersArray.map((liker: any, innerIndex: any) => (
                                         // <span key={`${index}-${innerIndex}`}> <Link to={`/profiles/${liker.id}`}>{liker.full_name}</Link></span>
-                                        <div key={`${index}-${innerIndex}`}> <Link to={`/profiles/${liker.id}`}>{nameGenerator(currentUserType, liker)}</Link></div>
+                                        <span key={`${index}-${innerIndex}`}> <Link to={`/profiles/${liker.id}`}>{nameGenerator(currentUserType, liker)}</Link> <br/> </span>
                                     ))
                                 ))}
                             </p>

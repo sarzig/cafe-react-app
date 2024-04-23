@@ -4,6 +4,8 @@ import { User } from "../client";
 import { useEffect, useState } from "react";
 import nameGenerator from "../../Profile/Profiles/Functions/nameGenerator";
 import imageGenerator from "../../Profile/Profiles/Functions/imageGenerator";
+import { useDispatch } from "react-redux";
+import { setRecipes } from "../../Search/reducer";
 
 export default function Profile({ onSignOut }: any) {
     const { userId } = useParams();
@@ -14,6 +16,7 @@ export default function Profile({ onSignOut }: any) {
     email: "", password: "", hometown: "", bio: "", interests: [], favorite_cafe_days: [],
     favorite_drinks: [], favorite_menu_items: [], favorite_recipes: [], role: "guest"});
     const [userType, setUserType]= useState("guest");
+    const dispatch = useDispatch();
     const fetchProfile = async () => {
         if (userId) {
             const account = await client.findUserById(userId);
@@ -34,6 +37,7 @@ export default function Profile({ onSignOut }: any) {
     const signout = async () => {
         await client.signout();
         onSignOut();
+        dispatch(setRecipes("")); // Clear search result from user when logging out
         navigate(`/Home`);
     }
     
@@ -91,7 +95,7 @@ export default function Profile({ onSignOut }: any) {
                     </div>
                     <div className="row">
                         <div className="col bold">Favorite recipes:</div>
-                        <div className="col">{profile.favorite_recipes.map((recipe) => 
+                        <div className="col">{profile.favorite_recipes?.map((recipe) => 
                             <a key={recipe} href={`${recipe}`}>{recipe} <br /></a>
                         )}</div>
                     </div>
