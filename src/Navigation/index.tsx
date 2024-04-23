@@ -11,7 +11,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 const Navigation = ({ userType }: { userType: any }) => {
     const links = [
         {
-            label: "Menu3",
+            label: "Menu",
             path: "Menu",
             stringComprehension: "/Menu",
             userTypes: ["admin", "customer", "owner", "guest"]
