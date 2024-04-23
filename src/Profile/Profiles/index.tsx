@@ -59,7 +59,7 @@ const Profiles = ({ userType }: { userType: string }) => {
     };
 
     const buttonRow = (user: User) => (
-        <div className="row">
+        <div className="button-row row">
             {(userType === "admin") && (
                 <>
                     <div
@@ -145,9 +145,9 @@ const Profiles = ({ userType }: { userType: string }) => {
                 )}
             </div>
 
-            <div className="row row-cols-1 row-cols-md-5 justify-content-center">
+            <div className="row row-cols-1 row-cols-md-7 justify-content-center">
                 {users.map((loopUser) => (
-                    <div key={loopUser._id} className="col" style={{ width: 350 }}>
+                    <div key={loopUser._id} className="col m-2" style={{ width: 350 }}>
                         <div className="card flex-shrink-0">
                             <Link className="card-image" to={`/Profile/${loopUser._id}`}>
                                 <img src={imageGenerator(userType, loopUser)} alt="user" className="card-img-top" />

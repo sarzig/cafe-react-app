@@ -12,7 +12,20 @@ h1 {
     margin: 15px;
     height: 450px;
     overflow: hidden;
+    
 }
+
+.button-row {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 50px; /* Adjust height as needed */
+    padding: 0 10px; /* Optional padding for buttons */
+}
+
 
 /* Media query for small screens */
 @media (max-width: 768px) {

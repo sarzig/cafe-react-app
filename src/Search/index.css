@@ -23,6 +23,24 @@
   overflow: visible;
 }
 
+.recipe-details-card {
+  width: 40rem;
+  height: 40rem;
+}
+
+@media (max-width: 768px) {
+  .recipe-details-card {
+    width: 100%; /* Full width on smaller screens */
+    height: auto; /* Allow height to adjust based on content */
+    max-width: 40rem; /* Set a maximum width to maintain readability */
+    /* Additional styles as needed */
+  }
+}
+
+.card-footer {
+  height: 35px;
+}
+
 .button-link {
   color: black;
   text-decoration: none;

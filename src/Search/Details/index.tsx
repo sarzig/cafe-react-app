@@ -251,18 +251,20 @@ export default function Details() {
     };
 
     return (
-        <> 
+        <>
             {recipeInfo && (
                 <div className="d-flex flex-column align-items-center justify-content-center">
-                    <div className="card">
-                        <img src={recipe.image} className="card-img-top" alt="current recipe image"/>
+                    <div className="card recipe-details-card">
+                        <Link to={recipeInfo.sourceUrl || ""}>
+                            <img src={recipe.image} className="card-img-top" alt="current recipe image" title="Click to go to recipe link" />
+                        </Link>
                         <div className="card-body">
-                            <h5 className="card-title recipe-text">Title: {recipe.title} </h5>
+                            <h5 className="card-title recipe-text bold">{recipe.title} </h5>
                             <h5> Ingredients needed: </h5>
                             <p className="card-text recipe-text">
                                 {recipeInfo.extendedIngredients.map((ingredient: any, index: any) => (
                                     <span key={index}> {ingredient.name} - </span>
-                                ))} 
+                                ))}
                                 love
                             </p>
                         </div>
@@ -272,7 +274,9 @@ export default function Details() {
                                 {likers.map((likersArray: any[], index: any) => (
                                     likersArray.map((liker: any, innerIndex: any) => (
                                         // <span key={`${index}-${innerIndex}`}> <Link to={`/profiles/${liker.id}`}>{liker.full_name}</Link></span>
-                                        <div key={`${index}-${innerIndex}`}> <Link to={`/profiles/${liker.id}`}>{nameGenerator(currentUserType, liker)}</Link></div>
+                                        <div key={`${index}-${innerIndex}`}>
+                                            <Link to={`/Profile/${liker._id}`}>{nameGenerator(currentUserType, liker)}</Link>
+                                        </div>
                                     ))
                                 ))}
                             </p>
@@ -285,10 +289,10 @@ export default function Details() {
                             <button className="btn btn-light p card-link" >
                                 <Link to={recipeInfo.sourceUrl || ""} className="button-link">Source</Link>
                             </button>
-                            {(currentUserType  == "customer") && (
-                                    <button 
-                                    className="btn btn-light p card-link" 
-                                    onClick={() => 
+                            {(currentUserType == "customer") && (
+                                <button
+                                    className="btn btn-light p card-link"
+                                    onClick={() =>
                                         handleAddRecipeForSingleUser(String(recipeInfo.sourceUrl))
                                     } >
                                     + Favorite

@@ -46,7 +46,7 @@ export default function Search() {
             // const apiKey = '';
             const numberOfRecipes = 10;
 
-                if (!searchTerm.trim()) return; // Check if search term is empty then do nothing if so
+            if (!searchTerm.trim()) return; // Check if search term is empty then do nothing if so
 
             const options = {
                 method: 'GET',
@@ -92,19 +92,19 @@ export default function Search() {
                 }
             };
 
-                const resp = await axios.request(options);
+            const resp = await axios.request(options);
 
-                if (resp.data.results) {
-                    // console.log("recipes:", recipes);
-                    // client.setRecipes(resp.data.results).then((status) => {
-                    //     dispatch(setRecipes(resp.data.results));
-                    // }
-                    dispatch(setRecipes(resp.data.results));
-                    console.log("recipes:", recipes);
-                }
-            } catch (e) {
-                console.log(e);
-            }                
+            if (resp.data.results) {
+                // console.log("recipes:", recipes);
+                // client.setRecipes(resp.data.results).then((status) => {
+                //     dispatch(setRecipes(resp.data.results));
+                // }
+                dispatch(setRecipes(resp.data.results));
+                console.log("recipes:", recipes);
+            }
+        } catch (e) {
+            console.log(e);
+        }
 
     }
 
@@ -127,36 +127,38 @@ export default function Search() {
             </div>
             <div className="d-flex flex-column align-items-center justify-content-center">
 
-            {/* <div className="heading">
+                {/* <div className="heading">
                 <h3>Search</h3>
             </div> */}
-            <div className="d-flex flex-row" id="search-bar">
-                <form className="form-outline my-2 my-lg-6">
-                    <input 
-                        className="form-control my-2 my-sm-0 custom-search-input" 
-                        type="search" 
-                        placeholder="Latte Mug Cake" 
-                        aria-label="Search"
-                        value={searchTerm}
-                        onChange={(e) => setSearchTerm(e.target.value)}
-                    />
-                    {/* <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> */}
-                </form>
-                <button className="btn btn-light" onClick={getRecipes}> Search </button>
-            </div>
-            {/* TODO: Make same width as search bar(?) */}
-            <div className="d-flex flex-row" id="search-bar">
-                {/* <button className="btn btn-light p" onClick={getRecipes}> Generate New Random Recipe </button> */}
-            </div>
+                <div className="d-flex flex-row" id="search-bar">
+                    <form className="form-outline my-2 my-lg-6">
+                        <input
+                            className="form-control my-2 my-sm-0 custom-search-input"
+                            type="search"
+                            placeholder="Latte Mug Cake"
+                            aria-label="Search"
+                            value={searchTerm}
+                            onChange={(e) => setSearchTerm(e.target.value)}
+                        />
+                        {/* <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> */}
+                    </form>
+                    <button className="btn btn-light" onClick={getRecipes}> Search </button>
+                </div>
+                {/* TODO: Make same width as search bar(?) */}
+                <div className="d-flex flex-row" id="search-bar">
+                    {/* <button className="btn btn-light p" onClick={getRecipes}> Generate New Random Recipe </button> */}
+                </div>
 
                 {/* Cards  */}
                 {/* First confirm recipies exists, then map  */}
                 {/* <ResultList /> */}
                 {recipes && recipes?.map((recipe: Recipe, key: any) => (
                     <div className="card mb-3" key={recipe.id.toString()}>
-                        <img src={recipe?.image} className="card-img-top" alt="current recipe image" />
+                        <Link to={`/Search/Details/${recipe?.id}`}>
+                            <img src={recipe?.image} className="card-img-top" alt="current recipe image" />
+                        </Link>
                         <div className="card-body">
-                            <h5 className="card-title recipe-text">Title: {recipe?.title} </h5>
+                            <h5 className="card-title recipe-text bold">{recipe?.title} </h5>
                             {/* <p>{recipe?.summary}</p> */}
                         </div>
                         <div className="card-body">
