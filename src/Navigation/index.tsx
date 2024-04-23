@@ -57,20 +57,6 @@ const Navigation = ({ userType }: { userType: any }) => {
     const { pathname } = useLocation();
     console.log(pathname);
 
-    /*
-    const makeMenuUL = (menuType: string) => (
-        <ul>
-            {links.map((link, index) => (
-                link.userTypes.includes(userType) && (
-                    <li key={index} className={pathname.includes(`/${link.path}`) ? "menu-active" : ""}>
-                        <Link to={`/${link.path}`}>{link.label}</Link>
-                    </li>
-                )
-            ))}
-        </ul>
-    );
-    */
-
     const makeMenuUL = (menuType: string) => (
     <ul>
         {links.map((link, index) => (
