@@ -9,6 +9,14 @@ import "./index.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Navigation = ({ userType }: { userType: any }) => {
+
+    // Override for demo version
+    if (process.env.REACT_APP_DEMO_VERSION) {
+        userType = "admin";
+    }
+    console.log("process.env.DEMO_VERSION", process.env.REACT_APP_DEMO_VERSION);
+    console.log("userType", userType   );
+
     const links = [
         {
             label: "Menu",
