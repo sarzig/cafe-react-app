@@ -24,6 +24,16 @@ h2 {
     background-color: white; /* Set background color to white. alternatively, make the buttons see through too */
 }
 
+.icon-container {
+    align-items: center; /* Center items vertically */
+    vertical-align: middle;
+    padding-top: 9px;
+}
+
+.icon:hover {
+    border: 1px solid black;
+}
+
 ul {
     list-style-type: none;
     margin: 0;
@@ -34,6 +44,8 @@ ul {
     margin-left: 0; /* Remove default margin */
     border-top: 1px solid black; /* Add top border */
     border-bottom: 1px solid black; /* Add bottom border */
+    height: 55px;
+
 }
 
 .custom-nav-row {
