@@ -11,7 +11,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 const Navigation = ({ userType }: { userType: any }) => {
     const links = [
         {
-            label: "Menu",
+            label: "Menu1",
             path: "Menu",
             stringComprehension: "/Menu",
             userTypes: ["admin", "customer", "owner", "guest"]
@@ -58,7 +58,7 @@ const Navigation = ({ userType }: { userType: any }) => {
     console.log(pathname);
 
     const makeMenuUL = (menuType: string) => (
-        <ul className="menu-list">
+        <ul className={menuType}>
             {links.map((link, index) => (
                 link.userTypes.includes(userType) && (
                     <li key={index} className={pathname.includes(`/${link.path}`) ? "menu-active" : ""}>
@@ -76,7 +76,7 @@ const Navigation = ({ userType }: { userType: any }) => {
             </h2>
             <div className="row custom-nav-row g-0">
                 <div className="col d-none d-sm-block">
-                    {makeMenuUL("horizontal")}
+                    {makeMenuUL("menu-horizontal")}
                 </div>
 
                 <div className="col d-block d-sm-none">
@@ -87,13 +87,7 @@ const Navigation = ({ userType }: { userType: any }) => {
                     </ul>
                     {isDropdownOpen && (
                         <div>
-                                {links.map((link, index) => (
-                                    link.userTypes.includes(userType) && (
-                                        <p key={index} className={pathname.includes(`/${link.path}`) ? "menu-active" : ""}>
-                                            <Link to={`/${link.path}`}>{link.label.replace(/-/g, ' ')}</Link>
-                                        </p>
-                                    )
-                                ))}
+                            {makeMenuUL("menu-vertical")}
                         </div>
                     )}
                 </div>
