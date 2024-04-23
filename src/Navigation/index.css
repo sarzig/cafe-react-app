@@ -34,7 +34,7 @@ h2 {
     border: 1px solid black;
 }
 
-.horizontal-menu ul {
+.menu-horizontal ul {
     list-style-type: none;
     margin: 0;
     overflow: hidden;
