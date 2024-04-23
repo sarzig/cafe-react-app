@@ -15,7 +15,6 @@ export default function Profile({ onSignOut }: any) {
     const [reserveUser, setReserveUser] = useState<User>({ _id: "", full_name: "", image: "",
     email: "", password: "", hometown: "", bio: "", interests: [], favorite_cafe_days: [],
     favorite_drinks: [], favorite_menu_items: [], favorite_recipes: [], role: "guest"});
-    const [userType, setUserType]= useState("guest");
     const dispatch = useDispatch();
     const fetchProfile = async () => {
         if (userId) {
@@ -53,12 +52,16 @@ export default function Profile({ onSignOut }: any) {
                 <span>
                     <img src={imageGenerator(reserveUser.role, profile)} alt="sleek headshot" className="rounded-circle shadow-4-strong img-fluid"/>
                 </span>
-            {!userId && reserveUser._id === profile._id && <div>
+             <div>
                 <br />
-                <a className="btn btn-light w-100" href="#/Profile/Edit">Edit Profile</a>
-                <button className="btn btn-light w-100 mt-2" onClick={signout}>Sign Out</button>
+                {(reserveUser._id === profile._id || reserveUser.role === "admin") &&
+                    <a className="btn btn-light w-100" href="#/Profile/Edit">Edit Profile</a>
+                }
+                {reserveUser._id === profile._id &&
+                    <button className="btn btn-light w-100 mt-2" onClick={signout}>Sign Out</button>
+                }
                 <br /><br />
-            </div>}
+            </div>
             </div>
             <div className="col-1"></div>
             <div className="col-8">
