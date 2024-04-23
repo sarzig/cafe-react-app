@@ -60,6 +60,7 @@ function App() {
             <Route path="/Admin-Tools/*" element={<AllTables userType={userType} />} />
             <Route path="/All-Profiles" element={<Profiles userType={userType} />} />
             <Route path="/Search" element={<Search />} />
+            <Route path="/Search/:st" element={<Search />} />
             <Route path="/Search/Details/:rid" element={<Details />} />
           </Routes>
         </div>
