@@ -63,6 +63,12 @@ h2 {
     border-bottom: 1px solid black; /* Add bottom border */
 }
 
+.menu-vertical li {
+    border-top: 1px solid black; /* Add top border */
+    border-bottom: 1px solid black; /* Add bottom border */
+}
+
+
 .custom-nav-row {
     width: 100%;
     padding-right: 0;
