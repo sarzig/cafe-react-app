@@ -1,6 +1,6 @@
 export default function nameGenerator(userType: string, user: any) {
 
-    if (userType !== "guest" || process.env.REACT_APP_DEMO_VERSION) {
+    if (userType !== "guest") {
         // If user isn't guest, then just show real names
         return user.full_name;
     }

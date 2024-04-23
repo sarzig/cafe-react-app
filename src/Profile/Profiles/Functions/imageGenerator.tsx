@@ -1,7 +1,7 @@
 export default function imageGenerator(userType: string, user: any) {
 
     // Check if user.favorite_drink exists and is not empty
-    if (user.image && (userType !== "guest" || process.env.REACT_APP_DEMO_VERSION)) {
+    if (user.image && userType !== "guest") {
         // Return the first element of the favorite_drink array
         return `/images/profiles_pages/${user.image}`;
 

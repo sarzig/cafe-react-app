@@ -565,16 +565,19 @@ const AllTables = ({ userType }: { userType: string }) => {
     let displayText;
     const roleLowercase = userType.toLowerCase();
 
-
-    
-    if (roleLowercase === "admin" || process.env.REACT_APP_DEMO_VERSION) {
-        displayText = adminText;
-    } else if (roleLowercase === "owner") {
-        displayText = ownerText;
-    } else if (roleLowercase === "customer") {
-        displayText = customerText;
-    } else {
-        displayText = guestText;
+    switch (roleLowercase) {
+        case "admin":
+            displayText = adminText;
+            break;
+        case "owner":
+            displayText = ownerText;
+            break;
+        case "customer":
+            displayText = customerText;
+            break;
+        default:
+            displayText = guestText;
+            break;
     }
 
     return (
