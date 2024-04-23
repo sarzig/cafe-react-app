@@ -87,7 +87,13 @@ const Navigation = ({ userType }: { userType: any }) => {
                     </ul>
                     {isDropdownOpen && (
                         <div>
-ahhh
+                                {links.map((link, index) => (
+                                    link.userTypes.includes(userType) && (
+                                        <p key={index} className={pathname.includes(`/${link.path}`) ? "menu-active" : ""}>
+                                            <Link to={`/${link.path}`}>{link.label.replace(/-/g, ' ')}</Link>
+                                        </p>
+                                    )
+                                ))}
                         </div>
                     )}
                 </div>
