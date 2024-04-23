@@ -17,7 +17,7 @@ import * as client from "./Users/client";
 import Details from './Search/Details';
 
 function App() {
-  console.log("USERS_API", process.env.REACT_APP_USERS_API);
+  console.log("BASE_API", process.env.REACT_APP_API_BASE);
   const [userType, setUserType] = useState("guest");
   const [user, setUser] = useState(null);
 
