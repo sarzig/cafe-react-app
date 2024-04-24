@@ -47,6 +47,13 @@ export default function EditProfile() {
         }
         
     };
+    const handleCancel = () => {
+        if (userId) {
+            navigate(`/All-Profiles`);
+        } else {
+            navigate(`/Profile`);
+        }
+    };
     const showPassword = () => {
         var x = document.getElementById("password_box") as HTMLInputElement;
         if (x.type === "password") {
@@ -203,7 +210,7 @@ export default function EditProfile() {
                 </div> 
                 <span className="">
                     <button className="btn btn-primary float-end" onClick={handleSave}>Save</button> &nbsp;
-                    <a href="#/Profile" className="btn btn-light float-end">Cancel</a>
+                    <button className="btn btn-light float-end" onClick={handleCancel}>Cancel</button>
                 </span>
                 <br /><br />
             </div>
