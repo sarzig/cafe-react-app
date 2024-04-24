@@ -119,6 +119,8 @@ export default function Details() {
     const [recipeInfo, setRecipeInfo] = useState<RecipeInfoType>();
     const [users, setUsers] = useState<User[]>([]);
     const [currentUserType, setCurrentUserType] = useState("guest");
+    const searchTerm = useSelector((state: WebsiteState) => state.recipesReducer.st);
+    // console.log("searchTerm:", searchTerm);
 
     const fetchUsers = async () => {
         const users = await client.findAllUsers();
@@ -309,7 +311,7 @@ export default function Details() {
                         </div>
                         <div className="card-footer bg-transparent">
                             <button className="btn btn-light p card-link" >
-                                <Link to={`/Search`} className="button-link">Return</Link>
+                                <Link to={`/Search/${searchTerm}`} className="button-link">Return</Link>
                             </button>
                             <button className="btn btn-light p card-link" >
                                 <Link to={recipeInfo.sourceUrl || ""} className="button-link">Source</Link>

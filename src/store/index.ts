@@ -9,6 +9,7 @@ export interface WebsiteState {
     }
 
     recipesReducer: {
+        st: string;
         recipes: any[];
         recipe: any;
     }
