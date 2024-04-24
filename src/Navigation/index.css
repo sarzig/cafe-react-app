@@ -27,8 +27,8 @@ h2 {
 .icon-container {
     align-items: center; /* Center items vertically */
     vertical-align: middle;
-    padding-top: 9px;
-    padding-bottom: 12px;
+    padding-top: 10px;
+    padding-bottom: 19px;
 }
 
 .icon:hover {

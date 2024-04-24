@@ -17,7 +17,7 @@ import * as client from "./Users/client";
 import Details from './Search/Details';
 
 function App() {
-  console.log("USERS_API", process.env.REACT_APP_USERS_API);
+  console.log("BASE_API", process.env.REACT_APP_API_BASE);
   const [userType, setUserType] = useState("guest");
   const [user, setUser] = useState(null);
 
@@ -60,6 +60,7 @@ function App() {
             <Route path="/Admin-Tools/*" element={<AllTables userType={userType} />} />
             <Route path="/All-Profiles" element={<Profiles userType={userType} />} />
             <Route path="/Search" element={<Search />} />
+            <Route path="/Search/:st" element={<Search />} />
             <Route path="/Search/Details/:rid" element={<Details />} />
           </Routes>
         </div>

@@ -8,7 +8,7 @@ import {
 } from './reducer';
 import { WebsiteState } from '../store';
 // import ResultList from './ResultList';
-import { Link } from 'react-router-dom';
+import { Link, HashRouter, useNavigate, useParams } from 'react-router-dom';
 // import reducer from './reducer';
 
 // REF for initial code format/idea: https://www.youtube.com/watch?v=y68g_vYskGs but modified to fit our project
@@ -29,14 +29,12 @@ export default function Search() {
 
     }
 
-    useEffect(() => {
-        getRecipes()
-    }, []);
-
-    const [searchTerm, setSearchTerm] = useState<string>("");
+    const { st } = useParams();
+    const [searchTerm, setSearchTerm] = useState<string>(st || "");
     const recipes = useSelector((state: WebsiteState) => state.recipesReducer.recipes);
     // const [recipes] = useState<Recipe[]>([]);
     const dispatch = useDispatch();
+    const navigate = useNavigate
 
     // Link to Spoonacular Search API Documentation: https://spoonacular.com/food-api/docs#Get-Random-Recipes
     async function getRecipes() {
@@ -107,6 +105,10 @@ export default function Search() {
         }
 
     }
+
+    useEffect(() => {
+        getRecipes();
+    }, []);
 
     return (
         <>

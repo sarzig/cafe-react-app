@@ -4,7 +4,6 @@ import { Link, useLocation } from "react-router-dom";
 import { useState } from "react";
 import { FaBars } from 'react-icons/fa';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import MobilePopupMenu from "./MobilePopupMenu";
 import "./index.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -23,7 +22,7 @@ const Navigation = ({ userType }: { userType: any }) => {
             userTypes: ["admin", "customer", "owner", "guest"]
         },
         {
-            label: "Admin-Tools",
+            label: "Admin Tools",
             path: "Admin-Tools",
             stringComprehension: "/Menu",
             userTypes: ["admin"]
@@ -35,7 +34,7 @@ const Navigation = ({ userType }: { userType: any }) => {
             userTypes: ["admin", "customer", "owner"]
         },
         {
-            label: "All-Profiles",
+            label: "All Profiles",
             path: "All-Profiles",
             stringComprehension: "All-Profiles",
             userTypes: ["admin", "customer", "owner", "guest"]
@@ -55,7 +54,6 @@ const Navigation = ({ userType }: { userType: any }) => {
     };
 
     const { pathname } = useLocation();
-    console.log(pathname);
 
     const makeMenuUL = (menuType: string) => (
     <ul>
