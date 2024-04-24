@@ -175,7 +175,6 @@ export default function EditProfile() {
                             <option value="interests">Interests</option>
                             <option value="days">Days</option>
                             <option value="drinks">Drinks</option>
-                            <option value="menu_items">Menu Items</option>
                         </select>
                         <input type="text" className="form-control mt-1" onChange={(e) => setText(e.target.value)}/>
                         <button className="mt-1 w-100 btn btn-success" onClick={() => addData()}>Add</button>
@@ -193,11 +192,6 @@ export default function EditProfile() {
                         <h6 className="mt-2">Favorite drinks:</h6>
                         {profile?.favorite_drinks.map((drink) => (
                             <button key={drink} className="btn btn-light text-center" onClick={() => deleteDrinks(drink)}>{drink} <FaTimes/></button>
-                        ))}
-                        <br />
-                        <h6 className="mt-2">Favorite menu items:</h6>
-                        {profile?.favorite_menu_items.map((menuItem) => (
-                            <button key={menuItem} className="btn btn-light text-center" onClick={() => deleteMenuItems(menuItem)}>{menuItem} <FaTimes /></button>
                         ))}
                         <br />
                         <h6 className="mt-2">Favorite recipes:</h6>

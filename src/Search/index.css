@@ -1,3 +1,20 @@
+.recipe-text {
+  overflow: hidden;
+  /* Set the maximum number of lines before showing ellipsis */
+  max-height: calc(1.2em * 2); /* Adjust the number of lines as needed */
+  line-height: 1.2em;
+  /* Allow text to wrap naturally */
+  word-wrap: break-word;
+  /* Show ellipsis (...) for overflowing text */
+  text-overflow: ellipsis;
+  /* Ensure that the text does not overflow horizontally */
+  white-space: normal;
+}
+
+.recipe-fans {
+  max-height: calc(1.2em * 4); /* Adjust the number of lines as needed */
+}
+
 .custom-search-input {
   min-width: 300px;
   max-width: 600px;

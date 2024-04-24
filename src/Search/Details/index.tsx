@@ -8,7 +8,6 @@ import "../index.css"
 import * as client from "../../Users/client";
 import { User } from "../../Users/client";
 import nameGenerator from "../../Profile/Profiles/Functions/nameGenerator";
-import { BsPerson, BsTrash3Fill } from "react-icons/bs";
 import { MdInsertLink } from "react-icons/md";
 import { IoMdArrowBack } from "react-icons/io";
 
@@ -271,7 +270,7 @@ export default function Details() {
                         onClick={() =>
                             handleAddRecipeForSingleUser(String(recipeInfo.sourceUrl))
                         } >
-                         + Favorite
+                        + Favorite
                     </div>
                 </>
             )}
@@ -333,11 +332,10 @@ export default function Details() {
                         </div>
                         <div className="card-body">
                             <h5> Recipe Fans: </h5>
-                            <p className="card-text recipe-text">
+                            <p className="card-text recipe-text recipe-fans">
                                 {likers.map((likersArray: any[], index: any) => (
                                     likersArray.map((liker: any, innerIndex: any) => (
-                                        // <span key={`${index}-${innerIndex}`}> <Link to={`/profiles/${liker.id}`}>{liker.full_name}</Link></span>
-                                        <div key={`${index}-${innerIndex}`}>
+                                        <div key={`${index}-${innerIndex}`} title={`See ${nameGenerator(currentUserType, liker)}'s profile`}>
                                             <Link to={`/Profile/${liker._id}`}>{nameGenerator(currentUserType, liker)}</Link>
                                         </div>
                                     ))
