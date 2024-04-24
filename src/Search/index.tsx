@@ -182,11 +182,13 @@ export default function Search() {
                             <h5 className="card-title recipe-text bold">{recipe?.title} </h5>
                             {/* <p>{recipe?.summary}</p> */}
                         </div>
-                        <div className="card-body">
+                        <div className="button-row row height-50">
                             {/* TODO: link to details page */}
-                            <button className="btn btn-light p card-link" onClick={() => dispatch(setRecipe(recipe))}>
-                                <Link to={`/Search/Details/${recipe?.id}`} className="button-link" >Details..</Link>
-                            </button>
+                            <Link to={`/Search/Details/${recipe?.id}`} 
+                            className="col text-center reactive-col red-reactive-col height-50 button-link"
+                            onClick={() => dispatch(setRecipe(recipe))} >
+                                Details
+                            </Link>
                         </div>
                     </div>
                 ))}
