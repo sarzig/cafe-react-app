@@ -42,7 +42,7 @@
 
 .card {
   width: 20rem;
-  max-height: 1000px;
+  max-height: 5000px;
   height: 100%;
   /* max-width: 100px; */
   overflow: visible;

@@ -121,6 +121,8 @@ export default function Details() {
     const [recipeInfo, setRecipeInfo] = useState<RecipeInfoType>();
     const [users, setUsers] = useState<User[]>([]);
     const [currentUserType, setCurrentUserType] = useState("guest");
+    const searchTerm = useSelector((state: WebsiteState) => state.recipesReducer.st);
+    // console.log("searchTerm:", searchTerm);
 
     const fetchUsers = async () => {
         const users = await client.findAllUsers();

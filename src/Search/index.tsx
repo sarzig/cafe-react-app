@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
     setRecipes,
     setRecipe,
+    setST,
 } from './reducer';
 import { WebsiteState } from '../store';
 // import ResultList from './ResultList';
@@ -28,13 +29,19 @@ export default function Search() {
         summary: string;
 
     }
-
+    const dispatch = useDispatch();
     const { st } = useParams();
     const [searchTerm, setSearchTerm] = useState<string>(st || "");
+    const storedSearchTerm = useSelector((state: WebsiteState) => state.recipesReducer.st);
+    if ((searchTerm === "") && (st !== undefined) && (storedSearchTerm != "")) {
+        setSearchTerm(storedSearchTerm);
+        window.location.href = `/Search/${searchTerm}`;
+    }
+    // const { st } = useParams();
+    // const searchTerm = useSelector((state: WebsiteState) => state.recipesReducer.st);
+    // const searchTerm = useSelector((st != "") ? (state: WebsiteState) => state.recipesReducer.st : (state: WebsiteState) => state.recipesReducer.st);
     const recipes = useSelector((state: WebsiteState) => state.recipesReducer.recipes);
     // const [recipes] = useState<Recipe[]>([]);
-    const dispatch = useDispatch();
-    const navigate = useNavigate
 
     // Link to Spoonacular Search API Documentation: https://spoonacular.com/food-api/docs#Get-Random-Recipes
     async function getRecipes() {
@@ -42,9 +49,10 @@ export default function Search() {
             // Victoria's temp free key
             // const apiKey = 'dcc4423567f24887b8e3d245061312f5';
             // const apiKey = '';
-            const numberOfRecipes = 10;
+            // const numberOfRecipes = 10;
 
-            if (!searchTerm.trim()) return; // Check if search term is empty then do nothing if so
+            // if (!searchTerm || !searchTerm.trim()) return; // Check if search term is empty then do nothing if so
+            if (!searchTerm) return;
 
             const options = {
                 method: 'GET',
@@ -92,18 +100,24 @@ export default function Search() {
 
             const resp = await axios.request(options);
 
-            if (resp.data.results) {
-                // console.log("recipes:", recipes);
-                // client.setRecipes(resp.data.results).then((status) => {
-                //     dispatch(setRecipes(resp.data.results));
-                // }
-                dispatch(setRecipes(resp.data.results));
-                console.log("recipes:", recipes);
-            }
-        } catch (e) {
-            console.log(e);
-        }
+                if (resp.data.results) {
+                    // console.log("recipes:", recipes);
+                    // client.setRecipes(resp.data.results).then((status) => {
+                    //     dispatch(setRecipes(resp.data.results));
+                    // }
+                    dispatch(setRecipes(resp.data.results));
+                    console.log("searchTerm:", searchTerm);
+                    console.log("recipes:", recipes);
+                }
+            } catch (e) {
+                console.log(e);
+            }                
 
+    }
+
+    async function handleUpdateSearchTerm(newSearchTerm: any) {
+        dispatch(setST(newSearchTerm));
+        setSearchTerm(newSearchTerm);
     }
 
     useEffect(() => {
@@ -132,24 +146,29 @@ export default function Search() {
                 {/* <div className="heading">
                 <h3>Search</h3>
             </div> */}
-                <div className="d-flex flex-row" id="search-bar">
-                    <form className="form-outline my-2 my-lg-6">
-                        <input
-                            className="form-control my-2 my-sm-0 custom-search-input"
-                            type="search"
-                            placeholder="Chocolate cake"
-                            aria-label="Search"
-                            value={searchTerm}
-                            onChange={(e) => setSearchTerm(e.target.value)}
-                        />
-                        {/* <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> */}
-                    </form>
-                    <button className="btn btn-light" onClick={getRecipes}> Search </button>
-                </div>
-                {/* TODO: Make same width as search bar(?) */}
-                <div className="d-flex flex-row" id="search-bar">
-                    {/* <button className="btn btn-light p" onClick={getRecipes}> Generate New Random Recipe </button> */}
-                </div>
+            <div className="d-flex flex-row" id="search-bar">
+                <form className="form-outline my-2 my-lg-6">
+                    <input 
+                        className="form-control my-2 my-sm-0 custom-search-input" 
+                        type="search" 
+                        placeholder="Latte" 
+                        aria-label="Search"
+                        value={searchTerm}
+                        // onChange={(e) => (dispatch(setST(e.target.value))) && (setSearchTerm(e.target.value))}
+                        // onChange={(e) => setSearchTerm(e.target.value)}
+                        onChange={(e) => handleUpdateSearchTerm(e.target.value)}
+                    />
+                    {/* <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> */}
+                </form>
+                {/* <button className="btn btn-light" onClick={getRecipes}> Search </button> */}
+                <button className="btn btn-light" onClick={getRecipes}> 
+                    <Link to={`/Search/${searchTerm}`} className="button-link"> Search </Link>
+                </button>
+            </div>
+            {/* TODO: Make same width as search bar(?) */}
+            <div className="d-flex flex-row" id="search-bar">
+                {/* <button className="btn btn-light p" onClick={getRecipes}> Generate New Random Recipe </button> */}
+            </div>
 
                 {/* Cards  */}
                 {/* First confirm recipies exists, then map  */}

@@ -4,6 +4,7 @@ const initialState = {
 
     recipes: [],
     recipe: {},
+    st: "",
 };
 
 const recipesSlice = createSlice({
@@ -18,10 +19,14 @@ const recipesSlice = createSlice({
           state.recipe = action.payload;
           // console.log("printing from the reducer - recipe");
         },
+        setST: (state, action) => {
+          state.st = action.payload;
+          // console.log("printing from the reducer - recipe");
+        },
       },
     });
     
-    export const { setRecipes, setRecipe } = recipesSlice.actions;
+    export const { setRecipes, setRecipe, setST } = recipesSlice.actions;
     export default recipesSlice.reducer;
 
 // const params = {
