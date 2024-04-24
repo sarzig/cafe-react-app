@@ -1,7 +1,8 @@
 .recipe-text {
   overflow: hidden;
   /* Set the maximum number of lines before showing ellipsis */
-  max-height: calc(1.2em * 2); /* Adjust the number of lines as needed */
+  max-height: calc(1.2em * 3);
+  /* Adjust the number of lines as needed */
   line-height: 1.2em;
   /* Allow text to wrap naturally */
   word-wrap: break-word;
@@ -11,9 +12,13 @@
   white-space: normal;
 }
 
-.recipe-fans {
-  max-height: calc(1.2em * 4); /* Adjust the number of lines as needed */
+@media (max-width: 768px) {
+  .recipe-text {
+    max-height: calc(1.2em * 2);
+
+  }
 }
+
 
 .custom-search-input {
   min-width: 300px;
@@ -53,9 +58,12 @@
 
 @media (max-width: 768px) {
   .recipe-details-card {
-    width: 100%; /* Full width on smaller screens */
-    height: auto; /* Allow height to adjust based on content */
-    max-width: 40rem; /* Set a maximum width to maintain readability */
+    width: 100%;
+    /* Full width on smaller screens */
+    height: auto;
+    /* Allow height to adjust based on content */
+    max-width: 40rem;
+    /* Set a maximum width to maintain readability */
     /* Additional styles as needed */
   }
 }
