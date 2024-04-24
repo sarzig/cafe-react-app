@@ -258,7 +258,7 @@ export default function Details() {
                 <IoMdArrowBack className="big-icon" />
             </Link>
 
-            <Link to={recipeInfo.sourceUrl || ""}
+            <Link to={`/Search/${searchTerm}`}
                 className="col text-center reactive-col blue-reactive-col height-50"
                 title="Go to Recipe Link"
             >
@@ -320,10 +320,10 @@ export default function Details() {
                 <div className="d-flex flex-column align-items-center justify-content-center">
                     <div className="card recipe-details-card">
                         <Link to={recipeInfo.sourceUrl || ""}>
-                            <img src={recipe.image} className="card-img-top" alt="current recipe image" title="Click to go to recipe link" />
+                            <img src={recipeInfo.image} className="card-img-top" alt="current recipe image" title="Click to go to recipe link" />
                         </Link>
                         <div className="card-body">
-                            <h5 className="card-title recipe-text bold">{recipe.title} </h5>
+                            <h5 className="card-title recipe-text bold">{recipeInfo.title} </h5>
                             <h5> Ingredients needed: </h5>
                             <p className="card-text recipe-text">
                                 {recipeInfo.extendedIngredients.map((ingredient: any, index: any) => (
